@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import spots from '../data/spots.json'
 import { useScrollVisible } from '../hooks/useScrollVisible'
 
@@ -6,6 +7,11 @@ const topTen = [...spots].filter(s => s.matchaFocus !== false).sort((a, b) => sc
 
 export default function TopTenSpots() {
   const sectionRef = useScrollVisible()
+  const [activeId, setActiveId] = useState(null)
+
+  function handleRowClick(id) {
+    setActiveId(prev => prev === id ? null : id)
+  }
 
   return (
     <section className='top-ten-section' ref={sectionRef}>
@@ -19,7 +25,11 @@ export default function TopTenSpots() {
       <div className='top-ten-list'>
         {topTen.map(({ id, name, neighborhood, rating, reviewCount, creatorNote }, index) =>
           (
-            <div className='top-ten-list-item' key={id}>
+            <div
+              className={`top-ten-list-item${activeId === id ? ' tooltip-active' : ''}`}
+              key={id}
+              onClick={() => creatorNote && handleRowClick(id)}
+            >
               <div className='list-item-left'>
                 <span className='spot-id'>{index + 1}</span>
                 <div className='name-neighborhood-wrapper'>
@@ -37,7 +47,7 @@ export default function TopTenSpots() {
             </div>
           ))}
       </div>
-        
+
     </section>
   )
 }

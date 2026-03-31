@@ -10,7 +10,53 @@ const MARKER_BASE = { fillOpacity: 1, strokeColor: '#faf6f2', strokeWeight: 2, s
 const GREEN_ICON = { ...MARKER_BASE, fillColor: '#405d35' }
 const GOLD_ICON  = { ...MARKER_BASE, fillColor: '#b8922a' }
 
-const filtered = spots
+function SpotCard({ spot, onClose }) {
+  const [photoIndex, setPhotoIndex] = useState(0)
+
+  const localPhotos = spot.photos ?? []
+  const placesUrl = spot.photo
+    ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${PLACES_API_KEY}`
+    : null
+  const photos = placesUrl ? [...localPhotos, placesUrl] : localPhotos
+  const hasCarousel = photos.length > 1
+
+  const prev = e => { e.stopPropagation(); setPhotoIndex(i => (i - 1 + photos.length) % photos.length) }
+  const next = e => { e.stopPropagation(); setPhotoIndex(i => (i + 1) % photos.length) }
+
+  return (
+    <div className='spot-card'>
+      <button className='spot-card-close' onClick={onClose}>×</button>
+      {photos.length > 0 && (
+        <div className='spot-card-photos'>
+          <img className='spot-card-photo' src={photos[photoIndex]} alt={spot.name} />
+          {hasCarousel && (
+            <>
+              <button className='spot-card-arrow spot-card-arrow--prev' onClick={prev}>‹</button>
+              <button className='spot-card-arrow spot-card-arrow--next' onClick={next}>›</button>
+              <div className='spot-card-dots'>
+                {photos.map((_, i) => (
+                  <span key={i} className='spot-card-dot' data-active={i === photoIndex} />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+      <p className='spot-card-name'>{spot.name}</p>
+      <p className='spot-card-rating'>
+        {spot.rating}<span className='spot-card-star'>★</span>
+        <span className='spot-card-count'>({spot.reviewCount?.toLocaleString()})</span>
+      </p>
+      {spot.summary && <p className='spot-card-summary'>{spot.summary}</p>}
+      {spot.topReview && <p className='spot-card-review'>"{spot.topReview}"</p>}
+      {spot.website && (
+        <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer'>
+          Visit website →
+        </a>
+      )}
+    </div>
+  )
+}
 
 export default function Map() {
   const mapRef = useRef(null)
@@ -25,7 +71,7 @@ export default function Map() {
         center: SF_CENTER, zoom: 13, mapId: MAP_ID, disableDefaultUI: true, zoomControl: true,
       })
 
-      filtered.forEach(spot => {
+      spots.forEach(spot => {
         const icon = spot.matchaFocus === false ? GREEN_ICON : GOLD_ICON
         const marker = new google.maps.Marker({
           position: { lat: spot.lat, lng: spot.lng },
@@ -36,7 +82,11 @@ export default function Map() {
         listeners.push(marker.addListener('click', () => setSelectedSpot(spot)))
       })
 
-      listeners.push(map.addListener('click', () => setSelectedSpot(null)))
+      // Block native Google Maps POI/neighborhood tooltip on label click
+      listeners.push(map.addListener('click', e => {
+        if (e.placeId) e.stop()
+        else setSelectedSpot(null)
+      }))
     }
 
     if (window.google?.maps) {
@@ -63,35 +113,18 @@ export default function Map() {
           </span>
           <span className='map-legend-item'>
             <span className='map-legend-dot map-legend-dot--green' />
-            matcha worth trying, even if it's not the focus
+            spots where matcha is not the main focus, but still worth trying
           </span>
         </div>
       </div>
       <div className='map-wrapper'>
         <div className='map-container' ref={mapRef} />
         {selectedSpot && (
-          <div className='spot-card'>
-            <button className='spot-card-close' onClick={() => setSelectedSpot(null)}>×</button>
-            {selectedSpot.photo && (
-              <img
-                className='spot-card-photo'
-                src={`https://places.googleapis.com/v1/${selectedSpot.photo}/media?maxWidthPx=400&key=${PLACES_API_KEY}`}
-                alt={selectedSpot.name}
-              />
-            )}
-            <p className='spot-card-name'>{selectedSpot.name}</p>
-            <p className='spot-card-rating'>
-              {selectedSpot.rating}<span className='spot-card-star'>★</span>
-              <span className='spot-card-count'>({selectedSpot.reviewCount?.toLocaleString()})</span>
-            </p>
-            {selectedSpot.summary && <p className='spot-card-summary'>{selectedSpot.summary}</p>}
-            {selectedSpot.topReview && <p className='spot-card-review'>"{selectedSpot.topReview}"</p>}
-            {selectedSpot.website && (
-              <a className='spot-card-link' href={selectedSpot.website} target='_blank' rel='noreferrer'>
-                Visit website →
-              </a>
-            )}
-          </div>
+          <SpotCard
+            key={selectedSpot.id}
+            spot={selectedSpot}
+            onClose={() => setSelectedSpot(null)}
+          />
         )}
       </div>
     </section>

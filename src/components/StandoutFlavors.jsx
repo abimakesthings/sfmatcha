@@ -3,6 +3,7 @@ import { useScrollVisible } from '../hooks/useScrollVisible'
 import flavorStacks from '../data/flavors.js'
 
 const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+const MAX_DOTS = 5
 
 function FlavorStack({ stack }) {
   const [topIndex, setTopIndex] = useState(0)
@@ -29,20 +30,35 @@ function FlavorStack({ stack }) {
             style={{ zIndex: stack.length - pos }}
           >
             <div className='flavor-photo'>
-              {card.photo && (
+              {card.photoUrl ? (
+                <img src={card.photoUrl} alt={card.flavor} />
+              ) : card.photo ? (
                 <img
                   src={`https://places.googleapis.com/v1/${card.photo}/media?maxWidthPx=400&key=${PLACES_API_KEY}`}
                   alt={card.flavor}
                 />
-              )}
+              ) : null}
             </div>
             <div className='flavor-caption'>
               <p className='flavor-name'>{card.flavor}</p>
               <p className='flavor-cafe'>{card.cafe}</p>
+                    {clickable && (
+        <div className='flavor-stack-dots'>
+          {Array.from({ length: Math.min(stack.length, MAX_DOTS) }, (_, i) => {
+            const dotIndex = stack.length <= MAX_DOTS
+              ? i
+              : Math.round(i * (stack.length - 1) / (MAX_DOTS - 1))
+            const isActive = topIndex === dotIndex ||
+              (i === MAX_DOTS - 1 && topIndex >= dotIndex)
+            return <span key={i} className='flavor-stack-dot' data-active={isActive} />
+          })}
+        </div>
+      )}
             </div>
           </div>
         )
       })}
+
     </div>
   )
 }

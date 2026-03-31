@@ -1,5 +1,8 @@
 node_modules
 dist
+dist-ssr
+*.local
+*.log
 .env
 .DS_Store
 .claude
