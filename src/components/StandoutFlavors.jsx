@@ -42,18 +42,18 @@ function FlavorStack({ stack }) {
             <div className='flavor-caption'>
               <p className='flavor-name'>{card.flavor}</p>
               <p className='flavor-cafe'>{card.cafe}</p>
-                    {clickable && (
-        <div className='flavor-stack-dots'>
-          {Array.from({ length: Math.min(stack.length, MAX_DOTS) }, (_, i) => {
-            const dotIndex = stack.length <= MAX_DOTS
-              ? i
-              : Math.round(i * (stack.length - 1) / (MAX_DOTS - 1))
-            const isActive = topIndex === dotIndex ||
-              (i === MAX_DOTS - 1 && topIndex >= dotIndex)
-            return <span key={i} className='flavor-stack-dot' data-active={isActive} />
-          })}
-        </div>
-      )}
+              {clickable && (
+                <div className='flavor-stack-dots'>
+                  {Array.from({ length: Math.min(stack.length, MAX_DOTS) }, (_, i) => {
+                    const dotIndex = stack.length <= MAX_DOTS
+                      ? i
+                      : Math.round(i * (stack.length - 1) / (MAX_DOTS - 1))
+                    const isActive = topIndex === dotIndex ||
+                      (i === MAX_DOTS - 1 && topIndex >= dotIndex)
+                    return <span key={i} className='flavor-stack-dot' data-active={isActive} />
+                  })}
+                </div>
+              )}
             </div>
           </div>
         )

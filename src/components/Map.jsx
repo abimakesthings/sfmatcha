@@ -47,8 +47,8 @@ function SpotCard({ spot, onClose }) {
         {spot.rating}<span className='spot-card-star'>★</span>
         <span className='spot-card-count'>({spot.reviewCount?.toLocaleString()})</span>
       </p>
-      {spot.summary && <p className='spot-card-summary'>{spot.summary}</p>}
-      {spot.topReview && <p className='spot-card-review'>"{spot.topReview}"</p>}
+      {spot.aiSummary && <p className='spot-card-summary'>{spot.aiSummary}</p>}
+      {spot.review && <p className='spot-card-review'>"{spot.review}"</p>}
       {spot.website && (
         <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer'>
           Visit website →
@@ -94,7 +94,7 @@ export default function Map() {
     } else if (!document.getElementById('gmap-script')) {
       const s = document.createElement('script')
       s.id = 'gmap-script'
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}`
       s.onload = initMap
       document.head.appendChild(s)
     }

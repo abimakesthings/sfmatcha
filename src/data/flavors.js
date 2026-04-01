@@ -54,6 +54,7 @@ const flavorStacks = [
     { id: 'nagomi-strawberry',   flavor: 'Strawberry matcha latte',        cafe: 'Nagomi',              photo: photo('Nagomi'),       photoUrl: '/images/nagomi/strawberry-1.webp' },
     { id: 'maruwu-strawberry',   flavor: 'Strawberry matcha latte',        cafe: 'Maruwu Seicha',       photo: photo('Maruwu'),       photoUrl: '/images/maruwu/strawberry-1.webp' },
     { id: 'moriwa-strawberry',   flavor: 'Strawberry matcha latte',        cafe: 'Moriwa Matcha',       photo: photo('Moriwa'),       photoUrl: '/images/moriwa/strawberry-1.webp' },
+    { id: 'neighbors-strawberry', flavor: 'Strawberry matcha latte',       cafe: "Neighbor's Corner",   photo: photo("Neighbor's"),   photoUrl: '/images/neighbors-corner/strawberry-1.webp' },
   ],
   [
     { id: 'oishii-ube',          flavor: 'Ube matcha latte',               cafe: 'OISHII MATCHA',       photo: photo('OISHII'),       photoUrl: '/images/oishii/ube-1.webp' },

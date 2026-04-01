@@ -23,12 +23,12 @@ export default function TopTenSpots() {
         <p className='subtitle'>matcha-first spots in SF, ranked by star rating</p>
       </div>
       <div className='top-ten-list'>
-        {topTen.map(({ id, name, neighborhood, rating, reviewCount, creatorNote }, index) =>
+        {topTen.map(({ id, name, neighborhood, rating, reviewCount, note }, index) =>
           (
             <div
               className={`top-ten-list-item${activeId === id ? ' tooltip-active' : ''}`}
               key={id}
-              onClick={() => creatorNote && handleRowClick(id)}
+              onClick={() => note && handleRowClick(id)}
             >
               <div className='list-item-left'>
                 <span className='spot-id'>{index + 1}</span>
@@ -38,9 +38,9 @@ export default function TopTenSpots() {
                 </div>
              </div>
              <div className='spot-rating subtitle'>{rating}<span className='star'>★</span></div>
-             {creatorNote && (
+             {note && (
                <div className='row-tooltip'>
-                 <p className='row-tooltip-desc'>{creatorNote}</p>
+                 <p className='row-tooltip-desc'>{note}</p>
                  <p className='row-tooltip-reviews'>{reviewCount?.toLocaleString()} reviews</p>
                </div>
              )}

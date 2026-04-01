@@ -2,12 +2,11 @@ export default function Hero() {
   return (
      <div className='hero-section'>
       <div className='hero-left'>
-        <video />
       </div>
       <div className='hero-right'>
         <div className='hero-content-wrapper'>
           <div className='sf-map-illustration-wrapper'> 
-            <img className='sf-map-illustration' src='../public/assets/sf-map-illustration.png' />         
+            <img className='sf-map-illustration' src='/assets/sf-map-illustration.png' />         
           </div>
           <h1 className='hero-title'>the matcha</h1>
           <div className='shortlist-section'>
