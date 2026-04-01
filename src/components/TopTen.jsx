@@ -47,7 +47,6 @@ export default function TopTenSpots() {
             </div>
           ))}
       </div>
-
     </section>
   )
 }

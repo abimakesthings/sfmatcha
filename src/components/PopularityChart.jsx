@@ -24,7 +24,7 @@ export default function PopularityChart() {
           </div>
           {popular.map((spot, i) => (
             <div key={spot.id} className='popular-row'>
-              <span className='popular-name'>{spot.name === 'Matcha Cafe Maiko' ? `Matcha Cafe Maiko - ${spot.neighborhood}` : spot.name}</span>
+              <span className='popular-name'>{spot.displayName ?? spot.name}</span>
               <div className='popular-bar-track'>
                 <div
                   className='popular-bar-fill'

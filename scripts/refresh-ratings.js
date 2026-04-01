@@ -1,7 +1,7 @@
-// Refreshes reviews, summary, and photo for existing spots in spots.json
-// using Place Details (by ID) — does NOT do text searches, so no new spots are added.
+// Refreshes rating, reviewCount, and aiSummary for existing spots in spots.json
+// using Place Details (by ID) — does NOT touch curated review, note, or photos.
 //
-// Usage: npm run refresh-reviews
+// Usage: npm run refresh-ratings
 
 import 'dotenv/config'
 import { readFile, writeFile } from 'fs/promises'
@@ -9,12 +9,9 @@ import { readFile, writeFile } from 'fs/promises'
 const API_KEY = process.env.GOOGLE_MAPS_API_KEY
 
 const FIELD_MASK = [
-  'editorialSummary',
-  'generativeSummary',
-  'reviews',
-  'photos',
   'rating',
   'userRatingCount',
+  'generativeSummary',
 ].join(',')
 
 
@@ -40,19 +37,17 @@ async function main() {
 
   const spotsPath = new URL('../src/data/spots.json', import.meta.url).pathname
   const spots = JSON.parse(await readFile(spotsPath, 'utf8'))
-  console.log(`Refreshing reviews for ${spots.length} spots...`)
+  console.log(`Refreshing ratings for ${spots.length} spots...`)
 
   const updated = await Promise.all(spots.map(async (spot) => {
     try {
       const place = await fetchPlaceDetails(spot.id)
-      const summary = place.editorialSummary?.text ?? spot.summary
-      const aiSummary = place.generativeSummary?.overview?.text ?? spot.aiSummary
-      const photo = place.photos?.[0]?.name ?? spot.photo
       const rating = place.rating ?? spot.rating
       const reviewCount = place.userRatingCount ?? spot.reviewCount
-      const changed = summary !== spot.summary || aiSummary !== spot.aiSummary || photo !== spot.photo || rating !== spot.rating || reviewCount !== spot.reviewCount
+      const aiSummary = place.generativeSummary?.overview?.text ?? spot.aiSummary
+      const changed = rating !== spot.rating || reviewCount !== spot.reviewCount || aiSummary !== spot.aiSummary
       if (changed) console.log(`  ✓ ${spot.name}${rating !== spot.rating ? ` (${spot.rating}★ → ${rating}★)` : ''}`)
-      return { ...spot, summary, aiSummary, photo, rating, reviewCount }
+      return { ...spot, rating, reviewCount, aiSummary }
     } catch (err) {
       console.warn(`  ⚠ ${spot.name}: ${err.message}`)
       return spot

@@ -1,0 +1,30 @@
+name: Refresh Ratings
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # 6am PT (UTC-8) daily
+  workflow_dispatch:       # allows manual trigger from GitHub UI
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npm run refresh-ratings
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+
+      - name: Commit updated spots.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || (git add src/data/spots.json && git commit -m "chore: refresh ratings and summaries" && git push)

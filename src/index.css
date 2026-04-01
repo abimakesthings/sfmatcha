@@ -1024,9 +1024,17 @@ h2 {
     line-height: 1.1;
   }
 
-  /* Flavors: 1-column */
+  /* Flavors: 1-column, header aligned with card */
   .flavors-grid {
     grid-template-columns: 240px;
+  }
+
+  .flavors-inner {
+    align-items: center;
+  }
+
+  .flavors-header {
+    width: 240px;
   }
 
   /* Map spot card: fixed bottom sheet */

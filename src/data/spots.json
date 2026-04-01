@@ -142,6 +142,7 @@
   {
     "id": "ChIJ3YBO_LiAhYARShPGUvOWKy0",
     "name": "Matcha Cafe Maiko",
+    "displayName": "Matcha Cafe Maiko - Japantown",
     "address": "1581 Webster St # 175, San Francisco, CA 94115, USA",
     "neighborhood": "Japantown",
     "lat": 37.7849544,
@@ -309,6 +310,7 @@
   {
     "id": "ChIJQeLNPsmBhYAR3DfsmDa7K7A",
     "name": "Matcha Cafe Maiko",
+    "displayName": "Matcha Cafe Maiko - Chinatown",
     "address": "756 Grant Ave, San Francisco, CA 94108, USA",
     "neighborhood": "Chinatown",
     "lat": 37.794215799999996,
@@ -593,6 +595,7 @@
   {
     "id": "ChIJF6YrHk19j4ARftFx0S9t7lw",
     "name": "Matcha Cafe Maiko",
+    "displayName": "Matcha Cafe Maiko - Stonestown",
     "address": "3251 20th Ave Ste 250K, San Francisco, CA 94132, USA",
     "neighborhood": "Stonestown",
     "lat": 37.7277726,

@@ -6,9 +6,12 @@ const MAP_ID = '6d2b821952b606c152cfc147'
 const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 }
-const MARKER_BASE = { fillOpacity: 1, strokeColor: '#faf6f2', strokeWeight: 2, scale: 7 }
-const GREEN_ICON = { ...MARKER_BASE, fillColor: '#405d35' }
-const GOLD_ICON  = { ...MARKER_BASE, fillColor: '#b8922a' }
+
+function makeMarkerEl(color) {
+  const el = document.createElement('div')
+  el.style.cssText = `width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #faf6f2;box-sizing:border-box;`
+  return el
+}
 
 function SpotCard({ spot, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0)
@@ -72,12 +75,12 @@ export default function Map() {
       })
 
       spots.forEach(spot => {
-        const icon = spot.matchaFocus === false ? GREEN_ICON : GOLD_ICON
-        const marker = new google.maps.Marker({
+        const color = spot.matchaFocus === false ? '#405d35' : '#b8922a'
+        const marker = new google.maps.marker.AdvancedMarkerElement({
           position: { lat: spot.lat, lng: spot.lng },
           map,
           title: spot.name,
-          icon: { ...icon, path: google.maps.SymbolPath.CIRCLE },
+          content: makeMarkerEl(color),
         })
         listeners.push(marker.addListener('click', () => setSelectedSpot(spot)))
       })
@@ -94,7 +97,7 @@ export default function Map() {
     } else if (!document.getElementById('gmap-script')) {
       const s = document.createElement('script')
       s.id = 'gmap-script'
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}`
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&libraries=marker`
       s.onload = initMap
       document.head.appendChild(s)
     }
