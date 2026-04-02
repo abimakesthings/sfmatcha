@@ -3,7 +3,6 @@ import { useScrollVisible } from '../hooks/useScrollVisible'
 import flavorStacks from '../data/flavors.js'
 
 const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-const MAX_DOTS = 5
 
 function FlavorStack({ stack }) {
   const [topIndex, setTopIndex] = useState(0)
@@ -44,14 +43,9 @@ function FlavorStack({ stack }) {
               <p className='flavor-cafe'>{card.cafe}</p>
               {clickable && (
                 <div className='flavor-stack-dots'>
-                  {Array.from({ length: Math.min(stack.length, MAX_DOTS) }, (_, i) => {
-                    const dotIndex = stack.length <= MAX_DOTS
-                      ? i
-                      : Math.round(i * (stack.length - 1) / (MAX_DOTS - 1))
-                    const isActive = topIndex === dotIndex ||
-                      (i === MAX_DOTS - 1 && topIndex >= dotIndex)
-                    return <span key={i} className='flavor-stack-dot' data-active={isActive} />
-                  })}
+                  {Array.from({ length: stack.length }, (_, i) => (
+                    <span key={i} className='flavor-stack-dot' data-active={i === topIndex} />
+                  ))}
                 </div>
               )}
             </div>
@@ -78,6 +72,7 @@ export default function StandoutFlavors() {
             <FlavorStack key={stack[0].id} stack={stack} />
           ))}
         </div>
+        <p className='flavors-swipe-hint'>swipe to browse →</p>
       </div>
     </section>
   )

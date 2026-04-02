@@ -48,6 +48,7 @@
   {
     "id": "ChIJg6GVZgCHhYARDs4r7ffC9hE",
     "name": "Tadaima Inner Sunset",
+    "chainName": "Tadaima",
     "address": "1248 9th Ave, San Francisco, CA 94122, USA",
     "neighborhood": "Inner Sunset",
     "lat": 37.7650291,
@@ -128,7 +129,7 @@
     "priceLevel": null,
     "photo": "places/ChIJvxxqawB_j4ARchmzEqzM_Nc/photos/AU_ZVEGsueP2-CdAgQ6Fge3ARJFwEiQXQH6XSeet2nRY57QJbb3lwuIbsjT_kLTDdgyOv0vTWgCUO4DqQkHVH9UUVWOMdo0MP7oZlN3ogDZ0sQlkxe1lpaTF40zq-11JwAYHPB6q7CaUj_GcUVDwDabn93CcO5gUTkTGl7ZSgequOfY2mFDMXonojUpWkYOK_YYuykiOgHaZQbJM143dsx1551sfLCALUlc6BXAu1_1_5nF0lkRf-XAlT2Ds57_Q9-8ngbqxOFzLn5ZIm6ePxIcCLbNxND0heksFChiAr70RnCqoJg",
     "website": "https://www.ceretea.com/",
-    "note": "Opened March 2026, Ceré Tea is a relatively new spot. With only a small number of reviews, the real question is whether its position will hold as new crowds arrive.",
+    "note": "A Japanese tea room on Valencia with one of the more inventive flavor menus in the city. The osmanthus latte and black sesame einspanner are genuinely unusual finds.",
     "photos": [
       "/images/cere-tea/interior-1.webp",
       "/images/cere-tea/strawberry-1.webp",
@@ -537,7 +538,7 @@
     "priceLevel": 1,
     "photo": "places/ChIJBTDgEgCHhYAR7WZpvU9ePE0/photos/AU_ZVEEPMnDOmFtAan1xHDfYl5g9KOHnr0oWsKqbcHJdx912PsKHr8GU73Z7o1GHZ-OoJntDGUfhQVeuzYyJnAEQ0zQeBOQGyqWDuqqZVWicY6Zf1XOB58EhJCyDpS2RXxDEpO_kMoDcLoEzCj10Ohn-aHERqxWxtvNM46mzH_pN2ticgbQ9DauDKfC2C9FpJqm7exXr4gc4QnBszW8_PphWQyImlkRgFsHc6cM5gXAyWJkLRgMUu-XsgmemhNCYzXwGHs0dMJf_0nACmWI20k4mRZd7BslLJEiK11H3fXhZFn73NnUaanVVxWCCbrJ0I9WQOhue4a0j2eumGAAOtOW8yOjsNzL_sEOMlq7a6kllqj1goU2GtT_YIY3zk_OEYbAeDnfkpEAdYwK6P83LZcX8cM9acr-ARy3sqQaq7fG5bNeEVHyIdQxoVzK-CpRcYA",
     "website": "http://www.kissofmatcha.com/",
-    "note": null,
+    "note": "The Inner Sunset branch of Kiss of Matcha, on Irving Street. Same quality as the Inner Richmond location, with a quieter neighborhood feel. The matcha leans astringent, which regulars tend to appreciate.",
     "photos": [
       "/images/kiss-of-matcha-sunset/photo-1.webp",
       "/images/kiss-of-matcha-sunset/photo-2.webp",
@@ -642,6 +643,7 @@
   {
     "id": "ChIJe7ZRYAB_j4AR7Me42C4yARE",
     "name": "Tadaima Mission",
+    "chainName": "Tadaima",
     "address": "3515 20th St B, San Francisco, CA 94110, USA",
     "neighborhood": "Mission District",
     "lat": 37.7584516,

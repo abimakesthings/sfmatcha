@@ -15,6 +15,8 @@ function makeMarkerEl(color) {
 
 function SpotCard({ spot, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0)
+  const cardRef = useRef(null)
+  const dragStartY = useRef(null)
 
   const localPhotos = spot.photos ?? []
   const placesUrl = spot.photo
@@ -26,12 +28,43 @@ function SpotCard({ spot, onClose }) {
   const prev = e => { e.stopPropagation(); setPhotoIndex(i => (i - 1 + photos.length) % photos.length) }
   const next = e => { e.stopPropagation(); setPhotoIndex(i => (i + 1) % photos.length) }
 
+  function handleTouchStart(e) {
+    if (cardRef.current?.scrollTop !== 0) return
+    dragStartY.current = e.touches[0].clientY
+    cardRef.current.style.transition = 'none'
+  }
+
+  function handleTouchMove(e) {
+    if (dragStartY.current === null) return
+    const dy = e.touches[0].clientY - dragStartY.current
+    if (dy > 0) cardRef.current.style.transform = `translateY(${dy}px)`
+  }
+
+  function handleTouchEnd(e) {
+    if (dragStartY.current === null) return
+    const dy = e.changedTouches[0].clientY - dragStartY.current
+    cardRef.current.style.transition = ''
+    if (dy > 100) {
+      onClose()
+    } else {
+      cardRef.current.style.transform = ''
+    }
+    dragStartY.current = null
+  }
+
   return (
-    <div className='spot-card'>
-      <button className='spot-card-close' onClick={onClose}>×</button>
+    <div
+      className='spot-card'
+      ref={cardRef}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {photos.length > 0 && (
         <div className='spot-card-photos'>
           <img className='spot-card-photo' src={photos[photoIndex]} alt={spot.name} />
+          <div className='spot-card-handle' />
+          <button className='spot-card-close' onClick={onClose}>×</button>
           {hasCarousel && (
             <>
               <button className='spot-card-arrow spot-card-arrow--prev' onClick={prev}>‹</button>
@@ -45,18 +78,26 @@ function SpotCard({ spot, onClose }) {
           )}
         </div>
       )}
-      <p className='spot-card-name'>{spot.name}</p>
-      <p className='spot-card-rating'>
-        {spot.rating}<span className='spot-card-star'>★</span>
-        <span className='spot-card-count'>({spot.reviewCount?.toLocaleString()})</span>
-      </p>
-      {spot.aiSummary && <p className='spot-card-summary'>{spot.aiSummary}</p>}
-      {spot.review && <p className='spot-card-review'>"{spot.review}"</p>}
-      {spot.website && (
-        <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer'>
-          Visit website →
-        </a>
+      {photos.length === 0 && (
+        <>
+          <div className='spot-card-handle' />
+          <button className='spot-card-close' onClick={onClose}>×</button>
+        </>
       )}
+      <div className='spot-card-body'>
+        <p className='spot-card-name'>{spot.name}</p>
+        <p className='spot-card-rating'>
+          {spot.rating}<span className='spot-card-star'>★</span>
+          <span className='spot-card-count'>({spot.reviewCount?.toLocaleString()})</span>
+        </p>
+        {spot.aiSummary && <p className='spot-card-summary'>{spot.aiSummary}</p>}
+        {spot.review && <p className='spot-card-review'>"{spot.review}"</p>}
+        {spot.website && (
+          <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer'>
+            Visit website →
+          </a>
+        )}
+      </div>
     </div>
   )
 }
@@ -123,11 +164,14 @@ export default function Map() {
       <div className='map-wrapper'>
         <div className='map-container' ref={mapRef} />
         {selectedSpot && (
-          <SpotCard
-            key={selectedSpot.id}
-            spot={selectedSpot}
-            onClose={() => setSelectedSpot(null)}
-          />
+          <>
+            <div className='spot-card-backdrop' onPointerDown={() => setSelectedSpot(null)} />
+            <SpotCard
+              key={selectedSpot.id}
+              spot={selectedSpot}
+              onClose={() => setSelectedSpot(null)}
+            />
+          </>
         )}
       </div>
     </section>
