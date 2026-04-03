@@ -1,16 +1,20 @@
+const base = import.meta.env.BASE_URL
+
 export default function Hero() {
   return (
     <div className='hero-section'>
       <div className='hero-left'>
+        <img className='hero-bg' src={`${base}assets/background.png`} alt='' />
+        <img className='hero-fg' src={`${base}assets/foreground.png`} alt='' />
       </div>
       <div className='hero-right'>
         <div className='hero-content-wrapper'>
           <div className='sf-map-illustration-wrapper'>
-            <img className='sf-map-illustration' src='/assets/sf-map-illustration.png' alt='SF map illustration' />
+            <img className='sf-map-illustration' src={`${base}assets/sf-map-illustration.png`} alt='SF map illustration' />
           </div>
           <h1 className='hero-title'>the matcha</h1>
           <div className='shortlist-section'>
-            <img className='shortlist-oval' src='/assets/oval.svg' alt='' />
+            <img className='shortlist-oval' src={`${base}assets/oval.svg`} alt='' />
             <h1 className='shortlist'>
               shortlist
               <span className='sparkle sparkle-1'>★</span>
