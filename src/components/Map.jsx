@@ -8,8 +8,9 @@ const MAP_ID = '6d2b821952b606c152cfc147'
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 }
 
 function makeMarkerEl(color) {
+  const size = window.innerWidth <= 620 ? 20 : 14
   const el = document.createElement('div')
-  el.style.cssText = `width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #faf6f2;box-sizing:border-box;`
+  el.style.cssText = `width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid #faf6f2;box-sizing:border-box;`
   return el
 }
 
@@ -74,12 +75,13 @@ export default function Map() {
   const [selectedSpot, setSelectedSpot] = useState(null)
 
   useEffect(() => {
-    if (selectedSpot && window.innerWidth <= 620) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
+    if (!selectedSpot || window.innerWidth > 620) return
+    const scrollY = window.scrollY
+    document.body.style.cssText = `position:fixed;top:-${scrollY}px;left:0;right:0;overflow-y:scroll;`
+    return () => {
+      document.body.style.cssText = ''
+      window.scrollTo(0, scrollY)
     }
-    return () => { document.body.style.overflow = '' }
   }, [selectedSpot])
 
   useEffect(() => {

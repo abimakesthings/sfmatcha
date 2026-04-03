@@ -195,7 +195,6 @@
     padding: 56px 20px;
   }
 
-  .popular-chart-head,
   .popular-row {
     grid-template-columns: 100px minmax(0, 1fr) 40px;
     gap: 12px;
