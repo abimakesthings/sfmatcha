@@ -1,15 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import spots from '../data/spots.json'
 import flavorStacks from '../data/flavors.js'
 import { useScrollVisible } from '../hooks/useScrollVisible'
 
-const chainKey = s => s.chainName ?? s.name
 const pollName = s => s.chainName ?? s.name
 
 function dedupeByChain(list) {
   const seen = new Map()
   list.forEach(s => {
-    const key = chainKey(s)
+    const key = pollName(s)
     if (!seen.has(key)) {
       seen.set(key, { ...s })
     } else {
@@ -40,24 +39,23 @@ function seedVotes(spot) {
 }
 
 function PollResults({ pollSpots, highlight }) {
-  const withVotes = pollSpots.map(s => ({ ...s, votes: seedVotes(s) }))
-  const total = withVotes.reduce((sum, s) => sum + s.votes, 0)
-  const sorted = [...withVotes].sort((a, b) => b.votes - a.votes)
-  const top5 = sorted.slice(0, 5)
+  const { sorted, top5, total } = useMemo(() => {
+    const withVotes = pollSpots.map(s => ({ ...s, votes: seedVotes(s) }))
+    const total = withVotes.reduce((sum, s) => sum + s.votes, 0)
+    const sorted = [...withVotes].sort((a, b) => b.votes - a.votes)
+    return { sorted, top5: sorted.slice(0, 5), total }
+  }, [pollSpots])
 
   const highlightRank = highlight ? sorted.findIndex(s => s.id === highlight) + 1 : null
   const highlightInTop5 = highlightRank !== null && highlightRank <= 5
 
   return (
     <div className='poll-results'>
-        {highlight && !highlightInTop5 && (() => {
-        const s = sorted.find(x => x.id === highlight)
-        return (
-          <p className='poll-result-yours'>
-            your vote &ldquo;{pollName(s)}&rdquo; is ranked {highlightRank} out of {sorted.length}
-          </p>
-        )
-      })()}
+      {highlight && !highlightInTop5 && (
+        <p className='poll-result-yours'>
+          your vote &ldquo;{pollName(sorted.find(s => s.id === highlight))}&rdquo; is ranked {highlightRank} out of {sorted.length}
+        </p>
+      )}
       {top5.map((s, i) => {
         const pct = Math.round(s.votes / total * 100)
         const isHighlight = s.id === highlight
@@ -78,8 +76,6 @@ function Poll({ label, pollSpots, storageKey, image }) {
   const [pending, setPending] = useState(null)
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
-  const [celebrated, setCelebrated] = useState(false)
-  const inputRef = useRef(null)
 
   useEffect(() => {
     const saved = localStorage.getItem(storageKey)
@@ -109,7 +105,6 @@ function Poll({ label, pollSpots, storageKey, image }) {
     if (!pending) return
     localStorage.setItem(storageKey, pending)
     setVoted(pending)
-    setCelebrated(true)
   }
 
   function handleChange(e) {
@@ -147,13 +142,11 @@ function Poll({ label, pollSpots, storageKey, image }) {
       {isVoted ? (
         <div className='poll-voted-display'>
           <span className='poll-voted-name'>{pollSpots.find(s => s.id === voted)?.name}</span>
-          {celebrated}
         </div>
       ) : (
         <>
           <div className='poll-combobox'>
             <input
-              ref={inputRef}
               className='poll-input'
               type='text'
               placeholder='type to search...'
