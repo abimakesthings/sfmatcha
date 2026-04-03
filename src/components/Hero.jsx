@@ -25,8 +25,7 @@ export default function Hero() {
           </div>
         </div>
         <div className='hero-subtitle'>
-          <p className='subtitle'>Because life's too short to have bad matcha</p>
-          <span className='scroll-arrow'>↓</span>
+          <p className='subtitle'>Because life's too short to have bad matcha <span className='scroll-arrow'>↓</span></p>
         </div>
       </div>
     </div>

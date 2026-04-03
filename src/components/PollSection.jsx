@@ -33,6 +33,9 @@ const strawberrySpots = dedupeByChain(
     .sort((a, b) => a.name.localeCompare(b.name))
 )
 
+// Deterministic seed so rankings feel plausible without real vote data.
+// reviewCount * 0.18 anchors popular spots higher; the hash spread (0–34)
+// and +8 floor prevent ties and zero-vote entries.
 function seedVotes(spot) {
   const hash = [...spot.id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) & 0xffff, 0)
   return Math.round((spot.reviewCount ?? 50) * 0.18 + (hash % 35) + 8)
@@ -120,6 +123,7 @@ function Poll({ label, pollSpots, storageKey, image }) {
   }
 
   function handleBlur() {
+    // Delay lets onMouseDown on a dropdown option fire before the dropdown closes
     setTimeout(() => {
       setOpen(false)
       if (pending) {
@@ -145,7 +149,7 @@ function Poll({ label, pollSpots, storageKey, image }) {
         </div>
       ) : (
         <>
-          <div className='poll-combobox'>
+          <div className='poll-combobox' role='combobox' aria-expanded={open} aria-haspopup='listbox'>
             <input
               className='poll-input'
               type='text'
@@ -154,13 +158,18 @@ function Poll({ label, pollSpots, storageKey, image }) {
               onChange={handleChange}
               onFocus={handleFocus}
               onBlur={handleBlur}
+              aria-autocomplete='list'
+              aria-controls={`${storageKey}-dropdown`}
+              autoComplete='off'
             />
             {open && filtered.length > 0 && (
-              <ul className='poll-dropdown'>
+              <ul id={`${storageKey}-dropdown`} className='poll-dropdown' role='listbox'>
                 {filtered.map(spot => (
                   <li
                     key={spot.id}
                     className='poll-option'
+                    role='option'
+                    aria-selected={pending === spot.id}
                     data-selected={pending === spot.id}
                     onMouseDown={() => select(spot)}
                   >

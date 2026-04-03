@@ -1,0 +1,169 @@
+.top-ten-section {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.top-ten-section.is-visible .top-ten-header {
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.top-ten-section.is-visible .top-ten-list {
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.top-ten-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 560px;
+  width: 100%;
+  opacity: 0;
+}
+
+.top-ten-title {
+  font-weight: 600;
+  letter-spacing: -0.96px;
+  color: var(--black);
+}
+
+.top-ten-subheading {
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.96px;
+  color: var(--green-50);
+}
+
+.top-ten-list {
+  max-width: 560px;
+  width: 100%;
+  opacity: 0;
+}
+
+.top-ten-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 24px 12px;
+  border-bottom: solid 1px var(--green-30);
+  transition: background 0.2s;
+}
+
+.top-ten-list-item:hover {
+  background: var(--green-10);
+}
+
+/* Keyboard focus style for rows that have tooltip notes */
+.top-ten-list-item:focus-visible {
+  outline: 2px solid var(--green-50);
+  outline-offset: -2px;
+}
+
+.row-tooltip {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  background: var(--tooltip-bg);
+  backdrop-filter: blur(4px);
+  color: var(--cream);
+  padding: 12px 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: default;
+}
+
+.row-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--tooltip-bg);
+}
+
+.top-ten-list-item:hover .row-tooltip,
+.top-ten-list-item.tooltip-active .row-tooltip {
+  opacity: 1;
+}
+
+.row-tooltip-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.row-tooltip-reviews {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-30);
+}
+
+.list-item-left {
+  flex-grow: 1;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.top-ten-list-item:last-child {
+  border-bottom: none;
+  padding-left: 0;
+}
+
+.spot-id {
+  color: var(--green-30);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.name-neighborhood-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.spot-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.spot-neighborhood {
+  color: var(--green-50);
+}
+
+.star {
+  color: var(--gold);
+}
+
+@media (max-width: 860px) {
+  .top-ten-section {
+    margin: 72px 0;
+    padding: 0 32px;
+  }
+
+  .top-ten-header,
+  .top-ten-list {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .top-ten-section {
+    margin: 56px 0;
+    padding: 0 20px;
+  }
+}

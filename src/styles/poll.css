@@ -1,0 +1,333 @@
+.poll-section {
+  background: var(--green-10);
+  padding: 100px 64px 220px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  overflow: visible;
+}
+
+.poll-section.is-visible {
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.poll-inner {
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.poll-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: -0.96px;
+  color: var(--black);
+}
+
+.poll-section-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 48px;
+  letter-spacing: -0.96px;
+  line-height: 0.95;
+  color: var(--green-50);
+}
+
+.poll-polls {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.poll-image {
+  height: 240px;
+  width: auto;
+  display: block;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.poll-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-50);
+  margin-bottom: 10px;
+}
+
+.poll-combobox {
+  position: relative;
+}
+
+.poll-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--black);
+  background: var(--cream);
+  border: 1px solid var(--green-30);
+  padding: 11px 40px 11px 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.poll-input::placeholder {
+  color: var(--green-30);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poll-input:focus {
+  border-color: var(--green-50);
+}
+
+.poll-input[data-voted="true"] {
+  color: var(--green-50);
+}
+
+.poll-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  translate: 0 -50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--green-40);
+  line-height: 1;
+  padding: 2px 4px;
+  transition: color 0.15s ease;
+}
+
+.poll-clear:hover {
+  color: var(--black);
+}
+
+.poll-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--cream);
+  border: 1px solid var(--green-50);
+  border-top: none;
+  max-height: 260px;
+  overflow-y: auto;
+  list-style: none;
+  z-index: 10;
+}
+
+.poll-option {
+  padding: 10px 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.poll-option:hover,
+.poll-option[data-selected="true"] {
+  background: var(--green-10);
+  color: var(--green-50);
+}
+
+.poll-voted-display {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.poll-voted-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--green-50);
+  line-height: 1.2;
+}
+
+.poll-vote-btn {
+  margin-top: 12px;
+  width: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--cream);
+  background: var(--green-30);
+  border: none;
+  padding: 12px 20px;
+  cursor: default;
+  letter-spacing: 0.2px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.poll-vote-btn:not(:disabled) {
+  background: var(--green-50);
+  cursor: pointer;
+  animation: voteSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.poll-vote-btn:not(:disabled):hover {
+  background: var(--green-40);
+}
+
+.poll-vote-btn:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+@keyframes voteSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.poll-results-wrap {
+  position: relative;
+  margin-top: 24px;
+}
+
+.poll-results-wrap[data-locked="true"] .poll-results {
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.poll-results {
+  transition: filter 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.poll-result-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-top: 1px solid var(--green-20);
+}
+
+.poll-result-rank {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--green-20);
+  letter-spacing: -1px;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.poll-result-row[data-highlight="true"] .poll-result-rank {
+  color: var(--green-30);
+}
+
+.poll-result-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--green-40);
+  flex: 1;
+  line-height: 1.2;
+}
+
+.poll-result-row[data-highlight="true"] .poll-result-name {
+  color: var(--green-50);
+}
+
+.poll-result-pct {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--green-40);
+  flex-shrink: 0;
+}
+
+.poll-results-gate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--green-50);
+  letter-spacing: 0.2px;
+  cursor: default;
+  font-weight: 500;
+}
+
+.poll-result-yours {
+  margin-top: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--green-40);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 860px) {
+  .poll-section {
+    padding: 72px 32px 200px;
+  }
+
+  .poll-inner {
+    width: 100%;
+  }
+
+  .poll-polls {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 620px) {
+  .poll-section {
+    padding: 56px 20px 200px;
+  }
+
+  .poll-section-title,
+  .poll-section-subtitle {
+    font-size: 36px;
+  }
+
+  .poll-image {
+    max-height: 180px;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  /* Prevents iOS zoom on input focus */
+  .poll-input {
+    font-size: 16px;
+  }
+
+  .poll-vote-btn {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+
+  .poll-result-rank {
+    font-size: 22px;
+  }
+
+  .poll-result-name {
+    font-size: 14px;
+  }
+
+  .poll-voted-name {
+    font-size: 18px;
+  }
+}

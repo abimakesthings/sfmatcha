@@ -1,0 +1,280 @@
+.flavors-section {
+  background: var(--cream);
+  padding: 100px 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.flavors-inner {
+  width: 808px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.flavors-header {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+}
+
+.flavors-section.is-visible .flavors-header {
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.flavors-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: -0.96px;
+  color: var(--black);
+}
+
+.flavors-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 48px;
+  letter-spacing: -0.96px;
+  color: var(--green-50);
+}
+
+.flavors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 240px);
+  gap: 40px;
+  opacity: 0;
+}
+
+.flavors-section.is-visible .flavors-grid {
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+/* Grid layout stacks all cards in the same cell; height = card content */
+.flavor-stack {
+  display: grid;
+  width: 240px;
+  cursor: default;
+}
+
+.flavor-stack[data-clickable="true"] {
+  cursor: pointer;
+}
+
+.flavor-stack .flavor-card {
+  grid-area: 1 / 1;
+  width: 240px;
+  background: #fff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+  height: 356px
+}
+
+/*
+ * Cards are layered by data-pos (0 = front, 1 = middle, 2 = back).
+ * Modular arithmetic: pos = (cardIndex - topIndex + total) % total
+ * so clicking always promotes the next card to pos 0.
+ */
+.flavor-card[data-pos="0"] {
+  transform: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.flavor-card[data-pos="1"] {
+  transform: rotate(-3.5deg) translate(-5px, 6px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.flavor-card[data-pos="2"] {
+  transform: rotate(-6deg) translate(-10px, 12px);
+}
+
+.flavor-stack:hover .flavor-card[data-pos="0"] {
+  transform: translateY(-8px) scale(1.025);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.flavor-stack:hover .flavor-card[data-pos="1"] {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Keyboard focus for clickable stacks */
+.flavor-stack[data-clickable="true"]:focus-visible {
+  outline: 2px solid var(--green-50);
+  outline-offset: 4px;
+}
+
+.flavor-photo {
+  margin: 16px 16px 0;
+  height: 240px;
+  background: var(--green-30);
+  overflow: hidden;
+}
+
+.flavor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.flavor-caption {
+  padding: 14px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flavor-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.flavor-cafe {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-50);
+}
+
+.flavor-stack-dots {
+  grid-area: 2 / 1;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 0 2px;
+}
+
+.flavor-stack-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-20);
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.flavor-stack-dot[data-active='true'] {
+  background: var(--green-40);
+}
+
+.flavors-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .flavors-inner {
+    width: 100%;
+    max-width: 808px;
+  }
+}
+
+@media (max-width: 860px) {
+  .flavors-section {
+    padding: 72px 32px;
+  }
+
+  .flavors-inner {
+    width: 100%;
+  }
+
+  .flavors-grid {
+    grid-template-columns: repeat(2, 240px);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .flavors-section {
+    padding: 56px 0;
+  }
+
+  .flavors-title,
+  .flavors-subtitle {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  /* Horizontal scroll carousel */
+  .flavors-inner {
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Fade-out edge to hint scrollability */
+  .flavors-inner::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    background: linear-gradient(to right, transparent, var(--cream));
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .flavors-swipe-hint {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--green-40);
+    padding-left: 20px;
+    margin-top: -16px;
+  }
+
+  .flavors-header {
+    padding-left: 20px;
+  }
+
+  .flavors-grid {
+    display: flex;
+    justify-content: flex-start;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 20px;
+    padding: 24px 24px 40px;
+    scroll-padding-left: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .flavors-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .flavor-stack {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* Fan cards to the right on mobile so they don't clip off the left edge */
+  .flavor-card[data-pos="1"] {
+    transform: rotate(3.5deg) translate(5px, 6px);
+  }
+
+  .flavor-card[data-pos="2"] {
+    transform: rotate(6deg) translate(10px, 12px);
+  }
+
+  .flavor-stack:hover .flavor-card[data-pos="0"] {
+    transform: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .flavor-stack:hover .flavor-card[data-pos="1"] {
+    transform: rotate(3.5deg) translate(5px, 6px);
+  }
+}

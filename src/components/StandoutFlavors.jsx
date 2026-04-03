@@ -18,6 +18,10 @@ function FlavorStack({ stack }) {
       data-count={stack.length}
       data-clickable={clickable}
       onClick={advance}
+      onKeyDown={e => clickable && (e.key === 'Enter' || e.key === ' ') && advance()}
+      role={clickable ? 'button' : undefined}
+      tabIndex={clickable ? 0 : undefined}
+      aria-label={clickable ? `${stack[0].flavor} at ${stack[0].cafe} — click to see more` : undefined}
     >
       {stack.map((card, i) => {
         const pos = (i - topIndex + stack.length) % stack.length
