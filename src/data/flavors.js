@@ -77,4 +77,10 @@ const flavorStacks = [
   [{ id: 'q-coco-wave',          flavor: 'Coco wave matcha cloud',         cafe: 'Q Specialty Coffee',  photo: photo('Q Specialty'),  photoUrl: '/images/q-specialty/coco-wave-1.webp' }],
 ]
 
-export default flavorStacks
+const base = import.meta.env.BASE_URL
+export default flavorStacks.map(stack =>
+  stack.map(card => ({
+    ...card,
+    photoUrl: card.photoUrl ? base + card.photoUrl.slice(1) : card.photoUrl,
+  }))
+)

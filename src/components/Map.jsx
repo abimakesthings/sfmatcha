@@ -19,7 +19,8 @@ function SpotCard({ spot, onClose }) {
   const cardRef = useRef(null)
   const dragStartY = useRef(null)
 
-  const localPhotos = spot.photos ?? []
+  const base = import.meta.env.BASE_URL
+  const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
   const placesUrl = spot.photo
     ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${PLACES_API_KEY}`
     : null

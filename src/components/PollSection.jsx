@@ -30,7 +30,7 @@ const strawberryStack = flavorStacks.find(stack =>
 const strawberryCafes = [...new Set(strawberryStack.map(c => c.cafe))]
 const strawberrySpots = dedupeByChain(
   spots
-    .filter(s => strawberryCafes.some(cafe => s.name.includes(cafe)))
+    .filter(s => strawberryCafes.some(cafe => s.name.includes(cafe)) || s.matchaFocus === false)
     .sort((a, b) => a.name.localeCompare(b.name))
 )
 
@@ -209,13 +209,13 @@ export default function PollSection() {
             label='best matcha latte in sf'
             pollSpots={latteSpots}
             storageKey='poll_matcha_latte'
-            image='/images/poll/matcha-latte.png'
+            image={`${import.meta.env.BASE_URL}images/poll/matcha-latte.png`}
           />
           <Poll
             label='best strawberry matcha in sf'
             pollSpots={strawberrySpots}
             storageKey='poll_strawberry_matcha'
-            image='/images/poll/strawberry-latte.png'
+            image={`${import.meta.env.BASE_URL}images/poll/strawberry-latte.png`}
           />
         </div>
       </div>
