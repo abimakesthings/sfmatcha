@@ -68,7 +68,7 @@ function SpotCard({ spot, onClose }) {
       // diagonal during horizontal carousel swipes from dragging the sheet.
       if (!gesture.current) {
         if (Math.abs(dx) > Math.abs(dy) && hasCarousel) gesture.current = 'carousel'
-        else if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10) gesture.current = 'sheet'
+        else if (Math.abs(dy) > Math.abs(dx) * 2 && Math.abs(dy) > 20) gesture.current = 'sheet'
         else return
       }
 
@@ -222,6 +222,19 @@ export default function Map() {
     return () => listeners.forEach(l => l.remove())
   }, [])
 
+  // Mobile: portal to body so position:fixed escapes the map-wrapper's animation transform.
+  // Desktop: render inline so position:absolute is relative to map-wrapper.
+  const spotCard = selectedSpot && (
+    <>
+      <div className='spot-card-backdrop' onPointerDown={() => setSelectedSpot(null)} />
+      <SpotCard
+        key={selectedSpot.id}
+        spot={selectedSpot}
+        onClose={() => setSelectedSpot(null)}
+      />
+    </>
+  )
+
   return (
     <section className='map-section' ref={sectionRef}>
       <div className='map-header'>
@@ -239,17 +252,7 @@ export default function Map() {
       </div>
       <div className='map-wrapper'>
         <div className='map-container' ref={mapRef} />
-        {selectedSpot && createPortal(
-          <>
-            <div className='spot-card-backdrop' onPointerDown={() => setSelectedSpot(null)} />
-            <SpotCard
-              key={selectedSpot.id}
-              spot={selectedSpot}
-              onClose={() => setSelectedSpot(null)}
-            />
-          </>,
-          document.body
-        )}
+        {spotCard && (window.innerWidth <= 620 ? createPortal(spotCard, document.body) : spotCard)}
       </div>
     </section>
   )
