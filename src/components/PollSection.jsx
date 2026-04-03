@@ -162,6 +162,9 @@ function Poll({ label, pollSpots, storageKey, image }) {
               aria-controls={`${storageKey}-dropdown`}
               autoComplete='off'
             />
+            <svg className='poll-chevron' aria-hidden='true' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path d='M1 1L5 5L9 1' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
+            </svg>
             {open && filtered.length > 0 && (
               <ul id={`${storageKey}-dropdown`} className='poll-dropdown' role='listbox'>
                 {filtered.map(spot => (

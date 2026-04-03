@@ -16,6 +16,41 @@ function makeMarkerEl(color) {
 
 function SpotCard({ spot, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0)
+  const cardRef = useRef(null)
+  const dragStartY = useRef(null)
+
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+
+    function onTouchStart(e) {
+      if (card.scrollTop !== 0) return
+      dragStartY.current = e.touches[0].clientY
+      card.style.transition = 'none'
+    }
+    function onTouchMove(e) {
+      if (dragStartY.current === null) return
+      const dy = e.touches[0].clientY - dragStartY.current
+      if (dy > 0) { e.preventDefault(); card.style.transform = `translateY(${dy}px)` }
+    }
+    function onTouchEnd(e) {
+      if (dragStartY.current === null) return
+      const dy = e.changedTouches[0].clientY - dragStartY.current
+      card.style.transition = ''
+      if (dy > 100) { onClose() } else { card.style.transform = '' }
+      dragStartY.current = null
+    }
+
+    card.addEventListener('touchstart', onTouchStart, { passive: true })
+    card.addEventListener('touchmove', onTouchMove, { passive: false })
+    card.addEventListener('touchend', onTouchEnd, { passive: true })
+    return () => {
+      card.removeEventListener('touchstart', onTouchStart)
+      card.removeEventListener('touchmove', onTouchMove)
+      card.removeEventListener('touchend', onTouchEnd)
+    }
+  }, [onClose])
+
   const base = import.meta.env.BASE_URL
   const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
   const placesUrl = spot.photo
@@ -27,12 +62,22 @@ function SpotCard({ spot, onClose }) {
   const prev = e => { e.stopPropagation(); setPhotoIndex(i => (i - 1 + photos.length) % photos.length) }
   const next = e => { e.stopPropagation(); setPhotoIndex(i => (i + 1) % photos.length) }
 
+  const swipeStartX = useRef(null)
+  function onPhotoTouchStart(e) { swipeStartX.current = e.touches[0].clientX }
+  function onPhotoTouchEnd(e) {
+    if (swipeStartX.current === null || !hasCarousel) return
+    const dx = e.changedTouches[0].clientX - swipeStartX.current
+    if (Math.abs(dx) > 40) dx < 0 ? next(e) : prev(e)
+    swipeStartX.current = null
+  }
+
   return (
     <div
       className='spot-card'
+      ref={cardRef}
     >
       {photos.length > 0 && (
-        <div className='spot-card-photos'>
+        <div className='spot-card-photos' onTouchStart={onPhotoTouchStart} onTouchEnd={onPhotoTouchEnd}>
           <img className='spot-card-photo' src={photos[photoIndex]} alt={spot.name} />
           <button className='spot-card-close' onClick={onClose}>×</button>
           {hasCarousel && (
