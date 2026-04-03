@@ -99,6 +99,14 @@
   margin: -20px -20px 0;
   width: calc(100% + 40px);
   height: 280px;
+  overflow: hidden;
+}
+
+.spot-card-photo-strip {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
 }
 
 .spot-card-photo {
@@ -106,6 +114,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  flex-shrink: 0;
 }
 
 .spot-card-arrow {
@@ -239,6 +248,7 @@
 
   .map-legend-item {
     justify-content: flex-start;
+    font-size: 12px;
   }
 
   /* Bottom sheet on mobile — portal renders to document.body so position: fixed works */

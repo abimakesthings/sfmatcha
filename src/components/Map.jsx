@@ -17,7 +17,32 @@ function makeMarkerEl(color) {
 function SpotCard({ spot, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0)
   const cardRef = useRef(null)
-  const dragStartY = useRef(null)
+  const stripRef = useRef(null)
+  const touchStart = useRef(null) // { x, y }
+  const gesture = useRef(null)    // 'sheet' | 'carousel' | null
+
+  const base = import.meta.env.BASE_URL
+  const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
+  const placesUrl = spot.photo
+    ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
+    : null
+  const photos = placesUrl ? [...localPhotos, placesUrl] : localPhotos
+  const hasCarousel = photos.length > 1
+
+  // goTo: drives the strip directly so React state doesn't fight the transform
+  const photoIndexRef = useRef(photoIndex)
+  photoIndexRef.current = photoIndex
+  function goTo(index, animate = true) {
+    const strip = stripRef.current
+    if (strip) {
+      strip.style.transition = animate ? 'transform 0.3s cubic-bezier(0.32, 0.72, 0, 1)' : 'none'
+      strip.style.transform = `translateX(-${index * 100}%)`
+    }
+    setPhotoIndex(index)
+  }
+
+  const prev = e => { e.stopPropagation(); goTo((photoIndexRef.current - 1 + photos.length) % photos.length) }
+  const next = e => { e.stopPropagation(); goTo((photoIndexRef.current + 1) % photos.length) }
 
   useEffect(() => {
     const card = cardRef.current
@@ -25,26 +50,65 @@ function SpotCard({ spot, onClose }) {
 
     function onTouchStart(e) {
       if (card.scrollTop !== 0) return
-      dragStartY.current = e.touches[0].clientY
-      card.style.transition = 'none'
+      touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() }
+      gesture.current = null
+      card.style.animation = 'none'
     }
+
     function onTouchMove(e) {
-      if (dragStartY.current === null) return
-      const dy = e.touches[0].clientY - dragStartY.current
-      if (dy > 0) { e.preventDefault(); card.style.transform = `translateY(${dy}px)` }
-    }
-    function onTouchEnd(e) {
-      if (dragStartY.current === null) return
-      const dy = e.changedTouches[0].clientY - dragStartY.current
-      if (dy > 100) {
-        card.style.transition = 'transform 0.3s cubic-bezier(0.32, 0.72, 0, 1)'
-        card.style.transform = `translateY(100%)`
-        card.addEventListener('transitionend', onClose, { once: true })
-      } else {
-        card.style.transition = ''
-        card.style.transform = ''
+      if (!touchStart.current) return
+      const dx = e.touches[0].clientX - touchStart.current.x
+      const dy = e.touches[0].clientY - touchStart.current.y
+
+      // Lock gesture direction on first significant movement
+      if (!gesture.current) {
+        if (Math.abs(dx) > Math.abs(dy) && hasCarousel) gesture.current = 'carousel'
+        else if (Math.abs(dy) > Math.abs(dx)) gesture.current = 'sheet'
+        else return
       }
-      dragStartY.current = null
+
+      if (gesture.current === 'sheet') {
+        if (dy > 0) {
+          e.preventDefault()
+          card.style.transition = 'none'
+          card.style.transform = `translateY(${dy}px)`
+        }
+      } else if (gesture.current === 'carousel') {
+        const strip = stripRef.current
+        if (strip) {
+          strip.style.transition = 'none'
+          strip.style.transform = `translateX(calc(-${photoIndexRef.current * 100}% + ${dx}px))`
+        }
+      }
+    }
+
+    function onTouchEnd(e) {
+      if (!touchStart.current) return
+      const dx = e.changedTouches[0].clientX - touchStart.current.x
+      const dy = e.changedTouches[0].clientY - touchStart.current.y
+
+      if (gesture.current === 'sheet') {
+        const velocity = dy / (Date.now() - touchStart.current.t)
+        const shouldDismiss = dy > 80 || velocity > 0.5
+        if (shouldDismiss) {
+          card.style.transition = 'transform 0.3s cubic-bezier(0.32, 0.72, 0, 1)'
+          card.style.transform = `translateY(100%)`
+          card.addEventListener('transitionend', onClose, { once: true })
+        } else {
+          card.style.transition = ''
+          card.style.transform = ''
+        }
+      } else if (gesture.current === 'carousel') {
+        const idx = photoIndexRef.current
+        if (Math.abs(dx) > 50) {
+          goTo(dx < 0 ? (idx + 1) % photos.length : (idx - 1 + photos.length) % photos.length)
+        } else {
+          goTo(idx) // snap back
+        }
+      }
+
+      touchStart.current = null
+      gesture.current = null
     }
 
     card.addEventListener('touchstart', onTouchStart, { passive: true })
@@ -55,36 +119,20 @@ function SpotCard({ spot, onClose }) {
       card.removeEventListener('touchmove', onTouchMove)
       card.removeEventListener('touchend', onTouchEnd)
     }
-  }, [onClose])
-
-  const base = import.meta.env.BASE_URL
-  const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
-  const placesUrl = spot.photo
-    ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
-    : null
-  const photos = placesUrl ? [...localPhotos, placesUrl] : localPhotos
-  const hasCarousel = photos.length > 1
-
-  const prev = e => { e.stopPropagation(); setPhotoIndex(i => (i - 1 + photos.length) % photos.length) }
-  const next = e => { e.stopPropagation(); setPhotoIndex(i => (i + 1) % photos.length) }
-
-  const swipeStartX = useRef(null)
-  function onPhotoTouchStart(e) { swipeStartX.current = e.touches[0].clientX }
-  function onPhotoTouchEnd(e) {
-    if (swipeStartX.current === null || !hasCarousel) return
-    const dx = e.changedTouches[0].clientX - swipeStartX.current
-    if (Math.abs(dx) > 40) dx < 0 ? next(e) : prev(e)
-    swipeStartX.current = null
-  }
+  }, [onClose, hasCarousel, photos.length])
 
   return (
-    <div
-      className='spot-card'
-      ref={cardRef}
-    >
+    <div className='spot-card' ref={cardRef}>
       {photos.length > 0 && (
-        <div className='spot-card-photos' onTouchStart={onPhotoTouchStart} onTouchEnd={onPhotoTouchEnd}>
-          <img className='spot-card-photo' src={photos[photoIndex]} alt={spot.name} />
+        <div className='spot-card-photos'>
+          <div
+            ref={stripRef}
+            className='spot-card-photo-strip'
+          >
+            {photos.map((src, i) => (
+              <img key={i} className='spot-card-photo' src={src} alt={spot.name} />
+            ))}
+          </div>
           <button className='spot-card-close' onClick={onClose}>×</button>
           {hasCarousel && (
             <>
