@@ -112,14 +112,17 @@ export default function Map() {
   useEffect(() => {
     const listeners = []
 
-    function initMap() {
-      const map = new google.maps.Map(mapRef.current, {
+    async function initMap() {
+      const { Map } = await google.maps.importLibrary('maps')
+      const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
+
+      const map = new Map(mapRef.current, {
         center: SF_CENTER, zoom: 13, mapId: MAP_ID, disableDefaultUI: true, zoomControl: true,
       })
 
       spots.forEach(spot => {
         const color = spot.matchaFocus === false ? '#405d35' : '#b8922a'
-        const marker = new google.maps.marker.AdvancedMarkerElement({
+        const marker = new AdvancedMarkerElement({
           position: { lat: spot.lat, lng: spot.lng },
           map,
           title: spot.name,
@@ -140,7 +143,7 @@ export default function Map() {
     } else if (!document.getElementById('gmap-script')) {
       const s = document.createElement('script')
       s.id = 'gmap-script'
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&libraries=marker&loading=async`
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&loading=async`
       s.async = true
       s.onload = initMap
       document.head.appendChild(s)
