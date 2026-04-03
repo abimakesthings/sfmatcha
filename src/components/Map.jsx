@@ -29,37 +29,51 @@ function SpotCard({ spot, onClose }) {
   const prev = e => { e.stopPropagation(); setPhotoIndex(i => (i - 1 + photos.length) % photos.length) }
   const next = e => { e.stopPropagation(); setPhotoIndex(i => (i + 1) % photos.length) }
 
-  function handleTouchStart(e) {
-    if (cardRef.current?.scrollTop !== 0) return
-    dragStartY.current = e.touches[0].clientY
-    cardRef.current.style.transition = 'none'
-  }
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
 
-  function handleTouchMove(e) {
-    if (dragStartY.current === null) return
-    const dy = e.touches[0].clientY - dragStartY.current
-    if (dy > 0) cardRef.current.style.transform = `translateY(${dy}px)`
-  }
-
-  function handleTouchEnd(e) {
-    if (dragStartY.current === null) return
-    const dy = e.changedTouches[0].clientY - dragStartY.current
-    cardRef.current.style.transition = ''
-    if (dy > 100) {
-      onClose()
-    } else {
-      cardRef.current.style.transform = ''
+    function handleTouchStart(e) {
+      if (card.scrollTop !== 0) return
+      dragStartY.current = e.touches[0].clientY
+      card.style.transition = 'none'
     }
-    dragStartY.current = null
-  }
+
+    function handleTouchMove(e) {
+      if (dragStartY.current === null) return
+      const dy = e.touches[0].clientY - dragStartY.current
+      if (dy > 0) {
+        e.preventDefault()
+        card.style.transform = `translateY(${dy}px)`
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (dragStartY.current === null) return
+      const dy = e.changedTouches[0].clientY - dragStartY.current
+      card.style.transition = ''
+      if (dy > 100) {
+        onClose()
+      } else {
+        card.style.transform = ''
+      }
+      dragStartY.current = null
+    }
+
+    card.addEventListener('touchstart', handleTouchStart, { passive: true })
+    card.addEventListener('touchmove', handleTouchMove, { passive: false })
+    card.addEventListener('touchend', handleTouchEnd, { passive: true })
+    return () => {
+      card.removeEventListener('touchstart', handleTouchStart)
+      card.removeEventListener('touchmove', handleTouchMove)
+      card.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [onClose])
 
   return (
     <div
       className='spot-card'
       ref={cardRef}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       {photos.length > 0 && (
         <div className='spot-card-photos'>
