@@ -272,6 +272,7 @@
     z-index: 10;
     animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) both;
     transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    overscroll-behavior: none;
   }
 
   .spot-card-close {
