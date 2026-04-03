@@ -1016,7 +1016,7 @@ h2 {
 
   .hero-left {
     width: 100%;
-    min-height: 450px;
+    min-height: 460px;
     border-right: none;
     border-bottom: 1px solid var(--green-20);
   }

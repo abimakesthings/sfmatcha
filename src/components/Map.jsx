@@ -4,7 +4,6 @@ import { useScrollVisible } from '../hooks/useScrollVisible'
 import spots from '../data/spots.json'
 
 const MAP_ID = '6d2b821952b606c152cfc147'
-const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 }
 
@@ -22,7 +21,7 @@ function SpotCard({ spot, onClose }) {
   const base = import.meta.env.BASE_URL
   const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
   const placesUrl = spot.photo
-    ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${PLACES_API_KEY}`
+    ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
     : null
   const photos = placesUrl ? [...localPhotos, placesUrl] : localPhotos
   const hasCarousel = photos.length > 1
@@ -138,16 +137,7 @@ export default function Map() {
       }))
     }
 
-    if (window.google?.maps) {
-      initMap()
-    } else if (!document.getElementById('gmap-script')) {
-      const s = document.createElement('script')
-      s.id = 'gmap-script'
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&loading=async`
-      s.async = true
-      s.onload = initMap
-      document.head.appendChild(s)
-    }
+    initMap()
 
     return () => listeners.forEach(l => l.remove())
   }, [])
