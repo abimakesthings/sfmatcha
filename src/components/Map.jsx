@@ -125,7 +125,7 @@ export default function Map() {
           title: spot.name,
           content: makeMarkerEl(color),
         })
-        listeners.push(marker.addListener('click', () => setSelectedSpot(spot)))
+        listeners.push(marker.addListener('gmp-click', () => setSelectedSpot(spot)))
       })
 
       // Block native Google Maps POI/neighborhood tooltip on label click
@@ -140,7 +140,8 @@ export default function Map() {
     } else if (!document.getElementById('gmap-script')) {
       const s = document.createElement('script')
       s.id = 'gmap-script'
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&libraries=marker`
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&libraries=marker&loading=async`
+      s.async = true
       s.onload = initMap
       document.head.appendChild(s)
     }
