@@ -36,8 +36,14 @@ function SpotCard({ spot, onClose }) {
     function onTouchEnd(e) {
       if (dragStartY.current === null) return
       const dy = e.changedTouches[0].clientY - dragStartY.current
-      card.style.transition = ''
-      if (dy > 100) { onClose() } else { card.style.transform = '' }
+      if (dy > 100) {
+        card.style.transition = 'transform 0.3s cubic-bezier(0.32, 0.72, 0, 1)'
+        card.style.transform = `translateY(100%)`
+        card.addEventListener('transitionend', onClose, { once: true })
+      } else {
+        card.style.transition = ''
+        card.style.transform = ''
+      }
       dragStartY.current = null
     }
 
