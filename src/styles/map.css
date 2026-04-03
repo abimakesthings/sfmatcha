@@ -153,10 +153,6 @@
   display: none;
 }
 
-.spot-card-handle {
-  display: none;
-}
-
 .spot-card-close {
   position: absolute;
   top: 12px;
@@ -276,20 +272,6 @@
     z-index: 10;
     animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) both;
     transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
-  }
-
-  .spot-card-handle {
-    display: block;
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 36px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 2px;
-    z-index: 2;
-    margin: 0;
   }
 
   .spot-card-close {

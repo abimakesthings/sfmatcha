@@ -297,11 +297,6 @@
     padding: 56px 20px 200px;
   }
 
-  .poll-section-title,
-  .poll-section-subtitle {
-    font-size: 36px;
-  }
-
   .poll-image {
     max-height: 180px;
     height: auto;
@@ -320,14 +315,22 @@
   }
 
   .poll-result-rank {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .poll-result-name {
-    font-size: 14px;
+    font-size: 18px;
+  }
+
+  .poll-result-pct {
+    font-size: 13px;
+  }
+
+  .poll-result-yours {
+    font-size: 18px;
   }
 
   .poll-voted-name {
-    font-size: 18px;
+    font-size: 22px;
   }
 }

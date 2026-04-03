@@ -15,9 +15,6 @@ function makeMarkerEl(color) {
 
 function SpotCard({ spot, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0)
-  const cardRef = useRef(null)
-  const dragStartY = useRef(null)
-
   const base = import.meta.env.BASE_URL
   const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
   const placesUrl = spot.photo
@@ -29,56 +26,13 @@ function SpotCard({ spot, onClose }) {
   const prev = e => { e.stopPropagation(); setPhotoIndex(i => (i - 1 + photos.length) % photos.length) }
   const next = e => { e.stopPropagation(); setPhotoIndex(i => (i + 1) % photos.length) }
 
-  useEffect(() => {
-    const card = cardRef.current
-    if (!card) return
-
-    function handleTouchStart(e) {
-      if (card.scrollTop !== 0) return
-      dragStartY.current = e.touches[0].clientY
-      card.style.transition = 'none'
-    }
-
-    function handleTouchMove(e) {
-      if (dragStartY.current === null) return
-      const dy = e.touches[0].clientY - dragStartY.current
-      if (dy > 0) {
-        e.preventDefault()
-        card.style.transform = `translateY(${dy}px)`
-      }
-    }
-
-    function handleTouchEnd(e) {
-      if (dragStartY.current === null) return
-      const dy = e.changedTouches[0].clientY - dragStartY.current
-      card.style.transition = ''
-      if (dy > 100) {
-        onClose()
-      } else {
-        card.style.transform = ''
-      }
-      dragStartY.current = null
-    }
-
-    card.addEventListener('touchstart', handleTouchStart, { passive: true })
-    card.addEventListener('touchmove', handleTouchMove, { passive: false })
-    card.addEventListener('touchend', handleTouchEnd, { passive: true })
-    return () => {
-      card.removeEventListener('touchstart', handleTouchStart)
-      card.removeEventListener('touchmove', handleTouchMove)
-      card.removeEventListener('touchend', handleTouchEnd)
-    }
-  }, [onClose])
-
   return (
     <div
       className='spot-card'
-      ref={cardRef}
     >
       {photos.length > 0 && (
         <div className='spot-card-photos'>
           <img className='spot-card-photo' src={photos[photoIndex]} alt={spot.name} />
-          <div className='spot-card-handle' />
           <button className='spot-card-close' onClick={onClose}>×</button>
           {hasCarousel && (
             <>
@@ -94,10 +48,7 @@ function SpotCard({ spot, onClose }) {
         </div>
       )}
       {photos.length === 0 && (
-        <>
-          <div className='spot-card-handle' />
-          <button className='spot-card-close' onClick={onClose}>×</button>
-        </>
+        <button className='spot-card-close' onClick={onClose}>×</button>
       )}
       <div className='spot-card-body'>
         <p className='spot-card-name'>{spot.name}</p>
