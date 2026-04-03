@@ -63,9 +63,13 @@ function SpotCard({ spot, onClose }) {
       const dx = e.touches[0].clientX - touchStart.current.x
       const dy = e.touches[0].clientY - touchStart.current.y
 
+      // Block pull-to-refresh before gesture locks — browser fires it during the
+      // threshold window before we call preventDefault inside the sheet branch.
+      if (!gesture.current && dy > 0) e.preventDefault()
+
       // Lock gesture direction on first significant movement.
-      // Sheet requires 10px vertical before committing — prevents a slight
-      // diagonal during horizontal carousel swipes from dragging the sheet.
+      // Sheet requires clearly-vertical angle + 20px before committing — prevents
+      // diagonal drift during horizontal carousel swipes from dragging the sheet.
       if (!gesture.current) {
         if (Math.abs(dx) > Math.abs(dy) && hasCarousel) gesture.current = 'carousel'
         else if (Math.abs(dy) > Math.abs(dx) * 2 && Math.abs(dy) > 20) gesture.current = 'sheet'
