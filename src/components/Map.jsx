@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useScrollVisible } from '../hooks/useScrollVisible'
 import spots from '../data/spots.json'
 
@@ -163,7 +164,7 @@ export default function Map() {
       </div>
       <div className='map-wrapper'>
         <div className='map-container' ref={mapRef} />
-        {selectedSpot && (
+        {selectedSpot && createPortal(
           <>
             <div className='spot-card-backdrop' onPointerDown={() => setSelectedSpot(null)} />
             <SpotCard
@@ -171,7 +172,8 @@ export default function Map() {
               spot={selectedSpot}
               onClose={() => setSelectedSpot(null)}
             />
-          </>
+          </>,
+          document.body
         )}
       </div>
     </section>
