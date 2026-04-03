@@ -195,16 +195,11 @@
     padding: 56px 20px;
   }
 
-  .popular-title,
-  .popular-subtitle {
-    font-size: 36px;
-    line-height: 1.1;
-  }
-
   .popular-chart-head,
   .popular-row {
     grid-template-columns: 100px minmax(0, 1fr) 40px;
     gap: 12px;
+    height: 84px;
   }
 
   .popular-count {

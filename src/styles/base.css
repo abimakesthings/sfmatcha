@@ -23,13 +23,13 @@
 html {
   scroll-behavior: auto;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--cream);
   color: var(--black);
   font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
   min-height: 100%;
 }
 
@@ -70,9 +70,3 @@ h2 {
   }
 }
 
-@media (max-width: 620px) {
-  h2 {
-    font-size: 36px;
-    line-height: 1.1;
-  }
-}

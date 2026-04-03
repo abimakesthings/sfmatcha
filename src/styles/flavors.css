@@ -195,12 +195,6 @@
     padding: 56px 0;
   }
 
-  .flavors-title,
-  .flavors-subtitle {
-    font-size: 36px;
-    line-height: 1.1;
-  }
-
   /* Horizontal scroll carousel */
   .flavors-inner {
     align-items: flex-start;

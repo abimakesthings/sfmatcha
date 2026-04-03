@@ -74,6 +74,15 @@ export default function Map() {
   const [selectedSpot, setSelectedSpot] = useState(null)
 
   useEffect(() => {
+    if (selectedSpot && window.innerWidth <= 620) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [selectedSpot])
+
+  useEffect(() => {
     const listeners = []
 
     async function initMap() {
