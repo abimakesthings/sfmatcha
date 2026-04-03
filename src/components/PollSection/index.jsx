@@ -1,7 +1,8 @@
+import './PollSection.css'
 import { useState, useEffect, useMemo } from 'react'
-import spots from '../data/spots.json'
-import flavorStacks from '../data/flavors.js'
-import { useScrollVisible } from '../hooks/useScrollVisible'
+import spots from '../../data/spots.json'
+import flavorStacks from '../../data/flavors.js'
+import { useScrollVisible } from '../../hooks/useScrollVisible'
 
 const pollName = s => s.chainName ?? s.name
 

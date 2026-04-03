@@ -1,6 +1,7 @@
+import './TopTen.css'
 import { useState } from 'react'
-import spots from '../data/spots.json'
-import { useScrollVisible } from '../hooks/useScrollVisible'
+import spots from '../../data/spots.json'
+import { useScrollVisible } from '../../hooks/useScrollVisible'
 
 // Bayesian-weighted score: nudges high-rated spots with few reviews below
 // well-reviewed ones. The +50 prior and *0.1 weight keep rating dominant.

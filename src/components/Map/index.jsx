@@ -1,7 +1,8 @@
+import './Map.css'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { useScrollVisible } from '../hooks/useScrollVisible'
-import spots from '../data/spots.json'
+import { useScrollVisible } from '../../hooks/useScrollVisible'
+import spots from '../../data/spots.json'
 
 const MAP_ID = '6d2b821952b606c152cfc147'
 

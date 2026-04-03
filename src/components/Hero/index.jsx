@@ -1,3 +1,5 @@
+import './Hero.css'
+
 const base = import.meta.env.BASE_URL
 
 export default function Hero() {

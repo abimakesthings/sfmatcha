@@ -1,6 +1,7 @@
+import './StandoutFlavors.css'
 import { useState } from 'react'
-import { useScrollVisible } from '../hooks/useScrollVisible'
-import flavorStacks from '../data/flavors.js'
+import { useScrollVisible } from '../../hooks/useScrollVisible'
+import flavorStacks from '../../data/flavors.js'
 
 const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
