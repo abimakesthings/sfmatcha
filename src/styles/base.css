@@ -63,8 +63,13 @@ h2 {
   .map-wrapper,
   .popular-header,
   .popular-chart,
+  .popular-bar-fill::after,
   .flavors-header,
-  .flavors-grid {
+  .flavors-grid,
+  .poll-section,
+  .hero-fg,
+  .sparkle,
+  .scroll-arrow {
     opacity: 1 !important;
     animation: none !important;
   }

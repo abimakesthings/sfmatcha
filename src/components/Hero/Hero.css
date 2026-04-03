@@ -155,6 +155,7 @@
 }
 
 .scroll-arrow {
+  display: inline-block;
   color: var(--green-50);
   font-size: 10px;
   animation: bob 3s ease-in-out infinite;

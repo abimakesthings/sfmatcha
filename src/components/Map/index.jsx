@@ -1,5 +1,5 @@
 import './Map.css'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import spots from '../../data/spots.json'
@@ -22,12 +22,14 @@ function SpotCard({ spot, onClose }) {
   const touchStart = useRef(null) // { x, y }
   const gesture = useRef(null)    // 'sheet' | 'carousel' | null
 
-  const base = import.meta.env.BASE_URL
-  const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
-  const placesUrl = spot.photo
-    ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
-    : null
-  const photos = placesUrl ? [...localPhotos, placesUrl] : localPhotos
+  const photos = useMemo(() => {
+    const base = import.meta.env.BASE_URL
+    const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
+    const placesUrl = spot.photo
+      ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
+      : null
+    return placesUrl ? [...localPhotos, placesUrl] : localPhotos
+  }, [spot.photo, spot.photos])
   const hasCarousel = photos.length > 1
 
   // goTo: drives the strip directly so React state doesn't fight the transform
@@ -61,10 +63,12 @@ function SpotCard({ spot, onClose }) {
       const dx = e.touches[0].clientX - touchStart.current.x
       const dy = e.touches[0].clientY - touchStart.current.y
 
-      // Lock gesture direction on first significant movement
+      // Lock gesture direction on first significant movement.
+      // Sheet requires 10px vertical before committing — prevents a slight
+      // diagonal during horizontal carousel swipes from dragging the sheet.
       if (!gesture.current) {
         if (Math.abs(dx) > Math.abs(dy) && hasCarousel) gesture.current = 'carousel'
-        else if (Math.abs(dy) > Math.abs(dx)) gesture.current = 'sheet'
+        else if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10) gesture.current = 'sheet'
         else return
       }
 
