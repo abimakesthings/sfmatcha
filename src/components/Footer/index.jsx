@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Footer.css'
+import { track } from '../../lib/analytics'
 
 const SHARE_URL = 'https://sfmatcha.com'
 
@@ -40,6 +41,7 @@ export default function Footer() {
     navigator.clipboard.writeText(SHARE_URL).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
+      track('share_click')
     })
   }
 
@@ -69,6 +71,7 @@ export default function Footer() {
               rel='noopener noreferrer'
               className='footer-social-link'
               aria-label={s.label}
+              onClick={() => track('social_click', { platform: s.label })}
             >
               <span className='footer-social-icon'>{s.icon}</span>
               <span className='footer-social-handle'>@abi.makes.things</span>

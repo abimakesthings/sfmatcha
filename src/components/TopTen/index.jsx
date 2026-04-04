@@ -2,6 +2,7 @@ import './TopTen.css'
 import { useState } from 'react'
 import spots from '../../data/spots.json'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
+import { track } from '../../lib/analytics'
 
 // Bayesian-weighted score: nudges high-rated spots with few reviews below
 // well-reviewed ones. The +50 prior and *0.1 weight keep rating dominant.
@@ -12,8 +13,9 @@ export default function TopTenSpots() {
   const sectionRef = useScrollVisible()
   const [activeId, setActiveId] = useState(null)
 
-  function handleRowClick(id) {
+  function handleRowClick(id, name, index) {
     setActiveId(prev => prev === id ? null : id)
+    track('top10_click', { spot_name: name, rank: index + 1 })
   }
 
   return (
@@ -30,8 +32,8 @@ export default function TopTenSpots() {
           <div
             className={`top-ten-list-item${activeId === id ? ' tooltip-active' : ''}`}
             key={id}
-            onClick={() => note && handleRowClick(id)}
-            onKeyDown={e => note && (e.key === 'Enter' || e.key === ' ') && handleRowClick(id)}
+            onClick={() => note && handleRowClick(id, name, index)}
+            onKeyDown={e => note && (e.key === 'Enter' || e.key === ' ') && handleRowClick(id, name, index)}
             role={note ? 'button' : undefined}
             tabIndex={note ? 0 : undefined}
             aria-expanded={note ? activeId === id : undefined}

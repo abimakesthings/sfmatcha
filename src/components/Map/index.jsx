@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import spots from '../../data/spots.json'
+import { track } from '../../lib/analytics'
 
 const MAP_ID = '6d2b821952b606c152cfc147'
 
@@ -167,7 +168,7 @@ function SpotCard({ spot, onClose }) {
         {spot.aiSummary && <p className='spot-card-summary'>{spot.aiSummary}</p>}
         {spot.review && <p className='spot-card-review'>"{spot.review}"</p>}
         {spot.website && (
-          <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer'>
+          <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer' onClick={() => track('spot_website_click', { spot_name: spot.name })}>
             Visit website →
           </a>
         )}
@@ -223,7 +224,10 @@ export default function Map() {
           title: spot.name,
           content: makeMarkerEl(color, markerSize),
         })
-        listeners.push(marker.addListener('gmp-click', () => setSelectedSpot(spot)))
+        listeners.push(marker.addListener('gmp-click', () => {
+          setSelectedSpot(spot)
+          track('spot_click', { spot_name: spot.name, neighborhood: spot.neighborhood })
+        }))
       })
 
       // Block native Google Maps POI/neighborhood tooltip on label click

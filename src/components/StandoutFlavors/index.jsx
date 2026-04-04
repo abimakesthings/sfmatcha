@@ -2,6 +2,7 @@ import './StandoutFlavors.css'
 import { useState } from 'react'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import flavorStacks from '../../data/flavors.js'
+import { track } from '../../lib/analytics'
 
 const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
@@ -10,7 +11,10 @@ function FlavorStack({ stack }) {
   const clickable = stack.length > 1
 
   const advance = () => {
-    if (clickable) setTopIndex(i => (i + 1) % stack.length)
+    if (!clickable) return
+    const next = (topIndex + 1) % stack.length
+    track('flavor_click', { flavor: stack[next].flavor, cafe: stack[next].cafe })
+    setTopIndex(next)
   }
 
   return (

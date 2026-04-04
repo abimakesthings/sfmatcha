@@ -4,6 +4,7 @@ import spots from '../../data/spots.json'
 import flavorStacks from '../../data/flavors.js'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import { supabase } from '../../lib/supabase'
+import { track } from '../../lib/analytics'
 
 const pollName = s => s.chainName ?? s.name
 
@@ -107,6 +108,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
       localStorage.setItem(storageKey, pending)
       setVoted(pending)
       onVote(storageKey, pending)
+      track('poll_vote', { poll_id: storageKey, spot_name: pollName(pollSpots.find(s => s.id === pending)) })
     }
     setSubmitting(false)
   }
@@ -192,7 +194,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
             {submitting ? 'casting...' : 'cast my vote'}
           </button>
           {!peeking && (
-            <button className='poll-peek-btn' onClick={() => setPeeking(true)}>
+            <button className='poll-peek-btn' onClick={() => { setPeeking(true); track('poll_peek', { poll_id: storageKey }) }}>
               show results
             </button>
           )}
