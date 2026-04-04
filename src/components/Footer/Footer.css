@@ -1,0 +1,150 @@
+.footer {
+  background: var(--green-50);
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+/* Share */
+
+.footer-share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-share-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-share-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--green-20);
+  letter-spacing: -0.2px;
+}
+
+.footer-share-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--green-30);
+  letter-spacing: 0.02em;
+}
+
+.footer-share-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-50);
+  background: var(--green-20);
+  border: none;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.footer-share-btn:hover {
+  background: var(--cream);
+}
+
+.footer-share-btn:active {
+  transform: scale(0.97);
+}
+
+/* Creator */
+
+.footer-creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-byline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-made {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--green-20);
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--green-20);
+  transition: color 0.2s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--cream);
+}
+
+.footer-social-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.footer-social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer-social-handle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.footer-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--green-30);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 620px) {
+  .footer {
+    padding: 64px 32px;
+    gap: 48px;
+  }
+
+  .footer-socials {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .footer-share-label {
+    font-size: 28px;
+    text-align: center;
+  }
+}
