@@ -1,5 +1,5 @@
 import './Map.css'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import spots from '../../data/spots.json'
@@ -8,8 +8,7 @@ const MAP_ID = '6d2b821952b606c152cfc147'
 
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 }
 
-function makeMarkerEl(color) {
-  const size = window.innerWidth <= 620 ? 20 : 14
+function makeMarkerEl(color, size) {
   const el = document.createElement('div')
   el.style.cssText = `width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid #faf6f2;box-sizing:border-box;`
   return el
@@ -19,7 +18,7 @@ function SpotCard({ spot, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0)
   const cardRef = useRef(null)
   const stripRef = useRef(null)
-  const touchStart = useRef(null) // { x, y }
+  const touchStart = useRef(null) // { x, y, t }
   const gesture = useRef(null)    // 'sheet' | 'carousel' | null
 
   const photos = useMemo(() => {
@@ -32,7 +31,7 @@ function SpotCard({ spot, onClose }) {
   }, [spot.photo, spot.photos])
   const hasCarousel = photos.length > 1
 
-  // goTo: drives the strip directly so React state doesn't fight the transform
+  // Drives the strip directly so React state doesn't fight the CSS transform during swipe.
   const photoIndexRef = useRef(photoIndex)
   photoIndexRef.current = photoIndex
   function goTo(index, animate = true) {
@@ -181,35 +180,48 @@ export default function Map() {
   const mapRef = useRef(null)
   const sectionRef = useScrollVisible()
   const [selectedSpot, setSelectedSpot] = useState(null)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 620)
 
   useEffect(() => {
-    if (!selectedSpot || window.innerWidth > 620) return
+    const mq = window.matchMedia('(max-width: 620px)')
+    const handler = e => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  const closeSpot = useCallback(() => setSelectedSpot(null), [])
+
+  useEffect(() => {
+    if (!selectedSpot || !isMobile) return
     const scrollY = window.scrollY
     document.body.style.cssText = `position:fixed;top:-${scrollY}px;left:0;right:0;overflow-y:scroll;`
     return () => {
       document.body.style.cssText = ''
       window.scrollTo(0, scrollY)
     }
-  }, [selectedSpot])
+  }, [selectedSpot, isMobile])
 
   useEffect(() => {
     const listeners = []
 
     async function initMap() {
-      const { Map } = await google.maps.importLibrary('maps')
-      const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
+      const [{ Map }, { AdvancedMarkerElement }] = await Promise.all([
+        google.maps.importLibrary('maps'),
+        google.maps.importLibrary('marker'),
+      ])
 
       const map = new Map(mapRef.current, {
         center: SF_CENTER, zoom: 13, mapId: MAP_ID, disableDefaultUI: true, zoomControl: true,
       })
 
+      const markerSize = window.innerWidth <= 620 ? 20 : 14
       spots.forEach(spot => {
         const color = spot.matchaFocus === false ? '#405d35' : '#b8922a'
         const marker = new AdvancedMarkerElement({
           position: { lat: spot.lat, lng: spot.lng },
           map,
           title: spot.name,
-          content: makeMarkerEl(color),
+          content: makeMarkerEl(color, markerSize),
         })
         listeners.push(marker.addListener('gmp-click', () => setSelectedSpot(spot)))
       })
@@ -230,11 +242,11 @@ export default function Map() {
   // Desktop: render inline so position:absolute is relative to map-wrapper.
   const spotCard = selectedSpot && (
     <>
-      <div className='spot-card-backdrop' onPointerDown={() => setSelectedSpot(null)} />
+      <div className='spot-card-backdrop' onPointerDown={closeSpot} />
       <SpotCard
         key={selectedSpot.id}
         spot={selectedSpot}
-        onClose={() => setSelectedSpot(null)}
+        onClose={closeSpot}
       />
     </>
   )
@@ -256,7 +268,7 @@ export default function Map() {
       </div>
       <div className='map-wrapper'>
         <div className='map-container' ref={mapRef} />
-        {spotCard && (window.innerWidth <= 620 ? createPortal(spotCard, document.body) : spotCard)}
+        {spotCard && (isMobile ? createPortal(spotCard, document.body) : spotCard)}
       </div>
     </section>
   )

@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from 'react'
 import spots from '../../data/spots.json'
 import flavorStacks from '../../data/flavors.js'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
+import { supabase } from '../../lib/supabase'
 
 const pollName = s => s.chainName ?? s.name
 
@@ -12,9 +13,6 @@ function dedupeByChain(list) {
     const key = pollName(s)
     if (!seen.has(key)) {
       seen.set(key, { ...s })
-    } else {
-      // Aggregate reviewCount across branches for better vote seeding
-      seen.get(key).reviewCount = (seen.get(key).reviewCount ?? 0) + (s.reviewCount ?? 0)
     }
   })
   return [...seen.values()]
@@ -34,21 +32,14 @@ const strawberrySpots = dedupeByChain(
     .sort((a, b) => a.name.localeCompare(b.name))
 )
 
-// Deterministic seed so rankings feel plausible without real vote data.
-// reviewCount * 0.18 anchors popular spots higher; the hash spread (0–34)
-// and +8 floor prevent ties and zero-vote entries.
-function seedVotes(spot) {
-  const hash = [...spot.id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) & 0xffff, 0)
-  return Math.round((spot.reviewCount ?? 50) * 0.18 + (hash % 35) + 8)
-}
-
-function PollResults({ pollSpots, highlight }) {
-  const { sorted, top5, total } = useMemo(() => {
-    const withVotes = pollSpots.map(s => ({ ...s, votes: seedVotes(s) }))
+function PollResults({ pollSpots, voteCounts, highlight }) {
+  const { top5, sorted, total } = useMemo(() => {
+    const withVotes = pollSpots.map(s => ({ ...s, votes: voteCounts[s.id] ?? 0 }))
     const total = withVotes.reduce((sum, s) => sum + s.votes, 0)
     const sorted = [...withVotes].sort((a, b) => b.votes - a.votes)
-    return { sorted, top5: sorted.slice(0, 5), total }
-  }, [pollSpots])
+    const voted = sorted.filter(s => s.votes > 0)
+    return { top5: voted.slice(0, 5), sorted, total }
+  }, [pollSpots, voteCounts])
 
   const highlightRank = highlight ? sorted.findIndex(s => s.id === highlight) + 1 : null
   const highlightInTop5 = highlightRank !== null && highlightRank <= 5
@@ -61,7 +52,7 @@ function PollResults({ pollSpots, highlight }) {
         </p>
       )}
       {top5.map((s, i) => {
-        const pct = Math.round(s.votes / total * 100)
+        const pct = total > 0 ? Math.round(s.votes / total * 100) : 0
         const isHighlight = s.id === highlight
         return (
           <div key={s.id} className='poll-result-row' data-highlight={isHighlight}>
@@ -75,11 +66,12 @@ function PollResults({ pollSpots, highlight }) {
   )
 }
 
-function Poll({ label, pollSpots, storageKey, image }) {
+function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
   const [voted, setVoted] = useState(null)
   const [pending, setPending] = useState(null)
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem(storageKey)
@@ -94,9 +86,7 @@ function Poll({ label, pollSpots, storageKey, image }) {
   }, [storageKey, pollSpots])
 
   const filtered = query && !pending
-    ? pollSpots.filter(s =>
-        pollName(s).toLowerCase().includes(query.toLowerCase())
-      )
+    ? pollSpots.filter(s => pollName(s).toLowerCase().includes(query.toLowerCase()))
     : pollSpots
 
   function select(spot) {
@@ -105,10 +95,19 @@ function Poll({ label, pollSpots, storageKey, image }) {
     setOpen(false)
   }
 
-  function handleVote() {
-    if (!pending) return
-    localStorage.setItem(storageKey, pending)
-    setVoted(pending)
+  async function handleVote() {
+    if (!pending || submitting) return
+    setSubmitting(true)
+    const { error } = await supabase.rpc('increment_vote', {
+      p_poll_id: storageKey,
+      p_spot_id: pending,
+    })
+    if (!error) {
+      localStorage.setItem(storageKey, pending)
+      setVoted(pending)
+      onVote(storageKey, pending)
+    }
+    setSubmitting(false)
   }
 
   function handleChange(e) {
@@ -186,14 +185,14 @@ function Poll({ label, pollSpots, storageKey, image }) {
           <button
             className='poll-vote-btn'
             onClick={handleVote}
-            disabled={!canVote}
+            disabled={!canVote || submitting}
           >
-            cast my vote
+            {submitting ? 'casting...' : 'cast my vote'}
           </button>
         </>
       )}
       <div className='poll-results-wrap' data-locked={!isVoted}>
-        <PollResults pollSpots={pollSpots} highlight={highlight} />
+        <PollResults pollSpots={pollSpots} voteCounts={voteCounts} highlight={highlight} />
         {!isVoted && <p className='poll-results-gate'>vote to see results</p>}
       </div>
     </div>
@@ -202,6 +201,28 @@ function Poll({ label, pollSpots, storageKey, image }) {
 
 export default function PollSection() {
   const sectionRef = useScrollVisible()
+  const [voteCounts, setVoteCounts] = useState({})
+
+  useEffect(() => {
+    async function fetchVotes() {
+      const { data } = await supabase.from('poll_votes').select('poll_id, spot_id, count')
+      if (!data) return
+      const counts = {}
+      data.forEach(row => {
+        if (!counts[row.poll_id]) counts[row.poll_id] = {}
+        counts[row.poll_id][row.spot_id] = row.count
+      })
+      setVoteCounts(counts)
+    }
+    fetchVotes()
+  }, [])
+
+  function handleVote(pollId, spotId) {
+    setVoteCounts(prev => ({
+      ...prev,
+      [pollId]: { ...prev[pollId], [spotId]: ((prev[pollId]?.[spotId]) ?? 0) + 1 },
+    }))
+  }
 
   return (
     <section className='poll-section' ref={sectionRef}>
@@ -216,12 +237,16 @@ export default function PollSection() {
             pollSpots={latteSpots}
             storageKey='poll_matcha_latte'
             image={`${import.meta.env.BASE_URL}images/poll/matcha-latte.png`}
+            voteCounts={voteCounts['poll_matcha_latte'] ?? {}}
+            onVote={handleVote}
           />
           <Poll
             label='best strawberry matcha in sf'
             pollSpots={strawberrySpots}
             storageKey='poll_strawberry_matcha'
             image={`${import.meta.env.BASE_URL}images/poll/strawberry-latte.png`}
+            voteCounts={voteCounts['poll_strawberry_matcha'] ?? {}}
+            onVote={handleVote}
           />
         </div>
       </div>
