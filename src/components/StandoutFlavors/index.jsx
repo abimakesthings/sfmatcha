@@ -3,8 +3,7 @@ import { useState } from 'react'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import flavorStacks from '../../data/flavors.js'
 import { track } from '../../lib/analytics'
-
-const PLACES_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+import { placesPhotoUrl } from '../../lib/places'
 
 function FlavorStack({ stack }) {
   const [topIndex, setTopIndex] = useState(0)
@@ -42,7 +41,7 @@ function FlavorStack({ stack }) {
                 <img src={card.photoUrl} alt={card.flavor} />
               ) : card.photo ? (
                 <img
-                  src={`https://places.googleapis.com/v1/${card.photo}/media?maxWidthPx=400&key=${PLACES_API_KEY}`}
+                  src={placesPhotoUrl(card.photo)}
                   alt={card.flavor}
                 />
               ) : null}

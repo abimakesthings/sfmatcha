@@ -13,5 +13,5 @@ jobs:
       - name: Ping Supabase
         run: |
           curl -sf -o /dev/null \
-            -H "apikey: sb_publishable_DKFd6fU3hH2bw0ziP92e6w_I-tsQLpY" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
             "https://fsxqvirnfdweejfsmmwr.supabase.co/rest/v1/poll_votes?limit=1"

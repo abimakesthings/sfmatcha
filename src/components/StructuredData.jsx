@@ -1,11 +1,5 @@
 import { useEffect } from 'react'
-import spots from '../data/spots.json'
-
-const score = s => s.rating + (s.reviewCount / (s.reviewCount + 50)) * 0.1
-const topTen = [...spots]
-  .filter(s => s.matchaFocus !== false)
-  .sort((a, b) => score(b) - score(a))
-  .slice(0, 10)
+import { topTen } from '../lib/spots'
 
 const structuredData = {
   '@context': 'https://schema.org',

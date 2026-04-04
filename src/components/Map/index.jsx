@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import spots from '../../data/spots.json'
 import { track } from '../../lib/analytics'
+import { placesPhotoUrl } from '../../lib/places'
 
 const MAP_ID = '6d2b821952b606c152cfc147'
 
@@ -25,9 +26,7 @@ function SpotCard({ spot, onClose }) {
   const photos = useMemo(() => {
     const base = import.meta.env.BASE_URL
     const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
-    const placesUrl = spot.photo
-      ? `https://places.googleapis.com/v1/${spot.photo}/media?maxWidthPx=400&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
-      : null
+    const placesUrl = spot.photo ? placesPhotoUrl(spot.photo) : null
     return placesUrl ? [...localPhotos, placesUrl] : localPhotos
   }, [spot.photo, spot.photos])
   const hasCarousel = photos.length > 1
@@ -128,7 +127,7 @@ function SpotCard({ spot, onClose }) {
       card.removeEventListener('touchmove', onTouchMove)
       card.removeEventListener('touchend', onTouchEnd)
     }
-  }, [onClose, hasCarousel, photos.length])
+  }, [onClose, hasCarousel])
 
   return (
     <div className='spot-card' ref={cardRef}>

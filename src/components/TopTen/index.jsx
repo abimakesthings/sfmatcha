@@ -1,13 +1,8 @@
 import './TopTen.css'
 import { useState } from 'react'
-import spots from '../../data/spots.json'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import { track } from '../../lib/analytics'
-
-// Bayesian-weighted score: nudges high-rated spots with few reviews below
-// well-reviewed ones. The +50 prior and *0.1 weight keep rating dominant.
-const score = s => s.rating + (s.reviewCount / (s.reviewCount + 50)) * 0.1
-const topTen = [...spots].filter(s => s.matchaFocus !== false).sort((a, b) => score(b) - score(a)).slice(0, 10)
+import { topTen } from '../../lib/spots'
 
 export default function TopTenSpots() {
   const sectionRef = useScrollVisible()
