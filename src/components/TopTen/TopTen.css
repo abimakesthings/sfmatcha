@@ -88,7 +88,12 @@
   border-top-color: var(--tooltip-bg);
 }
 
-.top-ten-list-item:hover .row-tooltip,
+@media (hover: hover) {
+  .top-ten-list-item:hover .row-tooltip {
+    opacity: 1;
+  }
+}
+
 .top-ten-list-item.tooltip-active .row-tooltip {
   opacity: 1;
 }
