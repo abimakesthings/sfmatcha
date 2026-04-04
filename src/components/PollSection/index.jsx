@@ -72,6 +72,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [peeking, setPeeking] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem(storageKey)
@@ -137,7 +138,8 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
 
   const isVoted = !!voted
   const canVote = !!pending && pending !== voted
-  const highlight = voted ?? pending
+  const highlight = voted
+  const showResults = isVoted || peeking
 
   return (
     <div className='poll'>
@@ -145,7 +147,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
       <p className='poll-label'>{label}</p>
       {isVoted ? (
         <div className='poll-voted-display'>
-          <span className='poll-voted-name'>{pollSpots.find(s => s.id === voted)?.name}</span>
+          <span className='poll-voted-name'>{pollName(pollSpots.find(s => s.id === voted))}</span>
         </div>
       ) : (
         <>
@@ -176,7 +178,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
                     data-selected={pending === spot.id}
                     onMouseDown={() => select(spot)}
                   >
-                    {spot.name}
+                    {pollName(spot)}
                   </li>
                 ))}
               </ul>
@@ -189,11 +191,15 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
           >
             {submitting ? 'casting...' : 'cast my vote'}
           </button>
+          {!peeking && (
+            <button className='poll-peek-btn' onClick={() => setPeeking(true)}>
+              show results
+            </button>
+          )}
         </>
       )}
-      <div className='poll-results-wrap' data-locked={!isVoted}>
+      <div className='poll-results-wrap' data-locked={!showResults}>
         <PollResults pollSpots={pollSpots} voteCounts={voteCounts} highlight={highlight} />
-        {!isVoted && <p className='poll-results-gate'>vote to see results</p>}
       </div>
     </div>
   )
