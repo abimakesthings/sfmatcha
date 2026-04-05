@@ -77,6 +77,16 @@
   min-height: 614px;
 }
 
+.map-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 614px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--green-30);
+}
+
 .spot-card {
   position: absolute;
   top: 20px;

@@ -25,7 +25,8 @@ function SpotCard({ spot, onClose }) {
 
   const photos = useMemo(() => {
     const base = import.meta.env.BASE_URL
-    const localPhotos = (spot.photos ?? []).map(p => base + p.slice(1))
+    // BASE_URL ends with '/', local paths start with '/' — slice(1) avoids double slash
+    const localPhotos = (spot.photos ?? []).map(p => p.startsWith('http') ? p : base + p.slice(1))
     const placesUrl = spot.photo ? placesPhotoUrl(spot.photo) : null
     return placesUrl ? [...localPhotos, placesUrl] : localPhotos
   }, [spot.photo, spot.photos])
@@ -180,6 +181,7 @@ export default function Map() {
   const mapRef = useRef(null)
   const sectionRef = useScrollVisible()
   const [selectedSpot, setSelectedSpot] = useState(null)
+  const [mapError, setMapError] = useState(false)
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 620)
 
   useEffect(() => {
@@ -236,7 +238,7 @@ export default function Map() {
       }))
     }
 
-    initMap()
+    initMap().catch(() => setMapError(true))
 
     return () => listeners.forEach(l => l.remove())
   }, [])
@@ -270,7 +272,9 @@ export default function Map() {
         </div>
       </div>
       <div className='map-wrapper'>
-        <div className='map-container' ref={mapRef} />
+        <div className='map-container' ref={mapRef}>
+          {mapError && <p className='map-error'>map failed to load — try refreshing</p>}
+        </div>
         {spotCard && (isMobile ? createPortal(spotCard, document.body) : spotCard)}
       </div>
     </section>

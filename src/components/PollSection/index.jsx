@@ -57,7 +57,7 @@ function PollResults({ pollSpots, voteCounts, highlight }) {
         const isHighlight = s.id === highlight
         return (
           <div key={s.id} className='poll-result-row' data-highlight={isHighlight}>
-            <span className='poll-result-rank'>0{i + 1}</span>
+            <span className='poll-result-rank'>{String(i + 1).padStart(2, '0')}</span>
             <span className='poll-result-name'>{pollName(s)}</span>
             <span className='poll-result-pct'>{pct}%</span>
           </div>
@@ -126,16 +126,13 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
   }
 
   function handleBlur() {
-    // Delay lets onMouseDown on a dropdown option fire before the dropdown closes
-    setTimeout(() => {
-      setOpen(false)
-      if (pending) {
-        const spot = pollSpots.find(s => s.id === pending)
-        if (spot) setQuery(spot.name)
-      } else {
-        setQuery('')
-      }
-    }, 150)
+    setOpen(false)
+    if (pending) {
+      const spot = pollSpots.find(s => s.id === pending)
+      if (spot) setQuery(spot.name)
+    } else {
+      setQuery('')
+    }
   }
 
   const isVoted = !!voted
@@ -178,7 +175,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
                     role='option'
                     aria-selected={pending === spot.id}
                     data-selected={pending === spot.id}
-                    onMouseDown={() => select(spot)}
+                    onPointerDown={e => { e.preventDefault(); select(spot) }}
                   >
                     {pollName(spot)}
                   </li>
@@ -213,8 +210,8 @@ export default function PollSection() {
 
   useEffect(() => {
     async function fetchVotes() {
-      const { data } = await supabase.from('poll_votes').select('poll_id, spot_id, count')
-      if (!data) return
+      const { data, error } = await supabase.from('poll_votes').select('poll_id, spot_id, count')
+      if (error || !data) return
       const counts = {}
       data.forEach(row => {
         if (!counts[row.poll_id]) counts[row.poll_id] = {}

@@ -36,7 +36,7 @@ export default function PopularityChart() {
                   }}
                 />
               </div>
-              <span className='popular-count'>{spot.reviewCount.toLocaleString()}</span>
+              <span className='popular-count'>{spot.reviewCount?.toLocaleString()}</span>
               <div className='popular-bar-tooltip'>
                 {spot.rating} ★ · {spot.tooltipLabel ?? spot.neighborhood}
               </div>
