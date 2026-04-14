@@ -175,7 +175,8 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
                     role='option'
                     aria-selected={pending === spot.id}
                     data-selected={pending === spot.id}
-                    onPointerDown={e => { e.preventDefault(); select(spot) }}
+                    onPointerDown={e => e.preventDefault()}
+                    onClick={() => select(spot)}
                   >
                     {pollName(spot)}
                   </li>
