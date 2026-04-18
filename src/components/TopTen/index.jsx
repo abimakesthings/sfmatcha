@@ -21,6 +21,7 @@ export default function TopTenSpots() {
           <h2 className='top-ten-subheading'>matcha spots</h2>
         </div>
         <p className='subtitle'>matcha-first spots in SF, ranked by star rating, then by review count</p>
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', fontWeight: 300, color: 'rgba(64, 93, 53, 0.5)' }}>last updated 4/5/26</p>
       </div>
       <div className='top-ten-list'>
         {topTen.map(({ id, name, neighborhood, rating, reviewCount, note }, index) => (

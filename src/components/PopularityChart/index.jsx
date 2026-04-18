@@ -17,6 +17,7 @@ export default function PopularityChart() {
             <h2 className='popular-subtitle'>matcha spots</h2>
           </div>
           <p className='subtitle popular-meta'>matcha-first spots, ranked by review count</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', fontWeight: 300, color: 'rgba(64, 93, 53, 0.5)' }}>last updated 4/5/26</p>
         </div>
         <div className='popular-chart'>
           <div className='popular-chart-head'>
