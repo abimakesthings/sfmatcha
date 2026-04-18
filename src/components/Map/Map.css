@@ -87,6 +87,10 @@
   color: var(--green-30);
 }
 
+.spot-card-handle {
+  display: none;
+}
+
 .spot-card {
   position: absolute;
   top: 20px;
@@ -275,6 +279,20 @@
   @keyframes slideUp {
     from { transform: translateY(100%); }
     to   { transform: translateY(0); }
+  }
+
+  .spot-card-handle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 100px;
+    z-index: 3;
+    pointer-events: none;
   }
 
   .spot-card {

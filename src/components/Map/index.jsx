@@ -132,6 +132,7 @@ function SpotCard({ spot, onClose }) {
 
   return (
     <div className='spot-card' ref={cardRef}>
+      <div className='spot-card-handle' />
       {photos.length > 0 && (
         <div className='spot-card-photos'>
           <div
@@ -205,6 +206,7 @@ export default function Map() {
 
   useEffect(() => {
     const listeners = []
+    const domListeners = []
 
     async function initMap() {
       const [{ Map }, { AdvancedMarkerElement }] = await Promise.all([
@@ -216,19 +218,26 @@ export default function Map() {
         center: SF_CENTER, zoom: 13, mapId: MAP_ID, disableDefaultUI: true, zoomControl: true,
       })
 
-      const markerSize = window.innerWidth <= 620 ? 20 : 14
+      const isMobileViewport = window.innerWidth <= 620
+      const markerSize = isMobileViewport ? 20 : 17
       spots.forEach(spot => {
         const color = spot.matchaFocus === false ? '#405d35' : '#b8922a'
+        const el = makeMarkerEl(color, markerSize)
         const marker = new AdvancedMarkerElement({
           position: { lat: spot.lat, lng: spot.lng },
           map,
           title: spot.name,
-          content: makeMarkerEl(color, markerSize),
+          content: el,
         })
-        listeners.push(marker.addListener('gmp-click', () => {
+        const handleClick = () => {
           setSelectedSpot(spot)
           track('spot_click', { spot_name: spot.name, neighborhood: spot.neighborhood })
-        }))
+        }
+        listeners.push(marker.addListener('gmp-click', handleClick))
+        if (isMobileViewport) {
+          el.addEventListener('click', handleClick)
+          domListeners.push({ el, handleClick })
+        }
       })
 
       // Block native Google Maps POI/neighborhood tooltip on label click
@@ -240,7 +249,10 @@ export default function Map() {
 
     initMap().catch(() => setMapError(true))
 
-    return () => listeners.forEach(l => l.remove())
+    return () => {
+      listeners.forEach(l => l.remove())
+      domListeners.forEach(({ el, handleClick }) => el.removeEventListener('click', handleClick))
+    }
   }, [])
 
   // Mobile: portal to body so position:fixed escapes the map-wrapper's animation transform.
