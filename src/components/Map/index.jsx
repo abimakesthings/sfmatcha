@@ -122,13 +122,27 @@ function SpotCard({ spot, onClose }) {
       gesture.current = null
     }
 
+    function onTouchCancel() {
+      touchStart.current = null
+      gesture.current = null
+      card.style.transition = ''
+      card.style.transform = ''
+      const strip = stripRef.current
+      if (strip) {
+        strip.style.transition = ''
+        strip.style.transform = `translateX(-${photoIndexRef.current * 100}%)`
+      }
+    }
+
     card.addEventListener('touchstart', onTouchStart, { passive: true })
     card.addEventListener('touchmove', onTouchMove, { passive: false })
     card.addEventListener('touchend', onTouchEnd, { passive: true })
+    card.addEventListener('touchcancel', onTouchCancel, { passive: true })
     return () => {
       card.removeEventListener('touchstart', onTouchStart)
       card.removeEventListener('touchmove', onTouchMove)
       card.removeEventListener('touchend', onTouchEnd)
+      card.removeEventListener('touchcancel', onTouchCancel)
     }
   }, [onClose, hasCarousel])
 
@@ -199,7 +213,7 @@ export default function Map() {
   useEffect(() => {
     if (!selectedSpot || !isMobile) return
     const scrollY = window.scrollY
-    document.body.style.cssText = `position:fixed;top:-${scrollY}px;left:0;right:0;overflow-y:scroll;`
+    document.body.style.cssText = `position:fixed;top:-${scrollY}px;left:0;right:0;overflow-y:scroll;overflow-x:hidden;`
     return () => {
       document.body.style.cssText = ''
       window.scrollTo(0, scrollY)
