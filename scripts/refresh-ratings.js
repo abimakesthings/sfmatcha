@@ -61,9 +61,7 @@ async function main() {
   const { scoreSpot } = await import('../src/lib/score.js')
   const sorted = [...updated].sort((a, b) => scoreSpot(b) - scoreSpot(a))
 
-  const metaPath = new URL('../src/data/metadata.json', import.meta.url).pathname
   await writeFile(spotsPath, JSON.stringify(sorted, null, 2))
-  await writeFile(metaPath, JSON.stringify({ lastUpdated: new Date().toISOString().slice(0, 10) }, null, 2))
   console.log(`\nDone — wrote ${sorted.length} spots to src/data/spots.json`)
 }
 

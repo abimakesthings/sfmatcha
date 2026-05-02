@@ -84,6 +84,7 @@
 .map-container {
   width: 100%;
   min-height: 614px;
+  overflow: hidden;
 }
 
 .map-error {

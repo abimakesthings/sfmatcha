@@ -5,7 +5,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Best Matcha Spots in San Francisco',
-  description: 'A curated list of the best matcha spots in San Francisco, ranked by quality and reviewed by locals.',
+  description: 'A curated list of the best matcha spots in San Francisco, ranked by rating and voted on by locals.',
   url: 'https://sfmatcha.com',
   itemListElement: topTen.map((spot, i) => ({
     '@type': 'ListItem',

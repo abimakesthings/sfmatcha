@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import { track } from '../../lib/analytics'
 import { topTen } from '../../lib/spots'
-import { lastUpdatedLabel } from '../../lib/lastUpdated'
 
 export default function TopTenSpots() {
   const sectionRef = useScrollVisible()
@@ -22,7 +21,7 @@ export default function TopTenSpots() {
           <h2 className='top-ten-subheading'>matcha spots</h2>
         </div>
         <p className='subtitle'>matcha-first spots in SF, ranked by star rating, then review count</p>
-        <p className='data-freshness'>last updated {lastUpdatedLabel}, source: Google Maps</p>
+        <p className='data-freshness'>updates daily, source: Google Maps</p>
       </div>
       <div className='top-ten-list'>
         {topTen.map(({ id, name, neighborhood, rating, reviewCount, note }, index) => (

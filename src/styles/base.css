@@ -31,6 +31,7 @@ body {
   color: var(--black);
   font-family: 'DM Sans', sans-serif;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 h2 {
