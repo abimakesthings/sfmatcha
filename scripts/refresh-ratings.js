@@ -58,8 +58,7 @@ async function main() {
     }
   }))
 
-  const { scoreSpot } = await import('../src/lib/score.js')
-  const sorted = [...updated].sort((a, b) => scoreSpot(b) - scoreSpot(a))
+  const sorted = [...updated].sort((a, b) => b.rating - a.rating || b.reviewCount - a.reviewCount)
 
   await writeFile(spotsPath, JSON.stringify(sorted, null, 2))
   console.log(`\nDone — wrote ${sorted.length} spots to src/data/spots.json`)

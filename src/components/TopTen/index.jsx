@@ -28,6 +28,7 @@ export default function TopTenSpots() {
           <div
             className={`top-ten-list-item${activeId === id ? ' tooltip-active' : ''}`}
             key={id}
+            onMouseLeave={() => setActiveId(null)}
             onClick={() => note && handleRowClick(id, name, index)}
             onKeyDown={e => note && (e.key === 'Enter' || e.key === ' ') && handleRowClick(id, name, index)}
             role={note ? 'button' : undefined}

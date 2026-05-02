@@ -34,6 +34,7 @@ const strawberrySpots = dedupeByChain(
 )
 
 function PollResults({ pollSpots, voteCounts, highlight }) {
+  const [activeId, setActiveId] = useState(null)
   const { top5, sorted, total } = useMemo(() => {
     const withVotes = pollSpots.map(s => ({ ...s, votes: voteCounts[s.id] ?? 0 }))
     const total = withVotes.reduce((sum, s) => sum + s.votes, 0)
@@ -50,10 +51,21 @@ function PollResults({ pollSpots, voteCounts, highlight }) {
         const pct = total > 0 ? Math.round(s.votes / total * 100) : 0
         const isHighlight = s.id === highlight
         return (
-          <div key={s.id} className='poll-result-row' data-highlight={isHighlight}>
+          <div
+            key={s.id}
+            className={`poll-result-row${activeId === s.id ? ' tooltip-active' : ''}`}
+            data-highlight={isHighlight}
+            onClick={() => setActiveId(prev => prev === s.id ? null : s.id)}
+            onMouseLeave={() => setActiveId(null)}
+          >
             <span className='poll-result-rank'>{String(i + 1).padStart(2, '0')}</span>
             <span className='poll-result-name'>{pollName(s)}</span>
             <span className='poll-result-pct'>{total > 0 ? `${pct}%` : '—'}</span>
+            {s.votes > 0 && (
+              <div className='poll-result-tooltip'>
+                {s.votes.toLocaleString()} {s.votes === 1 ? 'vote' : 'votes'}
+              </div>
+            )}
           </div>
         )
       })}
