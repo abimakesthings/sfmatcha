@@ -15,7 +15,6 @@
 .flavors-header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   opacity: 0;
 }
 
@@ -26,7 +25,7 @@
 .flavors-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 38px;
   letter-spacing: -0.96px;
   color: var(--black);
 }
@@ -35,7 +34,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 38px;
   letter-spacing: -0.96px;
   color: var(--green-50);
 }
@@ -166,6 +165,7 @@
 
 .flavors-swipe-hint {
   display: none;
+  margin-top: 4px;
 }
 
 @media (max-width: 1024px) {
@@ -231,7 +231,6 @@
   .flavors-grid {
     display: flex;
     justify-content: flex-start;
-    grid-template-columns: unset;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;

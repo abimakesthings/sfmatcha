@@ -42,7 +42,7 @@ export default function Footer() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
       track('share_click')
-    })
+    }).catch(() => {})
   }
 
   return (
