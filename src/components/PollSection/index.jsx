@@ -98,6 +98,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
   async function handleVote() {
     if (!pending || submitting) return
     setSubmitting(true)
+    if (!supabase) { setSubmitting(false); return }
     const { error } = await supabase.rpc('increment_vote', {
       p_poll_id: storageKey,
       p_spot_id: pending,
@@ -202,6 +203,7 @@ export default function PollSection() {
 
   useEffect(() => {
     async function fetchVotes() {
+      if (!supabase) { setVoteError(true); return }
       const { data, error } = await supabase.from('poll_votes').select('poll_id, spot_id, count')
       if (error || !data) { setVoteError(true); return }
       const counts = {}
