@@ -21,7 +21,7 @@ export default function TopTenSpots() {
           <h2 className='top-ten-title'>top rated</h2>
           <h2 className='top-ten-subheading'>matcha spots</h2>
         </div>
-        <p className='subtitle'>matcha-first spots in SF, ranked by star rating, then by review count</p>
+        <p className='subtitle'>matcha-first spots in SF, ranked by star rating, then review count</p>
         <p className='data-freshness'>last updated {lastUpdatedLabel}, source: Google Maps</p>
       </div>
       <div className='top-ten-list'>
@@ -39,12 +39,20 @@ export default function TopTenSpots() {
             <div className='list-item-left'>
               <span className='spot-id'>{index + 1}</span>
               <div className='name-neighborhood-wrapper'>
-                <div className='spot-name'>{name}</div>
-                <div className='spot-neighborhood subtitle'>{neighborhood}</div>
+                <div className='spot-name-row'>
+                  <div className='spot-name'>{name}</div>
+                  <div className='spot-rating subtitle'>{rating}<span className='star'>★</span></div>
+                </div>
+                <div className='spot-meta-row'>
+                  <div className='spot-neighborhood subtitle'>{neighborhood}</div>
+                  {reviewCount < 100 && <span className='spot-low-reviews'>{'< 100 reviews'}</span>}
+                </div>
               </div>
             </div>
-            {reviewCount < 100 && <span className='spot-low-reviews'>{'< 100 reviews'}</span>}
-            <div className='spot-rating subtitle'>{rating}<span className='star'>★</span></div>
+            <div className='spot-desktop-right'>
+              {reviewCount < 100 && <span className='spot-low-reviews'>{'< 100 reviews'}</span>}
+              <div className='spot-rating subtitle'>{rating}<span className='star'>★</span></div>
+            </div>
             {note && (
               <div className='row-tooltip'>
                 <p className='row-tooltip-desc'>{note}</p>

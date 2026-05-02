@@ -139,14 +139,12 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
 
   return (
     <div className='poll'>
-      {image && <img className='poll-image' src={image} alt='' />}
+      {image && <div className='poll-image-wrap'><img className='poll-image' src={image} alt='' /></div>}
       <p className='poll-label'>{label}</p>
       <PollResults pollSpots={pollSpots} voteCounts={voteCounts} highlight={voted} />
       {!isVoted && <p className='poll-cta'>vote</p>}
       <div className='poll-vote-section'>
-        {isVoted ? (
-          <p className='poll-voted-name'>your vote: {pollName(pollSpots.find(s => s.id === voted))}</p>
-        ) : (
+        {isVoted ? null : (
           <>
             <div className='poll-combobox' role='combobox' aria-expanded={open} aria-haspopup='listbox'>
               <input

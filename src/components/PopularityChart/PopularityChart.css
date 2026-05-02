@@ -3,6 +3,7 @@
   padding: 100px 64px;
   display: flex;
   justify-content: center;
+  overflow-x: clip;
 }
 
 .popular-inner {
@@ -27,7 +28,7 @@
 .popular-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 38px;
   letter-spacing: -0.96px;
   color: var(--black);
 }
@@ -36,7 +37,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 38px;
   letter-spacing: -0.96px;
   color: var(--green-50);
 }
@@ -101,7 +102,7 @@
 .popular-name {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--black);
 }
 
@@ -146,7 +147,7 @@
 
 .popular-count {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   color: rgba(64, 93, 53, 0.5);
   text-align: right;
@@ -220,10 +221,16 @@
   .popular-row {
     grid-template-columns: 100px minmax(0, 1fr) 40px;
     gap: 12px;
-    height: 64px;
+    height: auto;
+    min-height: 64px;
+    padding: 14px 0;
   }
 
   .popular-name {
     font-size: 17px;
+  }
+
+  .popular-bar-tooltip {
+    display: none;
   }
 }

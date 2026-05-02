@@ -77,13 +77,13 @@ export default function StandoutFlavors() {
         <div className='flavors-header'>
           <h2 className='flavors-title'>standout</h2>
           <h2 className='flavors-subtitle'>flavors</h2>
+          <p className='flavors-swipe-hint'>swipe to browse →</p>
         </div>
         <div className='flavors-grid'>
           {flavorStacks.map(stack => (
             <FlavorStack key={stack[0].id} stack={stack} />
           ))}
         </div>
-        <p className='flavors-swipe-hint'>swipe to browse →</p>
       </div>
     </section>
   )

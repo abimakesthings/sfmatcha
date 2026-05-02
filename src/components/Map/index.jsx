@@ -277,7 +277,7 @@ export default function Map() {
         <div className='map-legend'>
           <span className='map-legend-item'>
             <span className='map-legend-dot map-legend-dot--gold' aria-hidden='true' />
-            spots where matcha is the main event, not just on the menu
+            spots where matcha is the main event
           </span>
           <span className='map-legend-item'>
             <span className='map-legend-dot map-legend-dot--green' aria-hidden='true' />

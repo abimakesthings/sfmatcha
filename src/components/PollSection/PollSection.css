@@ -29,7 +29,7 @@
 .poll-section-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 38px;
   letter-spacing: -0.96px;
   color: var(--black);
 }
@@ -38,7 +38,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 48px;
+  font-size: 38px;
   letter-spacing: -0.96px;
   line-height: 0.95;
   color: var(--green-50);
@@ -46,7 +46,7 @@
 
 .poll-section-note {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   color: rgba(64, 93, 53, 0.5);
   margin-top: 24px;
@@ -66,24 +66,33 @@
   align-items: start;
 }
 
+.poll {
+  min-width: 0;
+}
+
 .poll-divider {
   background: transparent;
   align-self: stretch;
 }
 
+.poll-image-wrap {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .poll-image {
   height: 240px;
   width: auto;
-  display: block;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  flex-shrink: 0;
 }
 
 .poll-label {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: 28px;
+  font-size: 22px;
   letter-spacing: -0.3px;
   color: var(--green-50);
   margin-bottom: 12px;
@@ -111,17 +120,17 @@
 .poll-result-rank {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 29px;
   color: var(--green-30);
   letter-spacing: -1px;
   flex-shrink: 0;
-  min-width: 36px;
+  min-width: 29px;
 }
 
 .poll-result-name {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   color: var(--black);
   flex: 1;
   line-height: 1.2;
@@ -130,7 +139,7 @@
 .poll-result-pct {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 14px;
   color: rgba(64, 93, 53, 0.5);
   flex-shrink: 0;
 }
@@ -174,12 +183,6 @@
   flex-direction: column;
 }
 
-.poll-voted-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 16px;
-  color: var(--green-40);
-}
 
 .poll-combobox {
   position: relative;
@@ -190,7 +193,7 @@
   box-sizing: border-box;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--black);
   background: var(--cream);
   border: 1px solid var(--green-30);
@@ -256,7 +259,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 18px;
+  font-size: 14px;
   color: var(--cream);
   background: var(--green-30);
   border: none;
@@ -318,10 +321,8 @@
   }
 
   .poll-image {
-    max-height: 180px;
-    height: auto;
+    height: 180px;
     width: auto;
-    max-width: 100%;
   }
 
   /* Prevents iOS zoom on input focus */

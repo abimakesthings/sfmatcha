@@ -15,6 +15,7 @@
 .flavors-header {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   opacity: 0;
 }
 
@@ -221,8 +222,6 @@
     font-weight: 500;
     letter-spacing: 1px;
     color: var(--green-40);
-    padding-left: 20px;
-    margin-top: -16px;
   }
 
   .flavors-header {

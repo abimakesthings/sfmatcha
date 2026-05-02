@@ -47,7 +47,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 24px 12px;
+  padding: 18px 12px;
   border-bottom: solid 1px var(--green-30);
   transition: background 0.2s;
 }
@@ -130,20 +130,45 @@
   color: var(--green-30);
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 29px;
 }
 
 .name-neighborhood-wrapper {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 4px;
+}
+
+.spot-name-row {
+  display: block;
+}
+
+.spot-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spot-desktop-right {
+  display: flex;
+  align-items: center;
   gap: 8px;
+  flex-shrink: 0;
+  padding-right: 4px;
+}
+
+/* hide the mobile-only elements on desktop */
+.spot-name-row .spot-rating,
+.spot-meta-row .spot-low-reviews {
+  display: none;
 }
 
 .spot-name {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 19px;
 }
 
 .spot-low-reviews {
@@ -158,7 +183,6 @@
   padding: 2px 8px;
   line-height: 1.4;
   flex-shrink: 0;
-  margin-right: 8px;
 }
 
 .spot-neighborhood {
@@ -185,5 +209,24 @@
   .top-ten-section {
     margin: 56px 0;
     padding: 0 20px;
+  }
+
+  .spot-desktop-right {
+    display: none;
+  }
+
+  .spot-name-row .spot-rating {
+    display: block;
+  }
+
+  .spot-meta-row .spot-low-reviews {
+    display: inline-flex;
+  }
+
+  .spot-name-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
   }
 }
