@@ -14,9 +14,9 @@ export default function App() {
       <Hero />
       <Map />
       <TopTen />
+      <PollSection />
       <PopularityChart />
       <StandoutFlavors />
-      <PollSection />
       <Footer />
     </>
   )

@@ -27,6 +27,9 @@ function FlavorStack({ stack }) {
       tabIndex={clickable ? 0 : undefined}
       aria-label={clickable ? `${stack[0].flavor} at ${stack[0].cafe} — click to see more` : undefined}
     >
+      <span className='sr-only' aria-live='polite'>
+        {stack[topIndex].flavor} at {stack[topIndex].cafe}
+      </span>
       {stack.map((card, i) => {
         const pos = (i - topIndex + stack.length) % stack.length
         return (

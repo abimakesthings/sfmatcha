@@ -1,8 +1,25 @@
 import './PopularityChart.css'
 import spots from '../../data/spots.json'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
+import { lastUpdatedLabel } from '../../lib/lastUpdated'
 
-const popular = [...spots].filter(s => s.matchaFocus !== false).sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 10)
+function groupByChain(list) {
+  const map = new Map()
+  list.forEach(s => {
+    const key = s.chainName ?? s.name
+    if (!map.has(key)) {
+      map.set(key, { ...s, displayName: s.chainName ?? s.displayName ?? s.name, reviewCount: 0, neighborhoods: [] })
+    }
+    const entry = map.get(key)
+    entry.reviewCount += s.reviewCount ?? 0
+    entry.neighborhoods.push(s.neighborhood)
+  })
+  return [...map.values()]
+}
+
+const popular = groupByChain(spots.filter(s => s.matchaFocus !== false))
+  .sort((a, b) => b.reviewCount - a.reviewCount)
+  .slice(0, 10)
 const maxReviews = popular[0]?.reviewCount ?? 1
 
 export default function PopularityChart() {
@@ -17,7 +34,7 @@ export default function PopularityChart() {
             <h2 className='popular-subtitle'>matcha spots</h2>
           </div>
           <p className='subtitle popular-meta'>matcha-first spots, ranked by review count</p>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', fontWeight: 300, color: 'rgba(64, 93, 53, 0.5)' }}>last updated 4/5/26</p>
+          <p className='data-freshness'>last updated {lastUpdatedLabel}, source: Google Maps</p>
         </div>
         <div className='popular-chart'>
           <div className='popular-chart-head'>
@@ -26,7 +43,12 @@ export default function PopularityChart() {
           </div>
           {popular.map((spot, i) => (
             <div key={spot.id} className='popular-row'>
-              <span className='popular-name'>{spot.displayName ?? spot.name}</span>
+              <div className='popular-name-cell'>
+                <span className='popular-name'>{spot.displayName ?? spot.name}</span>
+                {spot.neighborhoods.length > 1 && (
+                  <span className='popular-locations-pill'>{spot.neighborhoods.length} locations</span>
+                )}
+              </div>
               <div className='popular-bar-track'>
                 <div
                   className='popular-bar-fill'
@@ -39,7 +61,9 @@ export default function PopularityChart() {
               </div>
               <span className='popular-count'>{spot.reviewCount?.toLocaleString()}</span>
               <div className='popular-bar-tooltip'>
-                {spot.rating} ★ · {spot.tooltipLabel ?? spot.neighborhood}
+                {spot.rating} ★ · {spot.neighborhoods.length > 1
+                  ? `${spot.neighborhoods.length} locations: ${spot.neighborhoods.join(', ')}`
+                  : (spot.tooltipLabel ?? spot.neighborhood)}
               </div>
             </div>
           ))}

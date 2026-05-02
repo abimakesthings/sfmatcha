@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
 import { track } from '../../lib/analytics'
 import { topTen } from '../../lib/spots'
+import { lastUpdatedLabel } from '../../lib/lastUpdated'
 
 export default function TopTenSpots() {
   const sectionRef = useScrollVisible()
@@ -17,11 +18,11 @@ export default function TopTenSpots() {
     <section className='top-ten-section' ref={sectionRef}>
       <div className='top-ten-header'>
         <div className='top-ten-headings'>
-          <h2 className='top-ten-title'>top 10</h2>
+          <h2 className='top-ten-title'>top rated</h2>
           <h2 className='top-ten-subheading'>matcha spots</h2>
         </div>
         <p className='subtitle'>matcha-first spots in SF, ranked by star rating, then by review count</p>
-        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', fontWeight: 300, color: 'rgba(64, 93, 53, 0.5)' }}>last updated 4/5/26</p>
+        <p className='data-freshness'>last updated {lastUpdatedLabel}, source: Google Maps</p>
       </div>
       <div className='top-ten-list'>
         {topTen.map(({ id, name, neighborhood, rating, reviewCount, note }, index) => (
@@ -33,6 +34,7 @@ export default function TopTenSpots() {
             role={note ? 'button' : undefined}
             tabIndex={note ? 0 : undefined}
             aria-expanded={note ? activeId === id : undefined}
+            aria-label={note ? `${name} — ${activeId === id ? 'collapse' : 'expand'} details` : undefined}
           >
             <div className='list-item-left'>
               <span className='spot-id'>{index + 1}</span>
@@ -41,6 +43,7 @@ export default function TopTenSpots() {
                 <div className='spot-neighborhood subtitle'>{neighborhood}</div>
               </div>
             </div>
+            {reviewCount < 100 && <span className='spot-low-reviews'>{'< 100 reviews'}</span>}
             <div className='spot-rating subtitle'>{rating}<span className='star'>★</span></div>
             {note && (
               <div className='row-tooltip'>

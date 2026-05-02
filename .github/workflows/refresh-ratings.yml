@@ -5,6 +5,9 @@ on:
     - cron: '0 14 * * *'  # 6am PT (UTC-8) daily
   workflow_dispatch:       # allows manual trigger from GitHub UI
 
+permissions:
+  contents: write
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -23,8 +26,8 @@ jobs:
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
-      - name: Commit updated spots.json if changed
+      - name: Commit updated data if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git diff --quiet || (git add src/data/spots.json && git commit -m "chore: refresh ratings and summaries" && git push)
+          git diff --quiet || (git add src/data/spots.json src/data/metadata.json && git commit -m "chore: refresh ratings and summaries" && git push)

@@ -5,6 +5,10 @@
 
 import 'dotenv/config'
 import { readFile, writeFile } from 'fs/promises'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const API_KEY = process.env.GOOGLE_MAPS_API_KEY
 
@@ -54,12 +58,12 @@ async function main() {
     }
   }))
 
-  // Weighted score: rating + small bonus for review count, breaks ties with more precision
-  // e.g. 4.8 with 175 reviews scores ~4.844, 4.8 with 9 reviews scores ~4.804
-  const score = s => s.rating + (s.reviewCount / (s.reviewCount + 50)) * 0.1
-  const sorted = [...updated].sort((a, b) => score(b) - score(a))
+  const { scoreSpot } = await import('../src/lib/score.js')
+  const sorted = [...updated].sort((a, b) => scoreSpot(b) - scoreSpot(a))
 
+  const metaPath = new URL('../src/data/metadata.json', import.meta.url).pathname
   await writeFile(spotsPath, JSON.stringify(sorted, null, 2))
+  await writeFile(metaPath, JSON.stringify({ lastUpdated: new Date().toISOString().slice(0, 10) }, null, 2))
   console.log(`\nDone — wrote ${sorted.length} spots to src/data/spots.json`)
 }
 

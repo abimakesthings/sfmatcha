@@ -49,6 +49,26 @@ h2 {
   line-height: 2;
 }
 
+.data-freshness {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(64, 93, 53, 0.5);
+}
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Shared scroll-reveal animation used by all sections */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }

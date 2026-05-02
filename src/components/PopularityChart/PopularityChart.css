@@ -1,5 +1,5 @@
 .popular-section {
-  background: var(--green-10);
+  background: var(--cream);
   padding: 100px 64px;
   display: flex;
   justify-content: center;
@@ -86,6 +86,18 @@
   border-top: 1px solid rgba(64, 93, 53, 0.08);
 }
 
+.popular-row:hover .popular-bar-fill {
+  background: var(--green-50);
+}
+
+.popular-name-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  justify-content: center;
+}
+
 .popular-name {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
@@ -138,6 +150,16 @@
   font-weight: 300;
   color: rgba(64, 93, 53, 0.5);
   text-align: right;
+}
+
+.popular-locations-pill {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-40);
+  white-space: nowrap;
 }
 
 .popular-bar-tooltip {
@@ -198,7 +220,7 @@
   .popular-row {
     grid-template-columns: 100px minmax(0, 1fr) 40px;
     gap: 12px;
-    height: 84px;
+    height: 64px;
   }
 
   .popular-name {

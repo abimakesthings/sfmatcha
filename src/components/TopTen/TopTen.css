@@ -94,7 +94,8 @@
   }
 }
 
-.top-ten-list-item.tooltip-active .row-tooltip {
+.top-ten-list-item.tooltip-active .row-tooltip,
+.top-ten-list-item:focus-visible .row-tooltip {
   opacity: 1;
 }
 
@@ -143,6 +144,21 @@
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
   font-size: 24px;
+}
+
+.spot-low-reviews {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-40);
+  border: 1px solid var(--green-30);
+  border-radius: 20px;
+  padding: 2px 8px;
+  line-height: 1.4;
+  flex-shrink: 0;
+  margin-right: 8px;
 }
 
 .spot-neighborhood {

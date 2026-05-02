@@ -12,7 +12,9 @@ const SF_CENTER = { lat: 37.7749, lng: -122.4194 }
 
 function makeMarkerEl(color, size) {
   const el = document.createElement('div')
-  el.style.cssText = `width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid #faf6f2;box-sizing:border-box;`
+  el.className = 'map-marker'
+  el.style.setProperty('--marker-color', color)
+  el.style.setProperty('--marker-size', `${size}px`)
   return el
 }
 
@@ -247,7 +249,7 @@ export default function Map() {
       }))
     }
 
-    initMap().catch(() => setMapError(true))
+    initMap().catch(() => { setMapError(true); track('map_load_error') })
 
     return () => {
       listeners.forEach(l => l.remove())
@@ -274,11 +276,11 @@ export default function Map() {
         <h2 className='map-title'>the map</h2>
         <div className='map-legend'>
           <span className='map-legend-item'>
-            <span className='map-legend-dot map-legend-dot--gold' />
+            <span className='map-legend-dot map-legend-dot--gold' aria-hidden='true' />
             spots where matcha is the main event, not just on the menu
           </span>
           <span className='map-legend-item'>
-            <span className='map-legend-dot map-legend-dot--green' />
+            <span className='map-legend-dot map-legend-dot--green' aria-hidden='true' />
             spots where matcha is not the main focus, but still worth trying
           </span>
         </div>

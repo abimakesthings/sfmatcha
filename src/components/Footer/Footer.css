@@ -35,7 +35,7 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: var(--green-30);
+  color: var(--green-20);
   letter-spacing: 0.02em;
 }
 
@@ -128,7 +128,7 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: var(--green-30);
+  color: var(--green-20);
   letter-spacing: 0.02em;
   text-align: center;
 }

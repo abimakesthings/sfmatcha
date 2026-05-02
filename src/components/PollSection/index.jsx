@@ -38,8 +38,7 @@ function PollResults({ pollSpots, voteCounts, highlight }) {
     const withVotes = pollSpots.map(s => ({ ...s, votes: voteCounts[s.id] ?? 0 }))
     const total = withVotes.reduce((sum, s) => sum + s.votes, 0)
     const sorted = [...withVotes].sort((a, b) => b.votes - a.votes)
-    const voted = sorted.filter(s => s.votes > 0)
-    return { top5: voted.slice(0, 5), sorted, total }
+    return { top5: sorted.slice(0, 5), sorted, total }
   }, [pollSpots, voteCounts])
 
   const highlightRank = highlight ? sorted.findIndex(s => s.id === highlight) + 1 : null
@@ -47,11 +46,6 @@ function PollResults({ pollSpots, voteCounts, highlight }) {
 
   return (
     <div className='poll-results'>
-      {highlight && !highlightInTop5 && (
-        <p className='poll-result-yours'>
-          your vote &ldquo;{pollName(sorted.find(s => s.id === highlight))}&rdquo; is ranked {highlightRank} out of {sorted.length}
-        </p>
-      )}
       {top5.map((s, i) => {
         const pct = total > 0 ? Math.round(s.votes / total * 100) : 0
         const isHighlight = s.id === highlight
@@ -59,10 +53,15 @@ function PollResults({ pollSpots, voteCounts, highlight }) {
           <div key={s.id} className='poll-result-row' data-highlight={isHighlight}>
             <span className='poll-result-rank'>{String(i + 1).padStart(2, '0')}</span>
             <span className='poll-result-name'>{pollName(s)}</span>
-            <span className='poll-result-pct'>{pct}%</span>
+            <span className='poll-result-pct'>{total > 0 ? `${pct}%` : '—'}</span>
           </div>
         )
       })}
+      {highlight && !highlightInTop5 && (
+        <p className='poll-result-yours'>
+          your vote &ldquo;{pollName(sorted.find(s => s.id === highlight))}&rdquo; is ranked {highlightRank} of {sorted.length}
+        </p>
+      )}
     </div>
   )
 }
@@ -73,7 +72,6 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [peeking, setPeeking] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem(storageKey)
@@ -82,7 +80,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
       if (spot) {
         setVoted(saved)
         setPending(saved)
-        setQuery(spot.name)
+        setQuery(pollName(spot))
       }
     }
   }, [storageKey, pollSpots])
@@ -93,7 +91,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
 
   function select(spot) {
     setPending(spot.id)
-    setQuery(spot.name)
+    setQuery(pollName(spot))
     setOpen(false)
   }
 
@@ -129,7 +127,7 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
     setOpen(false)
     if (pending) {
       const spot = pollSpots.find(s => s.id === pending)
-      if (spot) setQuery(spot.name)
+      if (spot) setQuery(pollName(spot))
     } else {
       setQuery('')
     }
@@ -137,69 +135,61 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
 
   const isVoted = !!voted
   const canVote = !!pending && pending !== voted
-  const highlight = voted
-  const showResults = isVoted || peeking
 
   return (
     <div className='poll'>
       {image && <img className='poll-image' src={image} alt='' />}
       <p className='poll-label'>{label}</p>
-      {isVoted ? (
-        <div className='poll-voted-display'>
-          <span className='poll-voted-name'>{pollName(pollSpots.find(s => s.id === voted))}</span>
-        </div>
-      ) : (
-        <>
-          <div className='poll-combobox' role='combobox' aria-expanded={open} aria-haspopup='listbox'>
-            <input
-              className='poll-input'
-              type='text'
-              placeholder='type to search...'
-              value={query}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              aria-autocomplete='list'
-              aria-controls={`${storageKey}-dropdown`}
-              autoComplete='off'
-            />
-            <svg className='poll-chevron' aria-hidden='true' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
-              <path d='M1 1L5 5L9 1' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
-            </svg>
-            {open && filtered.length > 0 && (
-              <ul id={`${storageKey}-dropdown`} className='poll-dropdown' role='listbox'>
-                {filtered.map(spot => (
-                  <li
-                    key={spot.id}
-                    className='poll-option'
-                    role='option'
-                    aria-selected={pending === spot.id}
-                    data-selected={pending === spot.id}
-                    onPointerDown={e => e.preventDefault()}
-                    onClick={() => select(spot)}
-                  >
-                    {pollName(spot)}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <button
-            className='poll-vote-btn'
-            onClick={handleVote}
-            disabled={!canVote || submitting}
-          >
-            {submitting ? 'casting...' : 'cast my vote'}
-          </button>
-          {!peeking && (
-            <button className='poll-peek-btn' onClick={() => { setPeeking(true); track('poll_peek', { poll_id: storageKey }) }}>
-              show results
+      <PollResults pollSpots={pollSpots} voteCounts={voteCounts} highlight={voted} />
+      {!isVoted && <p className='poll-cta'>vote</p>}
+      <div className='poll-vote-section'>
+        {isVoted ? (
+          <p className='poll-voted-name'>your vote: {pollName(pollSpots.find(s => s.id === voted))}</p>
+        ) : (
+          <>
+            <div className='poll-combobox' role='combobox' aria-expanded={open} aria-haspopup='listbox'>
+              <input
+                className='poll-input'
+                type='text'
+                placeholder='type to search...'
+                value={query}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                aria-autocomplete='list'
+                aria-controls={`${storageKey}-dropdown`}
+                autoComplete='off'
+              />
+              <svg className='poll-chevron' aria-hidden='true' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M1 1L5 5L9 1' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
+              </svg>
+              {open && filtered.length > 0 && (
+                <ul id={`${storageKey}-dropdown`} className='poll-dropdown' role='listbox'>
+                  {filtered.map(spot => (
+                    <li
+                      key={spot.id}
+                      className='poll-option'
+                      role='option'
+                      aria-selected={pending === spot.id}
+                      data-selected={pending === spot.id}
+                      onPointerDown={e => e.preventDefault()}
+                      onClick={() => select(spot)}
+                    >
+                      {pollName(spot)}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <button
+              className='poll-vote-btn'
+              onClick={handleVote}
+              disabled={!canVote || submitting}
+            >
+              {submitting ? 'casting...' : 'cast my vote'}
             </button>
-          )}
-        </>
-      )}
-      <div className='poll-results-wrap' data-locked={!showResults}>
-        <PollResults pollSpots={pollSpots} voteCounts={voteCounts} highlight={highlight} />
+          </>
+        )}
       </div>
     </div>
   )
@@ -208,11 +198,12 @@ function Poll({ label, pollSpots, storageKey, image, voteCounts, onVote }) {
 export default function PollSection() {
   const sectionRef = useScrollVisible()
   const [voteCounts, setVoteCounts] = useState({})
+  const [voteError, setVoteError] = useState(false)
 
   useEffect(() => {
     async function fetchVotes() {
       const { data, error } = await supabase.from('poll_votes').select('poll_id, spot_id, count')
-      if (error || !data) return
+      if (error || !data) { setVoteError(true); return }
       const counts = {}
       data.forEach(row => {
         if (!counts[row.poll_id]) counts[row.poll_id] = {}
@@ -234,20 +225,23 @@ export default function PollSection() {
     <section className='poll-section' ref={sectionRef}>
       <div className='poll-inner'>
         <div className='poll-section-header'>
-          <h2 className='poll-section-title'>vote for your</h2>
-          <h2 className='poll-section-subtitle'>fave matcha</h2>
+          <h2 className='poll-section-title'>the</h2>
+          <h2 className='poll-section-subtitle'>people's choice</h2>
+          <p className='poll-section-note'>editor's note: I trust these results more than Google Map's rankings</p>
         </div>
+        {voteError && <p className='poll-error'>couldn't load results — try refreshing</p>}
         <div className='poll-polls'>
           <Poll
-            label='best matcha latte in sf'
+            label='best matcha latte'
             pollSpots={latteSpots}
             storageKey='poll_matcha_latte'
             image={`${import.meta.env.BASE_URL}images/poll/matcha-latte.png`}
             voteCounts={voteCounts['poll_matcha_latte'] ?? {}}
             onVote={handleVote}
           />
+          <div className='poll-divider' />
           <Poll
-            label='best strawberry matcha in sf'
+            label='best strawberry matcha'
             pollSpots={strawberrySpots}
             storageKey='poll_strawberry_matcha'
             image={`${import.meta.env.BASE_URL}images/poll/strawberry-latte.png`}

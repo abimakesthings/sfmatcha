@@ -42,12 +42,12 @@ const flavorStacks = [
   [{ id: 'cere-black-sesame-einspanner', flavor: 'Black sesame matcha einspänner', cafe: 'Ceré Tea',   photo: photo('Ceré Tea'),     photoUrl: '/images/cere-tea/black-sesame-einspanner-1.webp' }],
   [{ id: 'tokyocream-sakura',    flavor: 'Sakura matcha latte',            cafe: 'Tokyo Cream',         photo: photo('Tokyo Cream'),  photoUrl: '/images/tokyo-cream/sakura-1.webp' }],
   [
+    { id: 'tadaima-strawberry',  flavor: 'Strawberry matcha latte',        cafe: 'Tadaima',             photo: photo('Tadaima Mission'), photoUrl: '/images/tadaima-sunset/strawberry-1.webp' },
     { id: 'kissaten-ichigo',     flavor: 'Ichigo matcha',                  cafe: 'Kissaten HiFi',       photo: photo('Kissaten'),     photoUrl: '/images/kissaten/ichigo-1.webp' },
     { id: 'maiko-strawberry',    flavor: 'Strawberry matcha latte',        cafe: 'Matcha Cafe Maiko',   photo: photo('Maiko'),        photoUrl: '/images/matcha-maiko-japantown/strawberry-1.webp' },
     { id: 'komeya-strawberry',   flavor: 'Strawberry matcha latte',        cafe: 'Komeya No Bento',     photo: photo('Komeya'),       photoUrl: '/images/komeya/strawberry-1.webp' },
     { id: 'cere-strawberry',     flavor: 'Strawberry matcha einspänner',   cafe: 'Ceré Tea',            photo: photo('Ceré Tea'),     photoUrl: '/images/cere-tea/strawberry-1.webp' },
     { id: 'kissofmatcha-strawberry', flavor: 'Strawberry matcha latte',    cafe: 'Kiss of Matcha',      photo: photo('Kiss of Matcha'), photoUrl: '/images/kiss-of-matcha/strawberry-1.webp' },
-    { id: 'tadaima-strawberry',  flavor: 'Strawberry matcha latte',        cafe: 'Tadaima',             photo: photo('Tadaima Mission'), photoUrl: '/images/tadaima-sunset/strawberry-1.webp' },
     { id: 'jadejava-strawberry', flavor: 'Strawberry matcha latte',        cafe: 'Jade & Java Cafe',    photo: photo('Jade'),         photoUrl: '/images/jade-java/strawberry-1.webp' },
     { id: 'stonemill-strawberry', flavor: 'Strawberry matcha',             cafe: 'Stonemill Matcha',    photo: photo('Stonemill'),    photoUrl: '/images/stonemill/strawberry-1.webp' },
     { id: 'asha-strawberry',     flavor: 'Strawberry matcha latte',        cafe: 'Asha Tea House',      photo: photo('Asha'),         photoUrl: '/images/asha/strawberry-1.webp' },
@@ -55,6 +55,7 @@ const flavorStacks = [
     { id: 'maruwu-strawberry',   flavor: 'Strawberry matcha latte',        cafe: 'Maruwu Seicha',       photo: photo('Maruwu'),       photoUrl: '/images/maruwu/strawberry-1.webp' },
     { id: 'moriwa-strawberry',   flavor: 'Strawberry matcha latte',        cafe: 'Moriwa Matcha',       photo: photo('Moriwa'),       photoUrl: '/images/moriwa/strawberry-1.webp' },
     { id: 'neighbors-strawberry', flavor: 'Strawberry matcha latte',       cafe: "Neighbor's Corner",   photo: photo("Neighbor's"),   photoUrl: '/images/neighbors-corner/strawberry-1.webp' },
+    { id: 'originlab-strawberry', flavor: 'Strawberry matcha',             cafe: 'Origin Lab Coffee & Matcha', photo: photo('Origin Lab'), photoUrl: '/images/origin-lab/strawberry-1.webp' },
   ],
   [
     { id: 'oishii-ube',          flavor: 'Ube matcha latte',               cafe: 'OISHII MATCHA',       photo: photo('OISHII'),       photoUrl: '/images/oishii/ube-1.webp' },
@@ -74,7 +75,10 @@ const flavorStacks = [
     { id: 'bestboy-yuzu',        flavor: 'Yuzu matcha tonic',              cafe: 'Best Boy Electric',   photo: photo('Best Boy'),     photoUrl: '/images/best-boy/yuzu-1.webp' },
   ],
   [{ id: 'q-sparkling',          flavor: 'Sparkling matcha cloud',         cafe: 'Q Specialty Coffee',  photo: photo('Q Specialty'),  photoUrl: '/images/q-specialty/sparkling-1.webp' }],
-  [{ id: 'q-coco-wave',          flavor: 'Coco wave matcha cloud',         cafe: 'Q Specialty Coffee',  photo: photo('Q Specialty'),  photoUrl: '/images/q-specialty/coco-wave-1.webp' }],
+  [
+    { id: 'q-coco-wave',          flavor: 'Coco wave matcha cloud',         cafe: 'Q Specialty Coffee',  photo: photo('Q Specialty'),  photoUrl: '/images/q-specialty/coco-wave-1.webp' },
+    { id: 'originlab-coconut',    flavor: 'Coconut water with matcha cream cloud', cafe: 'Origin Lab Coffee & Matcha', photo: photo('Origin Lab'), photoUrl: '/images/origin-lab/coconut-1.webp' },
+  ],
 ]
 
 const base = import.meta.env.BASE_URL
