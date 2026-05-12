@@ -237,8 +237,11 @@ export default function PollSection() {
     <section className='poll-section' ref={sectionRef}>
       <div className='poll-inner'>
         <div className='poll-section-header'>
-          <h2 className='poll-section-title'>the</h2>
-          <h2 className='poll-section-subtitle'>people's choice</h2>
+          <div className='poll-section-headings'>
+            <h2 className='poll-section-title'>the</h2>
+            <h2 className='poll-section-subtitle'>people's choice</h2>
+          </div>
+          <p className='poll-section-tagline'>vote for your favorite matcha</p>
           <p className='poll-section-note'>editor's note: I trust these results more than Google Map's rankings</p>
         </div>
         {voteError && <p className='poll-error'>couldn't load results — try refreshing</p>}
