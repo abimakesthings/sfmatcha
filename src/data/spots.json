@@ -804,5 +804,27 @@
       "/images/nagomi/strawberry-2.webp",
       "/images/nagomi/strawberry-3.webp"
     ]
+  },
+  {
+    "id": "ChIJn6XkLACHhYARdRPI07yIvTM",
+    "name": "Constance Tea & Matcha",
+    "address": "3512 Balboa St, San Francisco, CA 94121, USA",
+    "neighborhood": "Outer Richmond",
+    "lat": 37.7759096,
+    "lng": -122.49649,
+    "rating": null,
+    "reviewCount": null,
+    "aiSummary": null,
+    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
+    "priceLevel": null,
+    "website": null,
+    "matchaFocus": true,
+    "note": "One of the few spots in the city with freshly stone-milled matcha, plus a rare black matcha on the menu. The milling happens in-house, which you can taste.",
+    "photos": [
+      "/images/constance/photo-1.webp",
+      "/images/constance/photo-2.webp",
+      "/images/constance/photo-3.webp",
+      "/images/constance/photo-4.webp"
+    ]
   }
 ]
