@@ -48,7 +48,7 @@
     "lat": 37.7896787,
     "lng": -122.404049,
     "rating": 4.8,
-    "reviewCount": 200,
+    "reviewCount": 202,
     "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
     "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
     "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
@@ -83,6 +83,28 @@
       "/images/junbi/guava-3.webp",
       "/images/junbi/mango-1.webp",
       "/images/junbi/mango-2.webp"
+    ]
+  },
+  {
+    "id": "ChIJn6XkLACHhYARdRPI07yIvTM",
+    "name": "Constance Tea & Matcha",
+    "address": "3512 Balboa St, San Francisco, CA 94121, USA",
+    "neighborhood": "Outer Richmond",
+    "lat": 37.7759096,
+    "lng": -122.49649,
+    "rating": 4.8,
+    "reviewCount": 41,
+    "aiSummary": null,
+    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
+    "priceLevel": null,
+    "website": "https://www.constancetea.com/",
+    "matchaFocus": true,
+    "note": "One of the few spots in the city with freshly stone-milled matcha, plus a rare black matcha on the menu.",
+    "photos": [
+      "/images/constance/photo-1.webp",
+      "/images/constance/photo-2.webp",
+      "/images/constance/photo-3.webp",
+      "/images/constance/photo-4.webp"
     ]
   },
   {
@@ -803,28 +825,6 @@
       "/images/nagomi/strawberry-1.webp",
       "/images/nagomi/strawberry-2.webp",
       "/images/nagomi/strawberry-3.webp"
-    ]
-  },
-  {
-    "id": "ChIJn6XkLACHhYARdRPI07yIvTM",
-    "name": "Constance Tea & Matcha",
-    "address": "3512 Balboa St, San Francisco, CA 94121, USA",
-    "neighborhood": "Outer Richmond",
-    "lat": 37.7759096,
-    "lng": -122.49649,
-    "rating": 4.8,
-    "reviewCount": 41,
-    "aiSummary": null,
-    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
-    "priceLevel": null,
-    "website": "https://www.constancetea.com/",
-    "matchaFocus": true,
-    "note": "One of the few spots in the city with freshly stone-milled matcha, plus a rare black matcha on the menu.",
-    "photos": [
-      "/images/constance/photo-1.webp",
-      "/images/constance/photo-2.webp",
-      "/images/constance/photo-3.webp",
-      "/images/constance/photo-4.webp"
     ]
   }
 ]
