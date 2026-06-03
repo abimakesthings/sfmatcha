@@ -7,11 +7,12 @@ function groupByChain(list) {
   list.forEach(s => {
     const key = s.chainName ?? s.name
     if (!map.has(key)) {
-      map.set(key, { ...s, displayName: s.chainName ?? s.displayName ?? s.name, reviewCount: 0, neighborhoods: [] })
+      map.set(key, { ...s, displayName: s.chainName ?? s.displayName ?? s.name, reviewCount: 0, neighborhoods: [], locations: [] })
     }
     const entry = map.get(key)
     entry.reviewCount += s.reviewCount ?? 0
     entry.neighborhoods.push(s.neighborhood)
+    entry.locations.push({ neighborhood: s.neighborhood, rating: s.rating })
   })
   return [...map.values()]
 }
@@ -60,9 +61,9 @@ export default function PopularityChart() {
               </div>
               <span className='popular-count'>{spot.reviewCount?.toLocaleString()}</span>
               <div className='popular-bar-tooltip'>
-                {spot.rating} ★ · {spot.neighborhoods.length > 1
-                  ? `${spot.neighborhoods.length} locations: ${spot.neighborhoods.join(', ')}`
-                  : (spot.tooltipLabel ?? spot.neighborhood)}
+                {spot.locations.length > 1
+                  ? spot.locations.map(l => `${l.neighborhood} ${l.rating}★`).join(', ')
+                  : `${spot.rating} ★ · ${spot.tooltipLabel ?? spot.neighborhood}`}
               </div>
             </div>
           ))}

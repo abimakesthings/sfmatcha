@@ -6,6 +6,69 @@ import spots from '../../data/spots.json'
 import { track } from '../../lib/analytics'
 import { placesPhotoUrl } from '../../lib/places'
 
+function MapSearch({ onSelect }) {
+  const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
+  const containerRef = useRef(null)
+
+  const results = useMemo(() => {
+    if (!query.trim()) return []
+    const q = query.toLowerCase()
+    return spots.filter(s =>
+      s.name.toLowerCase().includes(q) ||
+      s.neighborhood.toLowerCase().includes(q)
+    ).slice(0, 6)
+  }, [query])
+
+  useEffect(() => {
+    function onPointerDown(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) setOpen(false)
+    }
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => document.removeEventListener('pointerdown', onPointerDown)
+  }, [])
+
+  function handleSelect(spot) {
+    onSelect(spot)
+    setQuery('')
+    setOpen(false)
+    track('map_search_select', { spot_name: spot.name })
+  }
+
+  return (
+    <div className='map-search' ref={containerRef}>
+      <div className='map-search-input-wrap'>
+        <svg className='map-search-icon' width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <circle cx='6' cy='6' r='4.5' stroke='currentColor' strokeWidth='1.4'/>
+            <line x1='9.5' y1='9.5' x2='13' y2='13' stroke='currentColor' strokeWidth='1.4' strokeLinecap='round'/>
+          </svg>
+        <input
+          className='map-search-input'
+          type='text'
+          placeholder='Search spots'
+          value={query}
+          onChange={e => { setQuery(e.target.value); setOpen(true) }}
+          onFocus={() => setOpen(true)}
+          onKeyDown={e => { if (e.key === 'Escape') { setOpen(false); setQuery('') } }}
+        />
+        {query && (
+          <button className='map-search-clear' onPointerDown={e => { e.preventDefault(); setQuery(''); setOpen(false) }}>×</button>
+        )}
+      </div>
+      {open && results.length > 0 && (
+        <ul className='map-search-dropdown'>
+          {results.map(spot => (
+            <li key={spot.id} className='map-search-result' onPointerDown={() => handleSelect(spot)}>
+              <span className='map-search-result-name'>{spot.name}</span>
+              <span className='map-search-result-neighborhood'>{spot.neighborhood}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}
+
 const MAP_ID = '6d2b821952b606c152cfc147'
 
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 }
@@ -176,7 +239,7 @@ function SpotCard({ spot, onClose }) {
       {photos.length === 0 && (
         <button className='spot-card-close' onClick={onClose}>×</button>
       )}
-      <div className='spot-card-body'>
+      <div className={`spot-card-body${photos.length === 0 ? ' spot-card-body--no-photos' : ''}`}>
         <p className='spot-card-name'>{spot.name}</p>
         <p className='spot-card-rating'>
           {spot.rating}<span className='spot-card-star'>★</span>
@@ -196,6 +259,9 @@ function SpotCard({ spot, onClose }) {
 
 export default function Map() {
   const mapRef = useRef(null)
+  const mapInstanceRef = useRef(null)
+  const markerEls = useRef({})       // spot.id → DOM element
+  const markerInstances = useRef({}) // spot.id → AdvancedMarkerElement
   const sectionRef = useScrollVisible()
   const [selectedSpot, setSelectedSpot] = useState(null)
   const [mapError, setMapError] = useState(false)
@@ -209,6 +275,22 @@ export default function Map() {
   }, [])
 
   const closeSpot = useCallback(() => setSelectedSpot(null), [])
+
+  useEffect(() => {
+    Object.entries(markerEls.current).forEach(([id, el]) => {
+      el.classList.remove('map-marker--selected')
+      if (markerInstances.current[id]) markerInstances.current[id].zIndex = 0
+    })
+    if (selectedSpot) {
+      markerEls.current[selectedSpot.id]?.classList.add('map-marker--selected')
+      if (markerInstances.current[selectedSpot.id]) markerInstances.current[selectedSpot.id].zIndex = 10
+    }
+  }, [selectedSpot])
+
+  const selectSpot = useCallback(spot => {
+    setSelectedSpot(spot)
+    mapInstanceRef.current?.panTo({ lat: spot.lat, lng: spot.lng })
+  }, [])
 
   useEffect(() => {
     if (!selectedSpot || !isMobile) return
@@ -233,18 +315,21 @@ export default function Map() {
       const map = new Map(mapRef.current, {
         center: SF_CENTER, zoom: 13, mapId: MAP_ID, disableDefaultUI: true, zoomControl: true,
       })
+      mapInstanceRef.current = map
 
       const isMobileViewport = window.innerWidth <= 620
       const markerSize = isMobileViewport ? 20 : 17
       spots.forEach(spot => {
         const color = spot.matchaFocus === false ? '#405d35' : '#b8922a'
         const el = makeMarkerEl(color, markerSize)
+        markerEls.current[spot.id] = el
         const marker = new AdvancedMarkerElement({
           position: { lat: spot.lat, lng: spot.lng },
           map,
           title: spot.name,
           content: el,
         })
+        markerInstances.current[spot.id] = marker
         const handleClick = () => {
           setSelectedSpot(spot)
           track('spot_click', { spot_name: spot.name, neighborhood: spot.neighborhood })
@@ -303,6 +388,7 @@ export default function Map() {
         <div className='map-container' ref={mapRef}>
           {mapError && <p className='map-error'>map failed to load — try refreshing</p>}
         </div>
+        <MapSearch onSelect={selectSpot} />
         {spotCard && (isMobile ? createPortal(spotCard, document.body) : spotCard)}
       </div>
     </section>

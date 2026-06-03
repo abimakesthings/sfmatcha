@@ -5,6 +5,13 @@
   background: var(--marker-color);
   border: 2px solid #faf6f2;
   box-sizing: border-box;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.map-marker--selected {
+  transform: scale(1.5);
+  box-shadow: 0 2px 8px rgba(48, 48, 48, 0.35);
+  border-color: #fff;
 }
 
 .map-section {
@@ -79,7 +86,7 @@
 }
 
 .map-legend-dot--green { background: var(--green-50); }
-.map-legend-dot--gold  { background: var(--gold) }
+.map-legend-dot--gold  { background: var(--gold); }
 
 .map-container {
   width: 100%;
@@ -154,6 +161,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.spot-card-arrow:hover {
+  background: rgba(48, 48, 48, 0.72);
+}
+
+.spot-card-arrow:active {
+  background: rgba(48, 48, 48, 0.88);
 }
 
 .spot-card-arrow--prev { left: 8px; }
@@ -194,6 +210,13 @@
   color: var(--green-40);
   cursor: pointer;
   line-height: 1;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+.spot-card-close:hover,
+.spot-card-close:active {
+  opacity: 0.6;
 }
 
 .spot-card-photos .spot-card-close {
@@ -258,6 +281,100 @@
   margin-top: 4px;
 }
 
+.map-search {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  width: 220px;
+  box-shadow: 0 2px 12px rgba(48, 48, 48, 0.14);
+}
+
+.map-search-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--cream);
+  border: 1px solid var(--green-20);
+  padding: 0 10px;
+  gap: 8px;
+}
+
+.map-search-icon {
+  color: var(--green-30);
+  flex-shrink: 0;
+}
+
+.map-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--green-50);
+  padding: 10px 0;
+}
+
+.map-search-input::placeholder {
+  color: var(--green-40);
+}
+
+.map-search-clear {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--green-30);
+  cursor: pointer;
+  padding: 0;
+}
+
+.map-search-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  border: 1px solid var(--green-20);
+  border-top: none;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.map-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--green-20);
+}
+
+.map-search-result:last-child {
+  border-bottom: none;
+}
+
+.map-search-result:hover,
+.map-search-result:active {
+  background: var(--green-10);
+}
+
+.map-search-result-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green-50);
+}
+
+.map-search-result-neighborhood {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-30);
+}
+
 @media (max-width: 860px) {
   .map-section {
     padding: 72px 32px;
@@ -284,13 +401,17 @@
     font-size: 12px;
   }
 
+  .map-search {
+    width: calc(100% - 24px);
+  }
+
   /* Bottom sheet on mobile — portal renders to document.body so position: fixed works */
   .spot-card-backdrop {
     display: block;
     position: fixed;
     inset: 0;
     background: rgba(48, 48, 48, 0.4);
-    z-index: 9;
+    z-index: 49;
   }
 
   @keyframes slideUp {
@@ -326,7 +447,7 @@
     border-top: 1px solid var(--green-20);
     box-shadow: 0 -4px 24px rgba(48, 48, 48, 0.12);
     padding: 0;
-    z-index: 10;
+    z-index: 50;
     animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) both;
     transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
     overscroll-behavior: none;
@@ -351,6 +472,10 @@
     padding: 16px 20px 24px;
     gap: 10px;
     font-size: 15px;
+  }
+
+  .spot-card-body--no-photos {
+    padding-top: 44px;
   }
 
   .spot-card-name    { font-size: 1.5em;  }
