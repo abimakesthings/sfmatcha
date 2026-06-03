@@ -405,6 +405,10 @@
     width: calc(100% - 24px);
   }
 
+  .map-search-input {
+    font-size: 16px;
+  }
+
   /* Bottom sheet on mobile — portal renders to document.body so position: fixed works */
   .spot-card-backdrop {
     display: block;
