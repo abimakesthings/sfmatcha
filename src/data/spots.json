@@ -7,7 +7,7 @@
     "lat": 37.8008837,
     "lng": -122.42534069999999,
     "rating": 4.9,
-    "reviewCount": 455,
+    "reviewCount": 456,
     "aiSummary": "Casual coffeehouse highlighting single-origin Indonesian coffees, plus roasts, pastries, and toast.",
     "review": "Pandan Matcha - This one was our favorite. It leans more on the sweeter side but it was perfectly balanced with the grassy matcha and I loved the aromatics that came from the pandan. A great mix of earthiness and creaminess.",
     "priceLevel": null,
@@ -18,6 +18,28 @@
       "/images/kopiku/interior-1.webp",
       "/images/kopiku/pandan-1.webp",
       "/images/kopiku/pandan-2.webp"
+    ]
+  },
+  {
+    "id": "ChIJn6XkLACHhYARdRPI07yIvTM",
+    "name": "Constance Tea & Matcha",
+    "address": "3512 Balboa St, San Francisco, CA 94121, USA",
+    "neighborhood": "Outer Richmond",
+    "lat": 37.7759096,
+    "lng": -122.49649,
+    "rating": 4.9,
+    "reviewCount": 58,
+    "aiSummary": null,
+    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
+    "priceLevel": null,
+    "website": "https://www.constancetea.com/",
+    "matchaFocus": true,
+    "note": "One of the few spots in the city with freshly stone-milled matcha, plus a rare black matcha on the menu.",
+    "photos": [
+      "/images/constance/photo-1.webp",
+      "/images/constance/photo-2.webp",
+      "/images/constance/photo-3.webp",
+      "/images/constance/photo-4.webp"
     ]
   },
   {
@@ -38,29 +60,6 @@
       "/images/wild-fox/interior-1.webp",
       "/images/wild-fox/mango-1.webp",
       "/images/wild-fox/interior-2.webp"
-    ]
-  },
-  {
-    "id": "ChIJBUqVw0qBhYARsZQy7oS9fn4",
-    "name": "Origin Lab Coffee & Matcha",
-    "address": "211 Sutter St, San Francisco, CA 94108, USA",
-    "neighborhood": "Financial District",
-    "lat": 37.7896787,
-    "lng": -122.404049,
-    "rating": 4.8,
-    "reviewCount": 202,
-    "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
-    "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
-    "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
-    "priceLevel": null,
-    "website": "https://originlabcoffee.com",
-    "matchaFocus": true,
-    "photos": [
-      "/images/origin-lab/interior-1.webp",
-      "/images/origin-lab/interior-2.webp",
-      "/images/origin-lab/matcha-1.webp",
-      "/images/origin-lab/matcha-2.webp",
-      "/images/origin-lab/matcha-3.webp"
     ]
   },
   {
@@ -86,28 +85,6 @@
     ]
   },
   {
-    "id": "ChIJn6XkLACHhYARdRPI07yIvTM",
-    "name": "Constance Tea & Matcha",
-    "address": "3512 Balboa St, San Francisco, CA 94121, USA",
-    "neighborhood": "Outer Richmond",
-    "lat": 37.7759096,
-    "lng": -122.49649,
-    "rating": 4.8,
-    "reviewCount": 41,
-    "aiSummary": null,
-    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
-    "priceLevel": null,
-    "website": "https://www.constancetea.com/",
-    "matchaFocus": true,
-    "note": "One of the few spots in the city with freshly stone-milled matcha, plus a rare black matcha on the menu.",
-    "photos": [
-      "/images/constance/photo-1.webp",
-      "/images/constance/photo-2.webp",
-      "/images/constance/photo-3.webp",
-      "/images/constance/photo-4.webp"
-    ]
-  },
-  {
     "id": "ChIJ3YBO_LiAhYARShPGUvOWKy0",
     "name": "Matcha Cafe Maiko",
     "chainName": "Matcha Cafe Maiko",
@@ -117,7 +94,7 @@
     "lat": 37.7849544,
     "lng": -122.4317274,
     "rating": 4.7,
-    "reviewCount": 772,
+    "reviewCount": 773,
     "aiSummary": "Snug shop whipping up matcha-flavored ice cream, lattes and parfaits in house-made waffle cones.",
     "review": "My friend and I had the matcha latte and the matcha ice cream, and we loved the intense matcha flavor of both! The soft smooth came with matcha powder and was soft and creamy. The matcha latte was a good balance of oat milk and matcha flavor. The service was fast and the ambiance was casual.",
     "priceLevel": 1,
@@ -203,6 +180,29 @@
     ]
   },
   {
+    "id": "ChIJBUqVw0qBhYARsZQy7oS9fn4",
+    "name": "Origin Lab Coffee & Matcha",
+    "address": "211 Sutter St, San Francisco, CA 94108, USA",
+    "neighborhood": "Financial District",
+    "lat": 37.7896787,
+    "lng": -122.404049,
+    "rating": 4.7,
+    "reviewCount": 213,
+    "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
+    "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
+    "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
+    "priceLevel": null,
+    "website": "https://originlabcoffee.com",
+    "matchaFocus": true,
+    "photos": [
+      "/images/origin-lab/interior-1.webp",
+      "/images/origin-lab/interior-2.webp",
+      "/images/origin-lab/matcha-1.webp",
+      "/images/origin-lab/matcha-2.webp",
+      "/images/origin-lab/matcha-3.webp"
+    ]
+  },
+  {
     "id": "ChIJg6GVZgCHhYARDs4r7ffC9hE",
     "name": "Tadaima Inner Sunset",
     "chainName": "Tadaima",
@@ -233,7 +233,7 @@
     "lat": 37.788170199999996,
     "lng": -122.4037073,
     "rating": 4.6,
-    "reviewCount": 729,
+    "reviewCount": 730,
     "aiSummary": "Casual teahouse offering a variety of whole-leaf teas and specialty beverages.",
     "review": "Dropped in for the Strawberry Matcha and it was awesome I came back later in the day for another.  Really sweet and beautiful Tea house with nice staff.",
     "priceLevel": 1,
@@ -380,30 +380,6 @@
     ]
   },
   {
-    "id": "ChIJvxxqawB_j4ARchmzEqzM_Nc",
-    "name": "Ceré Tea",
-    "address": "1186 Valencia St, San Francisco, CA 94110, USA",
-    "neighborhood": "Mission District",
-    "lat": 37.753971199999995,
-    "lng": -122.4210238,
-    "rating": 4.5,
-    "reviewCount": 36,
-    "aiSummary": null,
-    "review": "probably my top spot in sf to get matcha now, beating out past favorites.  the matcha itself is strong, flavorful, and not bitter like some cafes.",
-    "priceLevel": null,
-    "website": "https://www.ceretea.com/",
-    "note": "A Japanese tea room on Valencia with one of the more inventive flavor menus in the city. The osmanthus latte and black sesame einspanner are genuinely unusual finds.",
-    "photos": [
-      "/images/cere-tea/interior-1.webp",
-      "/images/cere-tea/strawberry-1.webp",
-      "/images/cere-tea/banana-1.webp",
-      "/images/cere-tea/guava-1.webp",
-      "/images/cere-tea/osmanthus-1.webp",
-      "/images/cere-tea/black-sesame-einspanner-1.webp",
-      "/images/cere-tea/black-sesame-einspanner-2.webp"
-    ]
-  },
-  {
     "id": "ChIJlxonA45_j4ARQXnrT2rNHpY",
     "name": "Stonemill Matcha",
     "address": "561 Valencia St, San Francisco, CA 94110, USA",
@@ -411,7 +387,7 @@
     "lat": 37.7639681,
     "lng": -122.4216256,
     "rating": 4.4,
-    "reviewCount": 1076,
+    "reviewCount": 1077,
     "aiSummary": "Matcha-based beverages & light Japanese bites served in a relaxed, minimalist space.",
     "review": "loved their matcha! probably one of the best in the city. the thick an creamy texture makes you want to come back. my favorite is their regular iced matcha and strawberry matcha latte 🍵",
     "priceLevel": 2,
@@ -457,7 +433,7 @@
     "lat": 37.7829348,
     "lng": -122.46745709999999,
     "rating": 4.4,
-    "reviewCount": 335,
+    "reviewCount": 337,
     "aiSummary": null,
     "review": "The matcha drinks and desserts are different than other matcha cafes in the sense that their matcha has *very* strong flavors, including some bitterness. It almost feels like the entire drink or dessert is made of pure matcha and just a little bit milk, cream, or sugar. This place may appeal more to matcha purists than the average matcha consumer.",
     "priceLevel": 1,
@@ -549,7 +525,7 @@
     "lat": 37.7852405,
     "lng": -122.4647832,
     "rating": 4.4,
-    "reviewCount": 81,
+    "reviewCount": 82,
     "aiSummary": null,
     "review": "So happy to support a young, Asian-owned business in the neighborhood.  The matcha was delicious (I tried the matcha matcha) the team was incredibly welcoming, the vibes were great, music was stellar.  Definitely bringing a some cool factor to the block.",
     "priceLevel": null,
@@ -604,6 +580,30 @@
     "photos": [
       "/images/best-boy/yuzu-1.webp",
       "/images/best-boy/yuzu-2.webp"
+    ]
+  },
+  {
+    "id": "ChIJvxxqawB_j4ARchmzEqzM_Nc",
+    "name": "Ceré Tea",
+    "address": "1186 Valencia St, San Francisco, CA 94110, USA",
+    "neighborhood": "Mission District",
+    "lat": 37.753971199999995,
+    "lng": -122.4210238,
+    "rating": 4.4,
+    "reviewCount": 37,
+    "aiSummary": null,
+    "review": "probably my top spot in sf to get matcha now, beating out past favorites.  the matcha itself is strong, flavorful, and not bitter like some cafes.",
+    "priceLevel": null,
+    "website": "https://www.ceretea.com/",
+    "note": "A Japanese tea room on Valencia with one of the more inventive flavor menus in the city. The osmanthus latte and black sesame einspanner are genuinely unusual finds.",
+    "photos": [
+      "/images/cere-tea/interior-1.webp",
+      "/images/cere-tea/strawberry-1.webp",
+      "/images/cere-tea/banana-1.webp",
+      "/images/cere-tea/guava-1.webp",
+      "/images/cere-tea/osmanthus-1.webp",
+      "/images/cere-tea/black-sesame-einspanner-1.webp",
+      "/images/cere-tea/black-sesame-einspanner-2.webp"
     ]
   },
   {
@@ -742,6 +742,28 @@
     ]
   },
   {
+    "id": "ChIJN_JxeQCBhYAR6LTP2YCkTDE",
+    "name": "Shoji",
+    "address": "140 New Montgomery St Suite 1, San Francisco, CA 94105, USA",
+    "neighborhood": "Yerba Buena",
+    "lat": 37.786671299999995,
+    "lng": -122.399674,
+    "rating": 4.2,
+    "reviewCount": 180,
+    "aiSummary": null,
+    "review": "The uni donburi is outstanding: rich, fresh, and perfectly balanced, a must-order if you love sea urchin.  Even the matcha drinks deserve special mention, it easily one of the best matchas in the city. \n\nExceptional ingredients, thoughtful execution, and a refined yet welcoming atmosphere.",
+    "priceLevel": null,
+    "website": "http://www.theshojisf.com/",
+    "note": "Japanese restaurant with three ways to drink matcha: a negroni, an einspanner, and an affogato. Worth going for the drinks alone, or stay for the food.",
+    "photos": [
+      "/images/shoji/einspanner-1.webp",
+      "/images/shoji/einspanner-2.webp",
+      "/images/shoji/einspanner-3.webp",
+      "/images/shoji/affogato-1.webp",
+      "/images/shoji/interior-1.webp"
+    ]
+  },
+  {
     "id": "ChIJF6YrHk19j4ARftFx0S9t7lw",
     "name": "Matcha Cafe Maiko",
     "chainName": "Matcha Cafe Maiko",
@@ -782,28 +804,6 @@
       "/images/komeya/mango-1.webp",
       "/images/komeya/mango-2.webp",
       "/images/komeya/mango-3.webp"
-    ]
-  },
-  {
-    "id": "ChIJN_JxeQCBhYAR6LTP2YCkTDE",
-    "name": "Shoji",
-    "address": "140 New Montgomery St Suite 1, San Francisco, CA 94105, USA",
-    "neighborhood": "Yerba Buena",
-    "lat": 37.786671299999995,
-    "lng": -122.399674,
-    "rating": 4.1,
-    "reviewCount": 180,
-    "aiSummary": null,
-    "review": "The uni donburi is outstanding: rich, fresh, and perfectly balanced, a must-order if you love sea urchin.  Even the matcha drinks deserve special mention, it easily one of the best matchas in the city. \n\nExceptional ingredients, thoughtful execution, and a refined yet welcoming atmosphere.",
-    "priceLevel": null,
-    "website": "http://www.theshojisf.com/",
-    "note": "Japanese restaurant with three ways to drink matcha: a negroni, an einspanner, and an affogato. Worth going for the drinks alone, or stay for the food.",
-    "photos": [
-      "/images/shoji/einspanner-1.webp",
-      "/images/shoji/einspanner-2.webp",
-      "/images/shoji/einspanner-3.webp",
-      "/images/shoji/affogato-1.webp",
-      "/images/shoji/interior-1.webp"
     ]
   },
   {
