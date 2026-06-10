@@ -43,6 +43,7 @@ async function main() {
   const spots = JSON.parse(await readFile(spotsPath, 'utf8'))
   console.log(`Refreshing ratings for ${spots.length} spots...`)
 
+  let failCount = 0
   const updated = await Promise.all(spots.map(async (spot) => {
     try {
       const place = await fetchPlaceDetails(spot.id)
@@ -53,15 +54,21 @@ async function main() {
       if (changed) console.log(`  ✓ ${spot.name}${rating !== spot.rating ? ` (${spot.rating}★ → ${rating}★)` : ''}`)
       return { ...spot, rating, reviewCount, aiSummary }
     } catch (err) {
+      failCount++
       console.warn(`  ⚠ ${spot.name}: ${err.message}`)
       return spot
     }
   }))
 
-  const sorted = [...updated].sort((a, b) => b.rating - a.rating || b.reviewCount - a.reviewCount)
+  if (failCount === spots.length) {
+    console.error(`\nAll ${spots.length} spots failed — aborting without writing`)
+    process.exit(1)
+  }
+
+  const sorted = [...updated].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0) || (b.reviewCount ?? 0) - (a.reviewCount ?? 0))
 
   await writeFile(spotsPath, JSON.stringify(sorted, null, 2))
-  console.log(`\nDone — wrote ${sorted.length} spots to src/data/spots.json`)
+  console.log(`\nDone — wrote ${sorted.length} spots to src/data/spots.json (${failCount} failed)`)
 }
 
 main().catch(err => {

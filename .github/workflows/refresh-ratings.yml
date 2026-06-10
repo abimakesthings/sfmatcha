@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: refresh-ratings
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -32,8 +36,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if ! git diff --quiet src/data/spots.json; then
             cp src/data/spots.json /tmp/spots-updated.json
-            git reset --hard HEAD
-            git pull --no-rebase origin main
+            git fetch origin main
+            git reset --hard origin/main
             cp /tmp/spots-updated.json src/data/spots.json
             git add src/data/spots.json
             git commit -m "chore: refresh ratings and summaries"
