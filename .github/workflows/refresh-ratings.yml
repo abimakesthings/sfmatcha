@@ -30,10 +30,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet; then
-            git stash
-            git pull --rebase origin main
-            git stash pop
+          if ! git diff --quiet src/data/spots.json; then
+            cp src/data/spots.json /tmp/spots-updated.json
+            git checkout src/data/spots.json
+            git pull origin main
+            cp /tmp/spots-updated.json src/data/spots.json
             git add src/data/spots.json
             git commit -m "chore: refresh ratings and summaries"
             git push
