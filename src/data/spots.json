@@ -28,7 +28,7 @@
     "lat": 37.7759096,
     "lng": -122.49649,
     "rating": 4.9,
-    "reviewCount": 154,
+    "reviewCount": 155,
     "aiSummary": null,
     "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
     "priceLevel": null,
@@ -74,7 +74,7 @@
     "lat": 37.7849544,
     "lng": -122.4317274,
     "rating": 4.7,
-    "reviewCount": 777,
+    "reviewCount": 778,
     "aiSummary": "Snug shop whipping up matcha-flavored ice cream, lattes and parfaits in house-made waffle cones.",
     "review": "My friend and I had the matcha latte and the matcha ice cream, and we loved the intense matcha flavor of both! The soft smooth came with matcha powder and was soft and creamy. The matcha latte was a good balance of oat milk and matcha flavor. The service was fast and the ambiance was casual.",
     "priceLevel": 1,
@@ -97,7 +97,7 @@
     "lat": 37.7555735,
     "lng": -122.43875570000002,
     "rating": 4.7,
-    "reviewCount": 496,
+    "reviewCount": 497,
     "aiSummary": "Coffee, tea and sandwiches in a relaxed, dog-friendly cafe, plus a warm vibe.",
     "review": "Love pretty much everything about this cute place, but definitely I keep coming back for matcha strawberry latte and those mochis!",
     "priceLevel": 1,
@@ -122,7 +122,7 @@
     "lat": 37.7620739,
     "lng": -122.5067779,
     "rating": 4.7,
-    "reviewCount": 414,
+    "reviewCount": 415,
     "aiSummary": "Neighborhood bookstore and cafe featuring a wide selection of adult and children's books, as well as a garden.",
     "review": "Really good and refreshing. The matcha was smooth and not too bitter, and the strawberries added a nice natural sweetness. You can tell they were fresh and locally sourced, which made a difference.",
     "priceLevel": null,
@@ -136,6 +136,29 @@
       "/images/black-bird/interior-3.webp",
       "/images/black-bird/interior-4.webp",
       "/images/black-bird/interior-5.webp"
+    ]
+  },
+  {
+    "id": "ChIJBUqVw0qBhYARsZQy7oS9fn4",
+    "name": "Origin Lab Coffee & Matcha",
+    "address": "211 Sutter St, San Francisco, CA 94108, USA",
+    "neighborhood": "Financial District",
+    "lat": 37.7896787,
+    "lng": -122.404049,
+    "rating": 4.7,
+    "reviewCount": 360,
+    "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
+    "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
+    "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
+    "priceLevel": null,
+    "website": "https://originlabcoffee.com",
+    "matchaFocus": true,
+    "photos": [
+      "/images/origin-lab/interior-1.webp",
+      "/images/origin-lab/interior-2.webp",
+      "/images/origin-lab/matcha-1.webp",
+      "/images/origin-lab/matcha-2.webp",
+      "/images/origin-lab/matcha-3.webp"
     ]
   },
   {
@@ -160,29 +183,6 @@
     ]
   },
   {
-    "id": "ChIJBUqVw0qBhYARsZQy7oS9fn4",
-    "name": "Origin Lab Coffee & Matcha",
-    "address": "211 Sutter St, San Francisco, CA 94108, USA",
-    "neighborhood": "Financial District",
-    "lat": 37.7896787,
-    "lng": -122.404049,
-    "rating": 4.7,
-    "reviewCount": 356,
-    "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
-    "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
-    "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
-    "priceLevel": null,
-    "website": "https://originlabcoffee.com",
-    "matchaFocus": true,
-    "photos": [
-      "/images/origin-lab/interior-1.webp",
-      "/images/origin-lab/interior-2.webp",
-      "/images/origin-lab/matcha-1.webp",
-      "/images/origin-lab/matcha-2.webp",
-      "/images/origin-lab/matcha-3.webp"
-    ]
-  },
-  {
     "id": "ChIJf0pWWp6BhYARntL6rvq1-S0",
     "name": "The Wild Fox",
     "address": "123 Battery St, San Francisco, CA 94111, USA",
@@ -190,7 +190,7 @@
     "lat": 37.7927162,
     "lng": -122.40008279999999,
     "rating": 4.7,
-    "reviewCount": 235,
+    "reviewCount": 236,
     "aiSummary": null,
     "review": "I found a spot facing the side window next to another guy on a laptop. \n\nI figured I would park there for about an hour while I enjoyed my iced mango matcha drink. \n\nIt was super tasty and I can confirm that everything everyone has said is true.",
     "priceLevel": null,
@@ -255,7 +255,7 @@
     "lat": 37.794215799999996,
     "lng": -122.40620820000001,
     "rating": 4.6,
-    "reviewCount": 460,
+    "reviewCount": 461,
     "aiSummary": "Dessert cafe specializing in soft-serve ice cream and drinks made from premium Uji matcha.",
     "review": "I loved the strawberry sundae! If you enjoy the rich flavor of matcha with the sweetness of strawberry, you will probably love it too. Tip: mix it well at the beginning so the sweetness stays balanced until the last bite.",
     "priceLevel": 1,
@@ -276,7 +276,7 @@
     "lat": 37.7650291,
     "lng": -122.4661625,
     "rating": 4.6,
-    "reviewCount": 206,
+    "reviewCount": 208,
     "aiSummary": null,
     "review": "This place is popping and for good reason—\n\nIt was highly recommended by a friend and the flavor of the matcha is rich and authentic tweaked with a little something something like strawberry or pistachio cream. \n\nFood lives up to the hype as well.",
     "priceLevel": null,
@@ -387,7 +387,7 @@
     "lat": 37.7639681,
     "lng": -122.4216256,
     "rating": 4.4,
-    "reviewCount": 1083,
+    "reviewCount": 1085,
     "aiSummary": "Matcha-based beverages & light Japanese bites served in a relaxed, minimalist space.",
     "review": "loved their matcha! probably one of the best in the city. the thick an creamy texture makes you want to come back. my favorite is their regular iced matcha and strawberry matcha latte 🍵",
     "priceLevel": 2,
@@ -504,7 +504,7 @@
     "lat": 37.7852405,
     "lng": -122.4647832,
     "rating": 4.4,
-    "reviewCount": 93,
+    "reviewCount": 95,
     "aiSummary": null,
     "review": "So happy to support a young, Asian-owned business in the neighborhood.  The matcha was delicious (I tried the matcha matcha) the team was incredibly welcoming, the vibes were great, music was stellar.  Definitely bringing a some cool factor to the block.",
     "priceLevel": null,
@@ -517,29 +517,6 @@
       "/images/kissaten/ichigo-1.webp",
       "/images/kissaten/einspanner-1.webp",
       "/images/kissaten/mango-lassi-1.webp"
-    ]
-  },
-  {
-    "id": "ChIJdd8Vw3GHhYARYr3MRjbzZ5s",
-    "name": "Tokyo Cream",
-    "address": "1838 Irving St, San Francisco, CA 94122, USA",
-    "neighborhood": "Outer Sunset",
-    "lat": 37.7637585,
-    "lng": -122.4778566,
-    "rating": 4.4,
-    "reviewCount": 69,
-    "aiSummary": null,
-    "review": "I just noticed that they had opened a Tokyo Cream in the area, and I thought I’d give it a try.  We got to try their matcha, yuzu spritzer, and the banana sundae.  We loved the banana sundae, it had banana pudding and chocolate drizzle.",
-    "priceLevel": null,
-    "website": "https://www.tokyocreamusa.com/",
-    "note": "Opened March 2026, this Japanese dessert cafe is built around matcha soft serve, sundaes, and drinks. Pair your matcha with a Kouignigiri, a flaky pastry with in the shape of a Japanese rice ball.",
-    "photos": [
-      "/images/tokyo-cream/sakura-1.webp",
-      "/images/tokyo-cream/sakura-2.webp",
-      "/images/tokyo-cream/sakura-3.webp",
-      "/images/tokyo-cream/sakura-4.webp",
-      "/images/tokyo-cream/sakura-5.webp",
-      "/images/tokyo-cream/sakura-6.webp"
     ]
   },
   {
@@ -608,6 +585,30 @@
     ]
   },
   {
+    "id": "ChIJH6ixN1F_j4ARNHU1HfGU_KY",
+    "name": "SOHN",
+    "address": "2535 3rd St, San Francisco, CA 94107, USA",
+    "neighborhood": "Dogpatch",
+    "lat": 37.757324,
+    "lng": -122.3879397,
+    "rating": 4.3,
+    "reviewCount": 268,
+    "aiSummary": null,
+    "review": "We ordered the Signature Cream Top Matcha Oat (iced) and the Banana Oat Milk Latte Matcha (iced) the cream top was alright, but the banana oat one was really good. My sister loved it. Overall, the space is beautiful, and if you like working in a calm, aesthetic cafe, this is definitely the spot.",
+    "priceLevel": null,
+    "website": "https://sohnsf.com/",
+    "matchaFocus": false,
+    "note": "Creative flavor pairings you will not find at a standard matcha bar. The banana oat milk matcha and melona latte are the two to know.",
+    "photos": [
+      "/images/sohn/interior-1.webp",
+      "/images/sohn/interior-2.webp",
+      "/images/sohn/interior-3.webp",
+      "/images/sohn/banana-1.webp",
+      "/images/sohn/melona-1.webp",
+      "/images/sohn/food-1.webp"
+    ]
+  },
+  {
     "id": "ChIJZbiTsj6BhYARIq_J1zorxxA",
     "name": "Compton’s Coffee House",
     "address": "543 Columbus Ave, San Francisco, CA 94133, USA",
@@ -626,6 +627,29 @@
       "/images/comptons/raspberry-1.webp",
       "/images/comptons/raspberry-2.webp",
       "/images/comptons/raspberry-3.webp"
+    ]
+  },
+  {
+    "id": "ChIJdd8Vw3GHhYARYr3MRjbzZ5s",
+    "name": "Tokyo Cream",
+    "address": "1838 Irving St, San Francisco, CA 94122, USA",
+    "neighborhood": "Outer Sunset",
+    "lat": 37.7637585,
+    "lng": -122.4778566,
+    "rating": 4.3,
+    "reviewCount": 71,
+    "aiSummary": null,
+    "review": "I just noticed that they had opened a Tokyo Cream in the area, and I thought I’d give it a try.  We got to try their matcha, yuzu spritzer, and the banana sundae.  We loved the banana sundae, it had banana pudding and chocolate drizzle.",
+    "priceLevel": null,
+    "website": "https://www.tokyocreamusa.com/",
+    "note": "Opened March 2026, this Japanese dessert cafe is built around matcha soft serve, sundaes, and drinks. Pair your matcha with a Kouignigiri, a flaky pastry with in the shape of a Japanese rice ball.",
+    "photos": [
+      "/images/tokyo-cream/sakura-1.webp",
+      "/images/tokyo-cream/sakura-2.webp",
+      "/images/tokyo-cream/sakura-3.webp",
+      "/images/tokyo-cream/sakura-4.webp",
+      "/images/tokyo-cream/sakura-5.webp",
+      "/images/tokyo-cream/sakura-6.webp"
     ]
   },
   {
@@ -648,30 +672,6 @@
       "/images/brew-cha/peach-2.webp",
       "/images/brew-cha/peach-3.webp",
       "/images/brew-cha/peach-4.webp"
-    ]
-  },
-  {
-    "id": "ChIJH6ixN1F_j4ARNHU1HfGU_KY",
-    "name": "SOHN",
-    "address": "2535 3rd St, San Francisco, CA 94107, USA",
-    "neighborhood": "Dogpatch",
-    "lat": 37.757324,
-    "lng": -122.3879397,
-    "rating": 4.2,
-    "reviewCount": 267,
-    "aiSummary": null,
-    "review": "We ordered the Signature Cream Top Matcha Oat (iced) and the Banana Oat Milk Latte Matcha (iced) the cream top was alright, but the banana oat one was really good. My sister loved it. Overall, the space is beautiful, and if you like working in a calm, aesthetic cafe, this is definitely the spot.",
-    "priceLevel": null,
-    "website": "https://sohnsf.com/",
-    "matchaFocus": false,
-    "note": "Creative flavor pairings you will not find at a standard matcha bar. The banana oat milk matcha and melona latte are the two to know.",
-    "photos": [
-      "/images/sohn/interior-1.webp",
-      "/images/sohn/interior-2.webp",
-      "/images/sohn/interior-3.webp",
-      "/images/sohn/banana-1.webp",
-      "/images/sohn/melona-1.webp",
-      "/images/sohn/food-1.webp"
     ]
   },
   {
@@ -726,7 +726,7 @@
     "lat": 37.786671299999995,
     "lng": -122.399674,
     "rating": 4.2,
-    "reviewCount": 191,
+    "reviewCount": 193,
     "aiSummary": null,
     "review": "The uni donburi is outstanding: rich, fresh, and perfectly balanced, a must-order if you love sea urchin.  Even the matcha drinks deserve special mention, it easily one of the best matchas in the city. \n\nExceptional ingredients, thoughtful execution, and a refined yet welcoming atmosphere.",
     "priceLevel": null,
