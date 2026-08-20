@@ -43,29 +43,6 @@
     ]
   },
   {
-    "id": "ChIJBUqVw0qBhYARsZQy7oS9fn4",
-    "name": "Origin Lab Coffee & Matcha",
-    "address": "211 Sutter St, San Francisco, CA 94108, USA",
-    "neighborhood": "Financial District",
-    "lat": 37.7896787,
-    "lng": -122.404049,
-    "rating": 4.8,
-    "reviewCount": 517,
-    "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
-    "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
-    "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
-    "priceLevel": null,
-    "website": "https://originlabcoffee.com",
-    "matchaFocus": true,
-    "photos": [
-      "/images/origin-lab/interior-1.webp",
-      "/images/origin-lab/interior-2.webp",
-      "/images/origin-lab/matcha-1.webp",
-      "/images/origin-lab/matcha-2.webp",
-      "/images/origin-lab/matcha-3.webp"
-    ]
-  },
-  {
     "id": "ChIJ-1EfVACBhYARWm3CpZAzRkg",
     "name": "Junbi Matcha & Tea",
     "address": "685 Market St, San Francisco, CA 94105, USA",
@@ -110,6 +87,29 @@
       "/images/matcha-maiko-japantown/interior-4.webp",
       "/images/matcha-maiko-japantown/kuromitsu-1.webp",
       "/images/matcha-maiko-japantown/strawberry-1.webp"
+    ]
+  },
+  {
+    "id": "ChIJBUqVw0qBhYARsZQy7oS9fn4",
+    "name": "Origin Lab Coffee & Matcha",
+    "address": "211 Sutter St, San Francisco, CA 94108, USA",
+    "neighborhood": "Financial District",
+    "lat": 37.7896787,
+    "lng": -122.404049,
+    "rating": 4.7,
+    "reviewCount": 519,
+    "aiSummary": "Specialty coffee and ceremonial-grade matcha bar known for their Matcha Cloud creations.",
+    "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
+    "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
+    "priceLevel": null,
+    "website": "https://originlabcoffee.com",
+    "matchaFocus": true,
+    "photos": [
+      "/images/origin-lab/interior-1.webp",
+      "/images/origin-lab/interior-2.webp",
+      "/images/origin-lab/matcha-1.webp",
+      "/images/origin-lab/matcha-2.webp",
+      "/images/origin-lab/matcha-3.webp"
     ]
   },
   {
@@ -165,7 +165,7 @@
     "lat": 37.7927162,
     "lng": -122.40008279999999,
     "rating": 4.7,
-    "reviewCount": 270,
+    "reviewCount": 272,
     "aiSummary": null,
     "review": "I found a spot facing the side window next to another guy on a laptop. \n\nI figured I would park there for about an hour while I enjoyed my iced mango matcha drink. \n\nIt was super tasty and I can confirm that everything everyone has said is true.",
     "priceLevel": null,
@@ -764,27 +764,6 @@
     ]
   },
   {
-    "id": "ChIJJegfWwCBhYARAkTy25TY9HA",
-    "name": "Komeya No Bento",
-    "address": "3137 Laguna St, San Francisco, CA 94123, USA",
-    "neighborhood": "Union Street",
-    "lat": 37.8000776,
-    "lng": -122.4314107,
-    "rating": 4.1,
-    "reviewCount": 248,
-    "aiSummary": "Japanese restaurant serving comfort food including salmon in truffle soy in a casual atmosphere.",
-    "review": "Very busy but we ordered online. Worth the wait and LOVED the bento boxes. Matcha was def a plus\nMight need some help with line filtering or keeping the peace, seemed chaotic but perhaps that’s just the weekend matcha rush",
-    "priceLevel": 2,
-    "website": "https://komeya-no-bento.square.site/",
-    "note": "Primarily a bento shop where the matcha is genuinely good. Order online to skip the wait, and add the strawberry matcha latte to any food order.",
-    "photos": [
-      "/images/komeya/strawberry-1.webp",
-      "/images/komeya/mango-1.webp",
-      "/images/komeya/mango-2.webp",
-      "/images/komeya/mango-3.webp"
-    ]
-  },
-  {
     "id": "ChIJN_JxeQCBhYAR6LTP2YCkTDE",
     "name": "Shoji",
     "address": "140 New Montgomery St Suite 1, San Francisco, CA 94105, USA",
@@ -804,6 +783,27 @@
       "/images/shoji/einspanner-3.webp",
       "/images/shoji/affogato-1.webp",
       "/images/shoji/interior-1.webp"
+    ]
+  },
+  {
+    "id": "ChIJJegfWwCBhYARAkTy25TY9HA",
+    "name": "Komeya No Bento",
+    "address": "3137 Laguna St, San Francisco, CA 94123, USA",
+    "neighborhood": "Union Street",
+    "lat": 37.8000776,
+    "lng": -122.4314107,
+    "rating": 4,
+    "reviewCount": 249,
+    "aiSummary": "Japanese restaurant serving comfort food including salmon in truffle soy in a casual atmosphere.",
+    "review": "Very busy but we ordered online. Worth the wait and LOVED the bento boxes. Matcha was def a plus\nMight need some help with line filtering or keeping the peace, seemed chaotic but perhaps that’s just the weekend matcha rush",
+    "priceLevel": 2,
+    "website": "https://komeya-no-bento.square.site/",
+    "note": "Primarily a bento shop where the matcha is genuinely good. Order online to skip the wait, and add the strawberry matcha latte to any food order.",
+    "photos": [
+      "/images/komeya/strawberry-1.webp",
+      "/images/komeya/mango-1.webp",
+      "/images/komeya/mango-2.webp",
+      "/images/komeya/mango-3.webp"
     ]
   },
   {
