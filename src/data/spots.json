@@ -28,7 +28,7 @@
     "lat": 37.7759096,
     "lng": -122.49649,
     "rating": 4.9,
-    "reviewCount": 198,
+    "reviewCount": 199,
     "aiSummary": null,
     "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
     "priceLevel": null,
@@ -165,7 +165,7 @@
     "lat": 37.7927162,
     "lng": -122.40008279999999,
     "rating": 4.7,
-    "reviewCount": 283,
+    "reviewCount": 284,
     "aiSummary": null,
     "review": "I found a spot facing the side window next to another guy on a laptop. \n\nI figured I would park there for about an hour while I enjoyed my iced mango matcha drink. \n\nIt was super tasty and I can confirm that everything everyone has said is true.",
     "priceLevel": null,
@@ -297,7 +297,7 @@
     "lat": 37.7827006,
     "lng": -122.47438799999999,
     "rating": 4.5,
-    "reviewCount": 709,
+    "reviewCount": 711,
     "aiSummary": "Snug eatery offering Asian-accented baked goods and sandwiches.",
     "review": "I LOVE LOVE LOVE breadbelly.  It’s has the BEST matcha lattes in the city in my opinion, even better than some of the matcha I had in Japan, which is A LOT.  I have been trying to find a matcha that tops this place and very few places come close.",
     "priceLevel": 2,
@@ -363,7 +363,7 @@
     "lat": 37.7856787,
     "lng": -122.4305775,
     "rating": 4.5,
-    "reviewCount": 58,
+    "reviewCount": 59,
     "aiSummary": null,
     "review": "Really yummy hojicha! Super cute space with tote bags and they sell Matcha and other teas! They actually whisk their teas by hand and the staff is super friendly! They have free Wi-Fi and really nice bathrooms and a really great place to work :) love it here and I'm so glad I stumbled upon this place!!",
     "priceLevel": null,
@@ -372,6 +372,30 @@
     "photos": [
       "/images/best-boy/yuzu-1.webp",
       "/images/best-boy/yuzu-2.webp"
+    ]
+  },
+  {
+    "id": "ChIJvxxqawB_j4ARchmzEqzM_Nc",
+    "name": "Ceré Tea",
+    "address": "1186 Valencia St, San Francisco, CA 94110, USA",
+    "neighborhood": "Mission District",
+    "lat": 37.753971199999995,
+    "lng": -122.4210238,
+    "rating": 4.5,
+    "reviewCount": 55,
+    "aiSummary": null,
+    "review": "probably my top spot in sf to get matcha now, beating out past favorites.  the matcha itself is strong, flavorful, and not bitter like some cafes.",
+    "priceLevel": null,
+    "website": "https://www.ceretea.com/",
+    "note": "A Japanese tea room on Valencia with one of the more inventive flavor menus in the city. The osmanthus latte and black sesame einspanner are genuinely unusual finds.",
+    "photos": [
+      "/images/cere-tea/interior-1.webp",
+      "/images/cere-tea/strawberry-1.webp",
+      "/images/cere-tea/banana-1.webp",
+      "/images/cere-tea/guava-1.webp",
+      "/images/cere-tea/osmanthus-1.webp",
+      "/images/cere-tea/black-sesame-einspanner-1.webp",
+      "/images/cere-tea/black-sesame-einspanner-2.webp"
     ]
   },
   {
@@ -476,7 +500,7 @@
     "lat": 37.7852405,
     "lng": -122.4647832,
     "rating": 4.4,
-    "reviewCount": 120,
+    "reviewCount": 121,
     "aiSummary": null,
     "review": "So happy to support a young, Asian-owned business in the neighborhood.  The matcha was delicious (I tried the matcha matcha) the team was incredibly welcoming, the vibes were great, music was stellar.  Definitely bringing a some cool factor to the block.",
     "priceLevel": null,
@@ -512,30 +536,6 @@
       "/images/kiss-of-matcha-sunset/photo-3.webp",
       "/images/kiss-of-matcha-sunset/photo-4.webp",
       "/images/kiss-of-matcha-sunset/photo-5.webp"
-    ]
-  },
-  {
-    "id": "ChIJvxxqawB_j4ARchmzEqzM_Nc",
-    "name": "Ceré Tea",
-    "address": "1186 Valencia St, San Francisco, CA 94110, USA",
-    "neighborhood": "Mission District",
-    "lat": 37.753971199999995,
-    "lng": -122.4210238,
-    "rating": 4.4,
-    "reviewCount": 53,
-    "aiSummary": null,
-    "review": "probably my top spot in sf to get matcha now, beating out past favorites.  the matcha itself is strong, flavorful, and not bitter like some cafes.",
-    "priceLevel": null,
-    "website": "https://www.ceretea.com/",
-    "note": "A Japanese tea room on Valencia with one of the more inventive flavor menus in the city. The osmanthus latte and black sesame einspanner are genuinely unusual finds.",
-    "photos": [
-      "/images/cere-tea/interior-1.webp",
-      "/images/cere-tea/strawberry-1.webp",
-      "/images/cere-tea/banana-1.webp",
-      "/images/cere-tea/guava-1.webp",
-      "/images/cere-tea/osmanthus-1.webp",
-      "/images/cere-tea/black-sesame-einspanner-1.webp",
-      "/images/cere-tea/black-sesame-einspanner-2.webp"
     ]
   },
   {
