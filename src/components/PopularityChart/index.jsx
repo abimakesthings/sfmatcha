@@ -1,6 +1,7 @@
 import './PopularityChart.css'
 import spots from '../../data/spots.json'
 import { useScrollVisible } from '../../hooks/useScrollVisible'
+import { spotsLastUpdated, formatFreshness } from '../../lib/spots'
 
 function groupByChain(list) {
   const map = new Map()
@@ -34,7 +35,7 @@ export default function PopularityChart() {
             <h2 className='popular-subtitle'>matcha spots</h2>
           </div>
           <p className='subtitle popular-meta'>matcha-first spots, ranked by review count</p>
-          <p className='data-freshness'>updates daily, source: Google Maps</p>
+          <p className='data-freshness'>{formatFreshness(spotsLastUpdated)}</p>
         </div>
         <div className='popular-chart'>
           <div className='popular-chart-head'>
