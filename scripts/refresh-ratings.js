@@ -60,8 +60,8 @@ async function main() {
     }
   }))
 
-  if (failCount === spots.length) {
-    console.error(`\nAll ${spots.length} spots failed — aborting without writing`)
+  if (failCount / spots.length > 0.5) {
+    console.error(`\n${failCount}/${spots.length} spots failed — aborting without writing (check GOOGLE_MAPS_API_KEY)`)
     process.exit(1)
   }
 
