@@ -178,27 +178,6 @@
     ]
   },
   {
-    "id": "ChIJb4QAI8d9j4ARXXsonAsNN-Y",
-    "name": "Jade & Java Cafe",
-    "address": "51 Cambon Dr, San Francisco, CA 94132, USA",
-    "neighborhood": "Parkmerced",
-    "lat": 37.718001099999995,
-    "lng": -122.4740379,
-    "rating": 4.7,
-    "reviewCount": 27,
-    "aiSummary": null,
-    "review": "Their menu is simple to choose from and not vast. They offer matcha drinks, fruit teas, and Vietnamese coffee.  Everything is made to order which is always a plus for me and I never mind the wait since I am a very patient person.",
-    "priceLevel": null,
-    "website": null,
-    "note": "A matcha and Vietnamese coffee cafe opened in the Fall of 2025. Standout flavors include the crème brûlée matcha and banana cream matcha.",
-    "photos": [
-      "/images/jade-java/banana-1.webp",
-      "/images/jade-java/creme-brulee-1.webp",
-      "/images/jade-java/strawberry-1.webp",
-      "/images/jade-java/black-sesame-1.webp"
-    ]
-  },
-  {
     "id": "ChIJ3aKMWoiAhYARmNLc2TR11L0",
     "name": "Asha Tea House",
     "address": "17 Kearny St, San Francisco, CA 94108, USA",
@@ -372,6 +351,27 @@
     "photos": [
       "/images/best-boy/yuzu-1.webp",
       "/images/best-boy/yuzu-2.webp"
+    ]
+  },
+  {
+    "id": "ChIJb4QAI8d9j4ARXXsonAsNN-Y",
+    "name": "Jade & Java Cafe",
+    "address": "51 Cambon Dr, San Francisco, CA 94132, USA",
+    "neighborhood": "Parkmerced",
+    "lat": 37.718001099999995,
+    "lng": -122.4740379,
+    "rating": 4.5,
+    "reviewCount": 28,
+    "aiSummary": null,
+    "review": "Their menu is simple to choose from and not vast. They offer matcha drinks, fruit teas, and Vietnamese coffee.  Everything is made to order which is always a plus for me and I never mind the wait since I am a very patient person.",
+    "priceLevel": null,
+    "website": null,
+    "note": "A matcha and Vietnamese coffee cafe opened in the Fall of 2025. Standout flavors include the crème brûlée matcha and banana cream matcha.",
+    "photos": [
+      "/images/jade-java/banana-1.webp",
+      "/images/jade-java/creme-brulee-1.webp",
+      "/images/jade-java/strawberry-1.webp",
+      "/images/jade-java/black-sesame-1.webp"
     ]
   },
   {
