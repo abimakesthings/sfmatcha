@@ -30,7 +30,7 @@
     "rating": 4.9,
     "reviewCount": 246,
     "aiSummary": "Specialized tea house featuring in-house stone-milled matcha and premium teas.",
-    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
+    "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular caf\u00e9s.",
     "priceLevel": null,
     "website": "https://www.constancetea.com/",
     "matchaFocus": true,
@@ -51,7 +51,7 @@
     "lng": -122.40296009999999,
     "rating": 4.8,
     "reviewCount": 248,
-    "aiSummary": "Vibrant matcha-focused café serving handcrafted Uji matcha lattes and Japanese-style rice balls.",
+    "aiSummary": "Vibrant matcha-focused caf\u00e9 serving handcrafted Uji matcha lattes and Japanese-style rice balls.",
     "review": "The matcha is not too strong, but tastes perfect. Love the music and decor. Both the Yuzu Dragon Fruit Refresher and Cold Guava Matcha Latte tasted delicious! I couldn't choose one over the other.",
     "priceLevel": null,
     "website": "http://junbishop.com/",
@@ -114,7 +114,7 @@
   },
   {
     "id": "ChIJzTuNMZeHhYARlfmug2YpgMk",
-    "name": "Black Bird Bookstore and Café",
+    "name": "Black Bird Bookstore and Caf\u00e9",
     "address": "4541 Irving St, San Francisco, CA 94122, USA",
     "neighborhood": "Outer Sunset",
     "lat": 37.7620739,
@@ -126,7 +126,7 @@
     "priceLevel": null,
     "website": "https://www.blackbirdsf.com/",
     "matchaFocus": false,
-    "note": "Part bookstore, part café, this cozy spot even has a backyard garden. Its seasonal matcha lattes, like peach and strawberry, are made with farmers market fruit syrups.",
+    "note": "Part bookstore, part caf\u00e9, this cozy spot even has a backyard garden. Its seasonal matcha lattes, like peach and strawberry, are made with farmers market fruit syrups.",
     "photos": [
       "/images/black-bird/interior-1.webp",
       "/images/black-bird/interior-2.webp",
@@ -138,7 +138,7 @@
   },
   {
     "id": "ChIJ844xLVCBhYARnhgW3uG5GqU",
-    "name": "Compton’s Coffee House",
+    "name": "Compton\u2019s Coffee House",
     "address": "1910 Fillmore St, San Francisco, CA 94115, USA",
     "neighborhood": "Japantown",
     "lat": 37.7874197,
@@ -150,7 +150,7 @@
     "priceLevel": null,
     "website": "https://comptonscoffeehouse.com/",
     "matchaFocus": false,
-    "note": "A neighborhood anchor steps from the Japantown Peace Plaza. Compton's is a reliable, well-made matcha latte in a spot that draws a loyal local crowd — expect a line on weekend mornings.",
+    "note": "A neighborhood anchor steps from the Japantown Peace Plaza. Compton's is a reliable, well-made matcha latte in a spot that draws a loyal local crowd \u2014 expect a line on weekend mornings.",
     "photos": [
       "/images/comptons/raspberry-1.webp",
       "/images/comptons/raspberry-2.webp",
@@ -166,7 +166,7 @@
     "lng": -122.40008279999999,
     "rating": 4.7,
     "reviewCount": 325,
-    "aiSummary": "Japanese-inspired café serving specialty coffee, matcha, and quick Japanese bites.",
+    "aiSummary": "Japanese-inspired caf\u00e9 serving specialty coffee, matcha, and quick Japanese bites.",
     "review": "I found a spot facing the side window next to another guy on a laptop. \n\nI figured I would park there for about an hour while I enjoyed my iced mango matcha drink. \n\nIt was super tasty and I can confirm that everything everyone has said is true.",
     "priceLevel": null,
     "website": "http://thewildfoxsf.com/",
@@ -196,7 +196,8 @@
       "/images/asha/strawberry-2.webp",
       "/images/asha/strawberry-3.webp",
       "/images/asha/blood-orange-1.webp"
-    ]
+    ],
+    "matchaFocus": false
   },
   {
     "id": "ChIJNeQAcw9-j4ARP9-nCnYB30o",
@@ -256,7 +257,7 @@
     "rating": 4.6,
     "reviewCount": 237,
     "aiSummary": "Popular Japanese cafe offering a variety of onigiri and specialty matcha drinks.",
-    "review": "This place is popping and for good reason—\n\nIt was highly recommended by a friend and the flavor of the matcha is rich and authentic tweaked with a little something something like strawberry or pistachio cream. \n\nFood lives up to the hype as well.",
+    "review": "This place is popping and for good reason\u2014\n\nIt was highly recommended by a friend and the flavor of the matcha is rich and authentic tweaked with a little something something like strawberry or pistachio cream. \n\nFood lives up to the hype as well.",
     "priceLevel": null,
     "website": "https://tadaimasf.com/",
     "note": "Grab a Japanese sando with your matcha. This cafe is known for matcha lattes with optional twists like salted cheese, black sesame, or strawberry cream.",
@@ -267,6 +268,29 @@
       "/images/tadaima-sunset/drink-2.webp",
       "/images/tadaima-sunset/pistachio-1.webp"
     ]
+  },
+  {
+    "id": "ChIJ0SMoLQCBhYARITzfRWNdCxI",
+    "name": "Diary of Matcha",
+    "address": "214 Sutter St, San Francisco, CA 94108, USA",
+    "neighborhood": "Union Square",
+    "lat": 37.7899159,
+    "lng": -122.4041691,
+    "rating": 4.6,
+    "reviewCount": 44,
+    "aiSummary": null,
+    "review": null,
+    "priceLevel": null,
+    "website": null,
+    "matchaFocus": true,
+    "note": "People recommend the matcha latte with rose cold foam, and the hojicha gets praise too.",
+    "photos": [
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSBPrJAj1BfOyG0LZiRN9LVtjXKgMy2jX3Nhni30GJOj3Qs1V84QC7lx_gjGIV17mW0PfrMZuVfWdVy7I5p9V-6Xzd4LhgLnmp45ZOClebzh7FpAv35kFndmLl24QkzY-XI7iEjzn1ir6F=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TsTUAoz2eR-fC0lN9t82bXqwWSs40LXlZhpkuybZXRdsu2ri13E0kp92VRAz8XZb6dLxS8-M0qWpkeApbubr7TyCDdrsNzUYDxaQzBi5FMgKi9Agp8eNFgwuOwuv2Imzeft_dRSKCTxU3D=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TU2r2M1nNVQI822densT3SdJ_pLqn25raQeDOfi9JiIfhjay0GDDVE6yRuumq8yFFAHrn5_M-xc-yqnMDtmoG4IgirKWJKeVF0m3ndr5OAh6vedOMhJ6u9PNQD7Nsc5tXVtW0YDGYBEo6r=w800-h1422-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TIyjTe8YZyoCEFV_Z9Fci6wEu7CbftItGZwW3k7GcAGTtj41wSbJCZogThMSUdtlZQboyOIyprAchMo1kXattlxsDjaRBVp5bgnHollhgiG29qVyH8EVd0-jQtu6nAINxG-D6peVPytgQ=w800-h1067-k-no"
+    ],
+    "photo": "places/ChIJ0SMoLQCBhYARITzfRWNdCxI/photos/AV-0GLfcO8HK1c4kr8wi3r0XlGYPfvxnxAdG9-NcdnK497m5Z5kuUX_R40NXK0L-zms_LzwpuxWh5SSNwwNHnqZBKpi7_QbhbISf89U-GcDmwlTVZyys2xFs8gybKVmhz6yicsHStIDtES3L_rX_Aky9mhvCC7SzDpsKF9CiMxYrpxt2HsTceM5dh9dr8qGRSnVtOUwGdvwY8k-sGA87mTjVfZ2-dzW_Ksgt8NmATgDNWCQ_EymiqPH53fd3-bxbsYDMVRIEWX7YdCr0KtwcN46Axl3rGxxmG5F7THGmIMfA-fc7nUzRLIxhYHAaN5BXLtiH6BkQ7q5S8BolWfRJ7tRkqDczChvN2vHSLEEYRmyMOUY-kATVGZYD3nov0k_dYxEZWTY6e7ioLZoxHPxb_Ne7Ez6PFtpBtdrB5j8EVveKV9qTyg"
   },
   {
     "id": "ChIJb4QAI8d9j4ARXXsonAsNN-Y",
@@ -281,13 +305,37 @@
     "review": "Their menu is simple to choose from and not vast. They offer matcha drinks, fruit teas, and Vietnamese coffee.  Everything is made to order which is always a plus for me and I never mind the wait since I am a very patient person.",
     "priceLevel": null,
     "website": null,
-    "note": "A matcha and Vietnamese coffee cafe opened in the Fall of 2025. Standout flavors include the crème brûlée matcha and banana cream matcha.",
+    "note": "A matcha and Vietnamese coffee cafe opened in the Fall of 2025. Standout flavors include the cr\u00e8me br\u00fbl\u00e9e matcha and banana cream matcha.",
     "photos": [
       "/images/jade-java/banana-1.webp",
       "/images/jade-java/creme-brulee-1.webp",
       "/images/jade-java/strawberry-1.webp",
       "/images/jade-java/black-sesame-1.webp"
     ]
+  },
+  {
+    "id": "ChIJw2NiLQCBhYARCRc2ms4E6t8",
+    "name": "Q Specialty Coffee",
+    "address": "405 Howard St Suite 140, San Francisco, CA 94105, USA",
+    "neighborhood": "SoMa",
+    "lat": 37.7886088,
+    "lng": -122.3953756,
+    "rating": 4.6,
+    "reviewCount": 11,
+    "aiSummary": null,
+    "review": null,
+    "priceLevel": null,
+    "website": "https://www.qspecialtycoffee.com/",
+    "matchaFocus": true,
+    "note": "Q is known for matcha clouds, matcha topped with flavored foam. People recommend the Velvet Matcha Cloud at the Howard St shop.",
+    "photos": [
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S7uFJlKpq6xZZqFZ8FbCMr7Mh2ImlLKvLGoxGRaC-FJRLM_WajnVxY7x5NM_Ggp1IzP0UCuHi99jsqVU-zVI9DxtAyM1mAcxaq4SQg3Xfy462fzdkAbZWGr5P9gcNxCRChKxuYZlPtHESq=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SURLXL_XJsoKPuKAQvhUnH9QHWhVN99cEAlk4IJS7udl91T_tde0b1_5dGQh3fTyGIKGbKNXWRI05htVN-PWVjAXpy6xBjY_brsg2tL65JTVba0_WVTk9jNdq5ZaptGZkU2yle_0opqA=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TYY81L-V_5I0_58nfP2Y5-lnLFC1p44KLTgzx0z_IM195eqXw6EkbsY--wULm5UyDwLWg2Cnw_-5E3YRKErbK1SQexYjwc0Jp8nKr033HESWK6DMGfQ4tA5KZ--2XPFRdskuVJMn1Cloa0=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QzBq8penPR02YRQdaYeNEhiyt7tqJ8pbMgWgHoaISaeWnX4wvXfcoimcY6vQc-RtPw7g1ueXHopJwpPfFREcw3CrPdQU_PM2huc2pP9V4C_EW8tyvlwv7DeHjceStZ8yWVen8cNrGQIeM=w800-h1422-k-no",
+      "https://lh3.googleusercontent.com/grass-cs/AABkmLcY3GRBojNe9G9QLIw3EQeziaN9Lxqr6XSS157SrbaBsBUNTDoxkoRb-ZVQ_kQTxH9NTWVjXFurickFylM8AGGGIjxzuppZTVRRMS5G1QFbtYINU3V5pNztc7_7MOojVtOdJH_OjOaD2nI=w800-h600-k-no"
+    ],
+    "photo": "places/ChIJw2NiLQCBhYARCRc2ms4E6t8/photos/AV-0GLcyWqsut1BDLjrdAcK-RIf94G8Q1RsPBFP4MFjpxJLaerhkUo9nvqj2mNjKLkz440UFmsZldiMqEHpHZD7kEW0dbkCcKFpy6Z3hjvWJ9dc3ztMCLGVdA8SwxkK1nf-3273TL2Ke-becltXFBJE8G5dTOTif-a6Tm3Oi1LmFFZTdv1GdaflEKQxZtvHa14Yi9KadaRXBnK7aXA96nFAS7WH8-rq4oqlXDFpTTNCNF-7qt97nPw56Rug1-6JPvMChEM-I8DuPWkUbK9m93OyuCXgqKsxJZM9ewNCL1jSIKQEWVCut4itNfR_M-jfocYqYuc-ITEs8-5qYRpl8mf29hcfzJItRo3L0SxexaT1p7H4aAXooaqU3uVmafRyOd3yScxiXdOeZ-M86i6vpBvPDwC32JMiphCVkIOWqrkarX-Do"
   },
   {
     "id": "ChIJ06Hh75aHhYARre2ZXOUDzXY",
@@ -299,7 +347,7 @@
     "rating": 4.5,
     "reviewCount": 735,
     "aiSummary": "Asian-fusion bakery and coffee shop serving signature kaya toast and gourmet pastries.",
-    "review": "I LOVE LOVE LOVE breadbelly.  It’s has the BEST matcha lattes in the city in my opinion, even better than some of the matcha I had in Japan, which is A LOT.  I have been trying to find a matcha that tops this place and very few places come close.",
+    "review": "I LOVE LOVE LOVE breadbelly.  It\u2019s has the BEST matcha lattes in the city in my opinion, even better than some of the matcha I had in Japan, which is A LOT.  I have been trying to find a matcha that tops this place and very few places come close.",
     "priceLevel": 2,
     "website": "https://breadbellysf.com/",
     "matchaFocus": false,
@@ -348,7 +396,9 @@
     "matchaFocus": false,
     "photos": [
       "/images/best-boy/yuzu-1.webp",
-      "/images/best-boy/yuzu-2.webp"
+      "/images/best-boy/yuzu-2.webp",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SykAX2KM7qzZARYBmmSzdcKb8HjFDicPXIj_26SStp8RHAUv2DvcrIs6N8x5TUJl8JYvHrYH4ziScCNJY-4qqx6sXBrz8XQOvzcLuqoSjQGzzk0YNGUAZHBmpUTjxTq9lHQ_Hswa3y5kPf=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QhJTpH1czuWLm1Rtbkc7ijpVoWoACVKuLtHEiX0uJNeeOQaqtJhF2abbhFU5HBIv6GY_AXqHg_R3cndJH6OzKopP8BBTkeQ6269PfgGRCYMUbdgQNk1BvpLTbRaK9uYcFW72Ri5EOxW-I=w800-h600-k-no"
     ]
   },
   {
@@ -361,10 +411,10 @@
     "rating": 4.5,
     "reviewCount": 37,
     "aiSummary": null,
-    "review": "I got the double cream matcha and it was super rich and creamy ($6.75). The sweetness level was perfect for me and the matcha was not too sweet or bitter — it was really smooth and delicious.",
+    "review": "I got the double cream matcha and it was super rich and creamy ($6.75). The sweetness level was perfect for me and the matcha was not too sweet or bitter \u2014 it was really smooth and delicious.",
     "priceLevel": null,
     "website": "https://moriwamatcha.fronteats.com/",
-    "note": "A dedicated matcha shop on a quiet stretch of Taraval, Moriwa keeps the menu tight — double cream matcha, strawberry, mango. Still building its reputation, but the regulars it's earning are enthusiastic ones.",
+    "note": "A dedicated matcha shop on a quiet stretch of Taraval, Moriwa keeps the menu tight \u2014 double cream matcha, strawberry, mango. Still building its reputation, but the regulars it's earning are enthusiastic ones.",
     "photos": [
       "/images/moriwa/photo-1.webp",
       "/images/moriwa/photo-2.webp",
@@ -383,7 +433,7 @@
     "rating": 4.4,
     "reviewCount": 1128,
     "aiSummary": "Japanese-inspired cafe serving specialized matcha drinks and artisanal pastries.",
-    "review": "loved their matcha! probably one of the best in the city. the thick an creamy texture makes you want to come back. my favorite is their regular iced matcha and strawberry matcha latte 🍵",
+    "review": "loved their matcha! probably one of the best in the city. the thick an creamy texture makes you want to come back. my favorite is their regular iced matcha and strawberry matcha latte \ud83c\udf75",
     "priceLevel": 2,
     "website": "https://www.stonemillmatcha-us.com/",
     "note": "One of the first dedicated matcha spots in SF, closed during COVID and eventually reopened. Minimalist space, focused menu. The latte is clean and not too sweet.",
@@ -406,7 +456,7 @@
     "rating": 4.4,
     "reviewCount": 502,
     "aiSummary": "Charming cafe specializing in craft teas and creative boba cocktails.",
-    "review": "The creme brûlée as well as the UBE boba are some of the best drinks I’ve had in SF period.  The matcha is also amazing for a boba spot (matcha snob here).  Do yourself a favor and get urban ritual.",
+    "review": "The creme br\u00fbl\u00e9e as well as the UBE boba are some of the best drinks I\u2019ve had in SF period.  The matcha is also amazing for a boba spot (matcha snob here).  Do yourself a favor and get urban ritual.",
     "priceLevel": 1,
     "website": "http://www.urbanritualcafe.com/",
     "matchaFocus": false,
@@ -562,7 +612,7 @@
   },
   {
     "id": "ChIJZbiTsj6BhYARIq_J1zorxxA",
-    "name": "Compton’s Coffee House",
+    "name": "Compton\u2019s Coffee House",
     "address": "543 Columbus Ave, San Francisco, CA 94133, USA",
     "neighborhood": "North Beach",
     "lat": 37.7998392,
@@ -582,8 +632,31 @@
     ]
   },
   {
+    "id": "ChIJLb2sG7V9j4AR1dfwcKFnLBc",
+    "name": "Jandii Cafe",
+    "address": "1100 Taraval St, San Francisco, CA 94116, USA",
+    "neighborhood": "Inner Sunset",
+    "lat": 37.7431342,
+    "lng": -122.4780274,
+    "rating": 4.4,
+    "reviewCount": 90,
+    "aiSummary": null,
+    "review": null,
+    "priceLevel": "PRICE_LEVEL_INEXPENSIVE",
+    "website": null,
+    "matchaFocus": false,
+    "note": "People recommend the iced matcha einsp\u00e4nner, a matcha topped with a cream cap, and it gets rave reviews. The cafe also serves warm scones with jam, and the space is bright with two floors.",
+    "photos": [
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RQBJQCMeFgBNzRBmPONjDZN5JeyE_JG9y-04eWexrOJZZCE2rh0vcMf4d__68twbLVgb4Y-aeRGHoKJVJhtyXK1N1vwgCtdSiMYR2r52pCdtuSR8GrlJC2mJk4DkwX_THFVXvvLUFZvDQ=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QU3v8bR8wvitqIc5LMx5Sybw8EWyQdkDfZkVeMn3-IE9QOGvvUuUn_BkKidVcIlTH37fziLPIqRAjqGmDeMvXx4gDbk-8c5uwYZ-RIMTGKCsU_-zhQ44uWe02QcxyRus8aFv6ier1Zi2hz=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SHhOJosU5Ah-ein-YxB5vTHKYJM4UICYhlDbppR3aehRrh_MYTRXQnvsgeNoi_hd57O_0QYnX5pPmBo7XNvgpXiR5ixVyBc1Q1BFXDXnc1o4NW7-05YaSktOv78Og7RRkL2HE65byohjvi=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QtbKAqyLrntbbEitKmAlXwE0n5A5WAwiWqjJqFruM6-8n0ICchQfwksHWiEuQEsvXBSzy3D08_I5qrsOVDHwllpikUw72nHJ0yVPySly6L88EnABLkWCvLTPthzh5S09a_Y-en74RNTgNq=w800-h1422-k-no"
+    ],
+    "photo": "places/ChIJLb2sG7V9j4AR1dfwcKFnLBc/photos/AV-0GLfB5YjTTeBN5n_JLoD5-cNVflcNktLgVI-Dupjs6HnQRaKP2-QlxDcM_4FOEfidTzNRroXQFLjCTAVVjTD5Oh-eW1LM_N-v6vP3Zu3TQ7CmLQidBly2NoqPE0Hjkx6jf4AwLmWHFUnoNzqKUxVv6eJUolwbJFNkR_N5P3be4N4NiapT-RUd6VQxc3AkmyPOqW--mKmILSUVLMuatKKEIYIESlRd6i-XkU6rhoPe6r7smLDedoIlV_M52E1vh7WwJBN_5CK49T3yijcJKzZSb37hMKWUgGQI6UHiEd7-rZ5acoP8xsyZppjV1tkqHeEqkjxM1fa7lVD4FbvgrBBKnQzhTb9HdDevm1oU30P0JH2IsEVfcR76jyP-Rj9OWGByJIVwxYgJGgbwCxMAxqRJm8zKz3tGuffj7n3sCRPau_pGNQ"
+  },
+  {
     "id": "ChIJvxxqawB_j4ARchmzEqzM_Nc",
-    "name": "Ceré Tea",
+    "name": "Cer\u00e9 Tea",
     "address": "1186 Valencia St, San Francisco, CA 94110, USA",
     "neighborhood": "Mission District",
     "lat": 37.753971199999995,
@@ -614,8 +687,8 @@
     "lng": -122.4778566,
     "rating": 4.3,
     "reviewCount": 109,
-    "aiSummary": "Japanese dessert café serving Hokkaido milk soft serve and handcrafted sundaes.",
-    "review": "I just noticed that they had opened a Tokyo Cream in the area, and I thought I’d give it a try.  We got to try their matcha, yuzu spritzer, and the banana sundae.  We loved the banana sundae, it had banana pudding and chocolate drizzle.",
+    "aiSummary": "Japanese dessert caf\u00e9 serving Hokkaido milk soft serve and handcrafted sundaes.",
+    "review": "I just noticed that they had opened a Tokyo Cream in the area, and I thought I\u2019d give it a try.  We got to try their matcha, yuzu spritzer, and the banana sundae.  We loved the banana sundae, it had banana pudding and chocolate drizzle.",
     "priceLevel": null,
     "website": "https://www.tokyocreamusa.com/",
     "note": "Opened March 2026, this Japanese dessert cafe is built around matcha soft serve, sundaes, and drinks. Pair your matcha with a Kouignigiri, a flaky pastry with in the shape of a Japanese rice ball.",
@@ -729,7 +802,7 @@
     "rating": 4.2,
     "reviewCount": 265,
     "aiSummary": "Popular specialty cafe featuring handcrafted matcha beverages and house-roasted coffee.",
-    "review": "Even when it’s packed, you’re never waiting long, and the staff keeps everything flowing effortlessly. \n\nThe matcha deserves its own shoutout — perfectly balanced, creamy, and not overly sweet.  You can tell they use high-quality matcha and actually know how to prepare it properly.",
+    "review": "Even when it\u2019s packed, you\u2019re never waiting long, and the staff keeps everything flowing effortlessly. \n\nThe matcha deserves its own shoutout \u2014 perfectly balanced, creamy, and not overly sweet.  You can tell they use high-quality matcha and actually know how to prepare it properly.",
     "priceLevel": null,
     "website": "https://www.qspecialtycoffee.com/",
     "note": "A rare spot that takes both coffee and matcha seriously. Beans roasted in-house in 12 minutes, six matcha drinks including the Triple Matcha Yuzu Cloud, and Lady M mille crepes if you need something sweet.",
@@ -739,7 +812,8 @@
       "/images/q-specialty/yuzu-1.webp",
       "/images/q-specialty/sparkling-1.webp",
       "/images/q-specialty/coco-wave-1.webp"
-    ]
+    ],
+    "matchaFocus": true
   },
   {
     "id": "ChIJN_JxeQCBhYAR6LTP2YCkTDE",
@@ -795,7 +869,7 @@
     "rating": 4,
     "reviewCount": 266,
     "aiSummary": "Japanese takeaway spot featuring artfully presented bento boxes and ceremonial-grade matcha drinks.",
-    "review": "Very busy but we ordered online. Worth the wait and LOVED the bento boxes. Matcha was def a plus\nMight need some help with line filtering or keeping the peace, seemed chaotic but perhaps that’s just the weekend matcha rush",
+    "review": "Very busy but we ordered online. Worth the wait and LOVED the bento boxes. Matcha was def a plus\nMight need some help with line filtering or keeping the peace, seemed chaotic but perhaps that\u2019s just the weekend matcha rush",
     "priceLevel": 2,
     "website": "https://komeya-no-bento.square.site/",
     "note": "Primarily a bento shop where the matcha is genuinely good. Order online to skip the wait, and add the strawberry matcha latte to any food order.",
