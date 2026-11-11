@@ -24,7 +24,6 @@ const flavorStacks = [
   [{ id: 'maiko-kuromitsu',      flavor: 'Matcha kuromitsu kinako',        cafe: 'Matcha Cafe Maiko',   photo: photo('Maiko'),        photoUrl: '/images/matcha-maiko-japantown/kuromitsu-1.webp' }],
   [{ id: 'tadaima-cheese',       flavor: 'Salted cheese cream matcha',     cafe: 'Tadaima',             photo: photo('Tadaima Inner'), photoUrl: '/images/tadaima-mission/cheese-1.webp' }],
   [{ id: 'tadaima-pistachio',    flavor: 'Pistachio cream matcha',         cafe: 'Tadaima',             photo: photo('Tadaima Inner'), photoUrl: '/images/tadaima-sunset/pistachio-1.webp' }],
-  [{ id: 'progeny-blueberry',    flavor: 'Blueberry iced matcha',          cafe: 'Progeny Coffee',      photo: photo('Progeny'),      photoUrl: '/images/progeny/blueberry-1.webp' }],
   [{ id: 'stonemill-rose',       flavor: 'Rose matcha latte',              cafe: 'Stonemill Matcha',    photo: photo('Stonemill'),    photoUrl: '/images/stonemill/rose-1.webp' }],
   [{ id: 'asha-blood-orange',    flavor: 'Blood orange matcha latte',      cafe: 'Asha Tea House',      photo: photo('Asha'),         photoUrl: '/images/asha/blood-orange-1.webp' }],
   [{ id: 'junbi-vanilla',      flavor: 'Madagascar vanilla matcha latte', cafe: 'Junbi Matcha & Tea', photo: photo('Junbi'),        photoUrl: '/images/junbi/vanilla-1.webp' }],

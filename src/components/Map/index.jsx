@@ -245,7 +245,7 @@ function SpotCard({ spot, onClose }) {
           {spot.rating}<span className='spot-card-star'>★</span>
           <span className='spot-card-count'>({spot.reviewCount?.toLocaleString()})</span>
         </p>
-        {spot.aiSummary && <p className='spot-card-summary'>{spot.aiSummary}</p>}
+        {(spot.aiSummary || spot.mapDescription) && <p className='spot-card-summary'>{spot.aiSummary || spot.mapDescription}</p>}
         {spot.review && <p className='spot-card-review'>"{spot.review}"</p>}
         {spot.website && (
           <a className='spot-card-link' href={spot.website} target='_blank' rel='noreferrer' onClick={() => track('spot_website_click', { spot_name: spot.name })}>
