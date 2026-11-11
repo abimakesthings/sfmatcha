@@ -41,7 +41,7 @@ function FlavorStack({ stack }) {
           >
             <div className='flavor-photo'>
               {card.photoUrl ? (
-                <img src={card.photoUrl} alt={card.flavor} />
+                <img src={card.photoUrl} alt={card.flavor} style={card.focus ? { objectPosition: card.focus } : undefined} />
               ) : card.photo ? (
                 <img
                   src={placesPhotoUrl(card.photo)}

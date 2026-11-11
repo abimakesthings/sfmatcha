@@ -20,11 +20,19 @@ const flavorStacks = [
     { id: 'cere-banana',         flavor: 'Banana pudding matcha',          cafe: 'Ceré Tea',            photo: photo('Ceré Tea'),     photoUrl: '/images/cere-tea/banana-1.webp' },
   ],
   [{ id: 'jadejava-creme',       flavor: 'Crème brûlée matcha',            cafe: 'Jade & Java Cafe',    photo: photo('Jade'),         photoUrl: '/images/jade-java/creme-brulee-1.webp' }],
-  [{ id: 'jadejava-black-sesame', flavor: 'Black sesame matcha',           cafe: 'Jade & Java Cafe',    photo: photo('Jade'),         photoUrl: '/images/jade-java/black-sesame-1.webp' }],
-  [{ id: 'maiko-kuromitsu',      flavor: 'Matcha kuromitsu kinako',        cafe: 'Matcha Cafe Maiko',   photo: photo('Maiko'),        photoUrl: '/images/matcha-maiko-japantown/kuromitsu-1.webp' }],
-  [{ id: 'tadaima-cheese',       flavor: 'Salted cheese cream matcha',     cafe: 'Tadaima',             photo: photo('Tadaima Inner'), photoUrl: '/images/tadaima-mission/cheese-1.webp' }],
+  [
+    { id: 'jadejava-black-sesame', flavor: 'Black sesame matcha',           cafe: 'Jade & Java Cafe',    photo: photo('Jade'),         photoUrl: '/images/jade-java/black-sesame-1.webp' },
+    { id: 'cere-black-sesame-einspanner', flavor: 'Black sesame matcha einspänner', cafe: 'Ceré Tea',   photo: photo('Ceré Tea'),     photoUrl: '/images/cere-tea/black-sesame-einspanner-1.webp' },
+  ],
+  [
+    { id: 'tadaima-cheese',       flavor: 'Salted cheese cream matcha',     cafe: 'Tadaima',             photo: photo('Tadaima Inner'), photoUrl: '/images/tadaima-mission/cheese-1.webp' },
+    { id: 'komeya-cream-cheese',   flavor: 'Cream cheese matcha latte',      cafe: 'Komeya No Bento',     photo: photo('Komeya'),       photoUrl: 'https://lh3.googleusercontent.com/grass-cs/AABkmLdbIKcvWvwzzViJZ23hi58niFlmQYijODhdAtmYXjvKQuT6nCjwiPIVWCyOXQgzZVtKV-pIuTsdGBvlRkftGXoHwyDQn41NNTZIMHZK3LEodS5zaxbzc7MdYnKvc-n7261JjtGaVMrm_OW3=w800-h1067-k-no', focus: 'center 65%' },
+  ],
   [{ id: 'tadaima-pistachio',    flavor: 'Pistachio cream matcha',         cafe: 'Tadaima',             photo: photo('Tadaima Inner'), photoUrl: '/images/tadaima-sunset/pistachio-1.webp' }],
-  [{ id: 'stonemill-rose',       flavor: 'Rose matcha latte',              cafe: 'Stonemill Matcha',    photo: photo('Stonemill'),    photoUrl: '/images/stonemill/rose-1.webp' }],
+  [
+    { id: 'stonemill-rose',       flavor: 'Rose matcha latte',              cafe: 'Stonemill Matcha',    photo: photo('Stonemill'),    photoUrl: '/images/stonemill/rose-1.webp' },
+    { id: 'diary-rose',           flavor: 'Matcha with rose cold foam',       cafe: 'Diary of Matcha',   photo: photo('Diary of Matcha'), photoUrl: 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SuU8aZ9MZGgd6JtEo0YxITwmAeSwzr10MqB2-dGky_72VCPq31pZ9XrkJ4WamyJYkzneXYkkt4nOO7owOPI0fWL4E70WJ5RuCKGzsN_i2L97t7_frfJpoJGac5R5k2F5aQjCFji2PnA4Mu=w800-h1067-k-no' },
+  ],
   [{ id: 'asha-blood-orange',    flavor: 'Blood orange matcha latte',      cafe: 'Asha Tea House',      photo: photo('Asha'),         photoUrl: '/images/asha/blood-orange-1.webp' }],
   [{ id: 'junbi-vanilla',      flavor: 'Madagascar vanilla matcha latte', cafe: 'Junbi Matcha & Tea', photo: photo('Junbi'),        photoUrl: '/images/junbi/vanilla-1.webp' }],
   [
@@ -38,7 +46,6 @@ const flavorStacks = [
   ],
   [{ id: 'comptons-raspberry',   flavor: 'Raspberry matcha latte',         cafe: "Compton's Coffee House", photo: photo("Compton's"), photoUrl: '/images/comptons/raspberry-1.webp' }],
   [{ id: 'cere-osmanthus',       flavor: 'Osmanthus matcha latte',         cafe: 'Ceré Tea',            photo: photo('Ceré Tea'),     photoUrl: '/images/cere-tea/osmanthus-1.webp' }],
-  [{ id: 'cere-black-sesame-einspanner', flavor: 'Black sesame matcha einspänner', cafe: 'Ceré Tea',   photo: photo('Ceré Tea'),     photoUrl: '/images/cere-tea/black-sesame-einspanner-1.webp' }],
   [{ id: 'tokyocream-sakura',    flavor: 'Sakura matcha latte',            cafe: 'Tokyo Cream',         photo: photo('Tokyo Cream'),  photoUrl: '/images/tokyo-cream/sakura-1.webp' }],
   [
     { id: 'tadaima-strawberry',  flavor: 'Strawberry matcha latte',        cafe: 'Tadaima',             photo: photo('Tadaima Mission'), photoUrl: '/images/tadaima-sunset/strawberry-1.webp' },
@@ -64,6 +71,7 @@ const flavorStacks = [
   [
     { id: 'shoji-einspanner',    flavor: 'Matcha einspänner',              cafe: 'Shoji',               photo: photo('Shoji'),        photoUrl: '/images/shoji/einspanner-1.webp' },
     { id: 'kissaten-einspanner', flavor: 'Matcha einspänner',              cafe: 'Kissaten HiFi',       photo: photo('Kissaten'),     photoUrl: '/images/kissaten/einspanner-1.webp' },
+    { id: 'jandii-einspanner',    flavor: 'Iced matcha einspänner',         cafe: 'Jandii Cafe',         photo: photo('Jandii'),       photoUrl: 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rcuo_gBdQDnx3fycrBDFePcJpKVE4nYkga7CQ3hp6l8z3GHY3rc-y9DXchZ4GF59gQB8eYCWFt0U9WItm7-bbE89pkClc8M_XS-iyXqXt_l6fuHDhU8O_HHoq9-FLkW51r4is6SZ7l8wk_=w800-h1067-k-no', focus: 'right bottom' },
   ],
   [{ id: 'shoji-affogato',       flavor: 'Matcha affogato',                cafe: 'Shoji',               photo: photo('Shoji'),        photoUrl: '/images/shoji/affogato-1.webp' }],
   [{ id: 'kissofmatcha-espresso', flavor: 'Matcha espresso latte',         cafe: 'Kiss of Matcha',      photo: photo('Kiss of Matcha'), photoUrl: '/images/kiss-of-matcha/espresso-1.webp' }],
@@ -84,6 +92,6 @@ const base = import.meta.env.BASE_URL
 export default flavorStacks.map(stack =>
   stack.map(card => ({
     ...card,
-    photoUrl: card.photoUrl ? base + card.photoUrl.slice(1) : card.photoUrl,
+    photoUrl: card.photoUrl?.startsWith('http') ? card.photoUrl : card.photoUrl ? base + card.photoUrl.slice(1) : card.photoUrl,
   }))
 )
