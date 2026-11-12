@@ -28,7 +28,7 @@
     "lat": 37.7759096,
     "lng": -122.49649,
     "rating": 4.9,
-    "reviewCount": 246,
+    "reviewCount": 248,
     "aiSummary": "Specialized tea house featuring in-house stone-milled matcha and premium teas.",
     "review": "You can actually taste the difference when the matcha is freshly milled. The flavor is richer, smoother, more aromatic, and far more complex than the matcha served at regular cafés.",
     "priceLevel": null,
@@ -72,7 +72,7 @@
     "lat": 37.7896787,
     "lng": -122.404049,
     "rating": 4.7,
-    "reviewCount": 824,
+    "reviewCount": 839,
     "aiSummary": "Specialty coffee and matcha bar serving hand-whisked premium matcha and signature cloud drinks.",
     "review": "it's a matcha lover's dream. The quality of the matcha is on another level, super smooth, vibrant, not bitter at all.",
     "note": "A dual-focus specialty cafe in the Financial District doing ceremonial-grade matcha right. Known for their Matcha Cloud.",
@@ -120,7 +120,7 @@
     "lat": 37.7620739,
     "lng": -122.5067779,
     "rating": 4.7,
-    "reviewCount": 457,
+    "reviewCount": 458,
     "aiSummary": "Family-friendly bookstore and cafe featuring curated books, coffee, and pastries in a scenic garden setting.",
     "review": "Really good and refreshing. The matcha was smooth and not too bitter, and the strawberries added a nice natural sweetness. You can tell they were fresh and locally sourced, which made a difference.",
     "priceLevel": null,
@@ -155,26 +155,6 @@
       "/images/comptons/raspberry-1.webp",
       "/images/comptons/raspberry-2.webp",
       "/images/comptons/raspberry-3.webp"
-    ]
-  },
-  {
-    "id": "ChIJf0pWWp6BhYARntL6rvq1-S0",
-    "name": "The Wild Fox",
-    "address": "123 Battery St, San Francisco, CA 94111, USA",
-    "neighborhood": "Financial District",
-    "lat": 37.7927162,
-    "lng": -122.40008279999999,
-    "rating": 4.7,
-    "reviewCount": 327,
-    "aiSummary": "Japanese-inspired café serving specialty coffee, matcha, and quick Japanese bites.",
-    "review": "The matcha drinks are creamy, rich with umami flavor and vibrant.",
-    "priceLevel": null,
-    "website": "http://thewildfoxsf.com/",
-    "note": "Opened November 2025, the Matcha Mango Shizuku is the most popular drink. Pair it with a chashu or egg salad sandwich.",
-    "photos": [
-      "/images/wild-fox/interior-1.webp",
-      "/images/wild-fox/mango-1.webp",
-      "/images/wild-fox/interior-2.webp"
     ]
   },
   {
@@ -247,6 +227,26 @@
     ]
   },
   {
+    "id": "ChIJf0pWWp6BhYARntL6rvq1-S0",
+    "name": "The Wild Fox",
+    "address": "123 Battery St, San Francisco, CA 94111, USA",
+    "neighborhood": "Financial District",
+    "lat": 37.7927162,
+    "lng": -122.40008279999999,
+    "rating": 4.6,
+    "reviewCount": 328,
+    "aiSummary": "Japanese-inspired café serving specialty coffee, matcha, and quick Japanese bites.",
+    "review": "The matcha drinks are creamy, rich with umami flavor and vibrant.",
+    "priceLevel": null,
+    "website": "http://thewildfoxsf.com/",
+    "note": "Opened November 2025, the Matcha Mango Shizuku is the most popular drink. Pair it with a chashu or egg salad sandwich.",
+    "photos": [
+      "/images/wild-fox/interior-1.webp",
+      "/images/wild-fox/mango-1.webp",
+      "/images/wild-fox/interior-2.webp"
+    ]
+  },
+  {
     "id": "ChIJg6GVZgCHhYARDs4r7ffC9hE",
     "name": "Tadaima Inner Sunset",
     "chainName": "Tadaima",
@@ -268,6 +268,30 @@
       "/images/tadaima-sunset/drink-2.webp",
       "/images/tadaima-sunset/pistachio-1.webp"
     ]
+  },
+  {
+    "id": "ChIJ0SMoLQCBhYARITzfRWNdCxI",
+    "name": "Diary of Matcha",
+    "address": "214 Sutter St, San Francisco, CA 94108, USA",
+    "neighborhood": "Union Square",
+    "lat": 37.7899159,
+    "lng": -122.4041691,
+    "rating": 4.6,
+    "reviewCount": 77,
+    "aiSummary": null,
+    "review": "The classic matcha latte with the rose cold foam is incredible.",
+    "priceLevel": null,
+    "website": null,
+    "matchaFocus": true,
+    "note": "People recommend the matcha latte with rose cold foam, and the hojicha gets praise too.",
+    "photos": [
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSBPrJAj1BfOyG0LZiRN9LVtjXKgMy2jX3Nhni30GJOj3Qs1V84QC7lx_gjGIV17mW0PfrMZuVfWdVy7I5p9V-6Xzd4LhgLnmp45ZOClebzh7FpAv35kFndmLl24QkzY-XI7iEjzn1ir6F=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TsTUAoz2eR-fC0lN9t82bXqwWSs40LXlZhpkuybZXRdsu2ri13E0kp92VRAz8XZb6dLxS8-M0qWpkeApbubr7TyCDdrsNzUYDxaQzBi5FMgKi9Agp8eNFgwuOwuv2Imzeft_dRSKCTxU3D=w800-h1067-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TU2r2M1nNVQI822densT3SdJ_pLqn25raQeDOfi9JiIfhjay0GDDVE6yRuumq8yFFAHrn5_M-xc-yqnMDtmoG4IgirKWJKeVF0m3ndr5OAh6vedOMhJ6u9PNQD7Nsc5tXVtW0YDGYBEo6r=w800-h1422-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TIyjTe8YZyoCEFV_Z9Fci6wEu7CbftItGZwW3k7GcAGTtj41wSbJCZogThMSUdtlZQboyOIyprAchMo1kXattlxsDjaRBVp5bgnHollhgiG29qVyH8EVd0-jQtu6nAINxG-D6peVPytgQ=w800-h1067-k-no"
+    ],
+    "photo": "places/ChIJ0SMoLQCBhYARITzfRWNdCxI/photos/AV-0GLfcO8HK1c4kr8wi3r0XlGYPfvxnxAdG9-NcdnK497m5Z5kuUX_R40NXK0L-zms_LzwpuxWh5SSNwwNHnqZBKpi7_QbhbISf89U-GcDmwlTVZyys2xFs8gybKVmhz6yicsHStIDtES3L_rX_Aky9mhvCC7SzDpsKF9CiMxYrpxt2HsTceM5dh9dr8qGRSnVtOUwGdvwY8k-sGA87mTjVfZ2-dzW_Ksgt8NmATgDNWCQ_EymiqPH53fd3-bxbsYDMVRIEWX7YdCr0KtwcN46Axl3rGxxmG5F7THGmIMfA-fc7nUzRLIxhYHAaN5BXLtiH6BkQ7q5S8BolWfRJ7tRkqDczChvN2vHSLEEYRmyMOUY-kATVGZYD3nov0k_dYxEZWTY6e7ioLZoxHPxb_Ne7Ez6PFtpBtdrB5j8EVveKV9qTyg",
+    "mapDescription": "Matcha-focused cafe serving matcha lattes, hojicha, and cold foam drinks."
   },
   {
     "id": "ChIJb4QAI8d9j4ARXXsonAsNN-Y",
@@ -299,7 +323,7 @@
     "lat": 37.7886088,
     "lng": -122.3953756,
     "rating": 4.6,
-    "reviewCount": 11,
+    "reviewCount": 12,
     "aiSummary": null,
     "review": "Best matcha I’ve had in SF. Very aesthetic coffee shop and great matcha, I would highly recommend the Velvet Matcha Cloud.",
     "priceLevel": null,
@@ -324,7 +348,7 @@
     "lat": 37.7827006,
     "lng": -122.47438799999999,
     "rating": 4.5,
-    "reviewCount": 735,
+    "reviewCount": 736,
     "aiSummary": "Asian-fusion bakery and coffee shop serving signature kaya toast and gourmet pastries.",
     "review": "It’s has the BEST matcha lattes in the city in my opinion, even better than some of the matcha I had in Japan, which is A LOT.",
     "priceLevel": 2,
@@ -382,30 +406,6 @@
     "mapDescription": "Cozy cafe serving matcha, hojicha, and coffee drinks next to a cinema."
   },
   {
-    "id": "ChIJ0SMoLQCBhYARITzfRWNdCxI",
-    "name": "Diary of Matcha",
-    "address": "214 Sutter St, San Francisco, CA 94108, USA",
-    "neighborhood": "Union Square",
-    "lat": 37.7899159,
-    "lng": -122.4041691,
-    "rating": 4.5,
-    "reviewCount": 56,
-    "aiSummary": null,
-    "review": "The classic matcha latte with the rose cold foam is incredible.",
-    "priceLevel": null,
-    "website": null,
-    "matchaFocus": true,
-    "note": "People recommend the matcha latte with rose cold foam, and the hojicha gets praise too.",
-    "photos": [
-      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSBPrJAj1BfOyG0LZiRN9LVtjXKgMy2jX3Nhni30GJOj3Qs1V84QC7lx_gjGIV17mW0PfrMZuVfWdVy7I5p9V-6Xzd4LhgLnmp45ZOClebzh7FpAv35kFndmLl24QkzY-XI7iEjzn1ir6F=w800-h1067-k-no",
-      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TsTUAoz2eR-fC0lN9t82bXqwWSs40LXlZhpkuybZXRdsu2ri13E0kp92VRAz8XZb6dLxS8-M0qWpkeApbubr7TyCDdrsNzUYDxaQzBi5FMgKi9Agp8eNFgwuOwuv2Imzeft_dRSKCTxU3D=w800-h1067-k-no",
-      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TU2r2M1nNVQI822densT3SdJ_pLqn25raQeDOfi9JiIfhjay0GDDVE6yRuumq8yFFAHrn5_M-xc-yqnMDtmoG4IgirKWJKeVF0m3ndr5OAh6vedOMhJ6u9PNQD7Nsc5tXVtW0YDGYBEo6r=w800-h1422-k-no",
-      "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TIyjTe8YZyoCEFV_Z9Fci6wEu7CbftItGZwW3k7GcAGTtj41wSbJCZogThMSUdtlZQboyOIyprAchMo1kXattlxsDjaRBVp5bgnHollhgiG29qVyH8EVd0-jQtu6nAINxG-D6peVPytgQ=w800-h1067-k-no"
-    ],
-    "photo": "places/ChIJ0SMoLQCBhYARITzfRWNdCxI/photos/AV-0GLfcO8HK1c4kr8wi3r0XlGYPfvxnxAdG9-NcdnK497m5Z5kuUX_R40NXK0L-zms_LzwpuxWh5SSNwwNHnqZBKpi7_QbhbISf89U-GcDmwlTVZyys2xFs8gybKVmhz6yicsHStIDtES3L_rX_Aky9mhvCC7SzDpsKF9CiMxYrpxt2HsTceM5dh9dr8qGRSnVtOUwGdvwY8k-sGA87mTjVfZ2-dzW_Ksgt8NmATgDNWCQ_EymiqPH53fd3-bxbsYDMVRIEWX7YdCr0KtwcN46Axl3rGxxmG5F7THGmIMfA-fc7nUzRLIxhYHAaN5BXLtiH6BkQ7q5S8BolWfRJ7tRkqDczChvN2vHSLEEYRmyMOUY-kATVGZYD3nov0k_dYxEZWTY6e7ioLZoxHPxb_Ne7Ez6PFtpBtdrB5j8EVveKV9qTyg",
-    "mapDescription": "Matcha-focused cafe serving matcha lattes, hojicha, and cold foam drinks."
-  },
-  {
     "id": "ChIJRXSd4LR9j4ARcE4JIb54DsQ",
     "name": "Moriwa Matcha",
     "address": "1143 Taraval St, San Francisco, CA 94116, USA",
@@ -449,28 +449,6 @@
       "/images/stonemill/rose-4.webp",
       "/images/stonemill/strawberry-1.webp",
       "/images/stonemill/strawberry-2.webp"
-    ]
-  },
-  {
-    "id": "ChIJX7KNJy1-j4ARfn1gMtb2ryM",
-    "name": "Urban Ritual Cafe",
-    "address": "488 Fell St, San Francisco, CA 94102, USA",
-    "neighborhood": "Hayes Valley",
-    "lat": 37.775701399999996,
-    "lng": -122.4258572,
-    "rating": 4.4,
-    "reviewCount": 502,
-    "aiSummary": "Charming cafe specializing in craft teas and creative boba cocktails.",
-    "review": "The creme brûlée as well as the UBE boba are some of the best drinks I’ve had in SF period.  The matcha is also amazing for a boba spot (matcha snob here).  Do yourself a favor and get urban ritual.",
-    "priceLevel": 1,
-    "website": "http://www.urbanritualcafe.com/",
-    "matchaFocus": false,
-    "note": "The creme brulee drink gets all the attention, but the matcha program is solid too. The toffee brittle matcha latte is the unusual order worth trying.",
-    "photos": [
-      "/images/urban-ritual/toffee-1.webp",
-      "/images/urban-ritual/interior-1.webp",
-      "/images/urban-ritual/interior-2.webp",
-      "/images/urban-ritual/interior-3.webp"
     ]
   },
   {
@@ -530,7 +508,7 @@
     "lat": 37.757324,
     "lng": -122.3879397,
     "rating": 4.4,
-    "reviewCount": 306,
+    "reviewCount": 305,
     "aiSummary": "Stylish Korean-inspired cafe serving signature popcorn chicken and creative coffee and matcha lattes.",
     "review": "We ordered the Signature Cream Top Matcha Oat (iced) and the Banana Oat Milk Latte Matcha (iced) the cream top was alright, but the banana oat one was really good.",
     "priceLevel": null,
@@ -600,7 +578,7 @@
     "lat": 37.7852405,
     "lng": -122.4647832,
     "rating": 4.4,
-    "reviewCount": 143,
+    "reviewCount": 144,
     "aiSummary": "Japanese-Filipino coffee and matcha house featuring artisanal drinks and a curated vinyl record listening experience.",
     "review": "The matcha was delicious (I tried the matcha matcha) the team was incredibly welcoming, the vibes were great, music was stellar.",
     "priceLevel": null,
@@ -684,6 +662,28 @@
       "/images/cere-tea/black-sesame-einspanner-2.webp"
     ],
     "mapDescription": "Japanese tea room serving creative matcha lattes and einspänner drinks."
+  },
+  {
+    "id": "ChIJX7KNJy1-j4ARfn1gMtb2ryM",
+    "name": "Urban Ritual Cafe",
+    "address": "488 Fell St, San Francisco, CA 94102, USA",
+    "neighborhood": "Hayes Valley",
+    "lat": 37.775701399999996,
+    "lng": -122.4258572,
+    "rating": 4.3,
+    "reviewCount": 505,
+    "aiSummary": "Charming cafe specializing in craft teas and creative boba cocktails.",
+    "review": "The creme brûlée as well as the UBE boba are some of the best drinks I’ve had in SF period.  The matcha is also amazing for a boba spot (matcha snob here).  Do yourself a favor and get urban ritual.",
+    "priceLevel": 1,
+    "website": "http://www.urbanritualcafe.com/",
+    "matchaFocus": false,
+    "note": "The creme brulee drink gets all the attention, but the matcha program is solid too. The toffee brittle matcha latte is the unusual order worth trying.",
+    "photos": [
+      "/images/urban-ritual/toffee-1.webp",
+      "/images/urban-ritual/interior-1.webp",
+      "/images/urban-ritual/interior-2.webp",
+      "/images/urban-ritual/interior-3.webp"
+    ]
   },
   {
     "id": "ChIJdd8Vw3GHhYARYr3MRjbzZ5s",
@@ -783,7 +783,7 @@
     "lat": 37.7868563,
     "lng": -122.4515284,
     "rating": 4.2,
-    "reviewCount": 265,
+    "reviewCount": 266,
     "aiSummary": "Popular specialty cafe featuring handcrafted matcha beverages and house-roasted coffee.",
     "review": "The matcha deserves its own shoutout — perfectly balanced, creamy, and not overly sweet.",
     "priceLevel": null,
@@ -850,7 +850,7 @@
     "lat": 37.8000776,
     "lng": -122.4314107,
     "rating": 4,
-    "reviewCount": 266,
+    "reviewCount": 268,
     "aiSummary": "Japanese takeaway spot featuring artfully presented bento boxes and ceremonial-grade matcha drinks.",
     "review": "I literally make a point to come here every time I’m in SF just for the ceremonial matcha. It’s so good… super smooth, not bitter, just perfect.",
     "priceLevel": 2,
